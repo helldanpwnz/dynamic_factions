@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "y2XqYECZtiLNrotDlqbvlgkhqgkLfZ1+5WyN85iFXi50kIZKmBY+m0kTfaj1N+QxKzGqxhdombU9vGtUesdoVg==",
+  "success": true,
+  "projectFilePath": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\DynamicFaction\\Source\\DynamicFaction.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

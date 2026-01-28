@@ -1,0 +1,13 @@
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Source\obj\Debug\DynamicFaction.csproj.AssemblyReference.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Source\obj\Debug\DynamicFaction.GeneratedMSBuildEditorConfig.editorconfig
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Source\obj\Debug\DynamicFaction.AssemblyInfoInputs.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Source\obj\Debug\DynamicFaction.AssemblyInfo.cs
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Source\obj\Debug\DynamicFaction.csproj.CoreCompileInputs.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Assemblies\DynamicFaction.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\DynamicFaction\Source\obj\Debug\DynamicFaction.dll
+E:\Game files\Mods RimWorld\Разработка мода DynamicFaction\DynamicFaction_113 готова начальная структура ключей для перевода\Source\obj\Debug\DynamicFaction.csproj.AssemblyReference.cache
+E:\Game files\Mods RimWorld\Разработка мода DynamicFaction\DynamicFaction_113 готова начальная структура ключей для перевода\Source\obj\Debug\DynamicFaction.GeneratedMSBuildEditorConfig.editorconfig
+E:\Game files\Mods RimWorld\Разработка мода DynamicFaction\DynamicFaction_113 готова начальная структура ключей для перевода\Source\obj\Debug\DynamicFaction.AssemblyInfoInputs.cache
+E:\Game files\Mods RimWorld\Разработка мода DynamicFaction\DynamicFaction_113 готова начальная структура ключей для перевода\Source\obj\Debug\DynamicFaction.AssemblyInfo.cs
+E:\Game files\Mods RimWorld\Разработка мода DynamicFaction\DynamicFaction_113 готова начальная структура ключей для перевода\Source\obj\Debug\DynamicFaction.csproj.CoreCompileInputs.cache
+E:\Game files\Mods RimWorld\Разработка мода DynamicFaction\DynamicFaction_113 готова начальная структура ключей для перевода\Source\obj\Debug\DynamicFaction.dll
