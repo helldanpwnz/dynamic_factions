@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- ==================== ИНДУСТРИАЛЬНЫЕ ФРАКЦИИ ==================== -->
+  
+  <DF_IndustrialFaction01.label>Корпорация</DF_IndustrialFaction01.label>
+  <DF_IndustrialFaction01.description>Структура, построенная на выгоде и производстве. Власть принадлежит капиталу, а решения принимают те, кто контролирует ресурсы.</DF_IndustrialFaction01.description>
+
+  <DF_IndustrialFaction02.label>Картель</DF_IndustrialFaction02.label>
+  <DF_IndustrialFaction02.description>Объединение, контролирующее прибыльные отрасли и рынки. Действуют скрытно, балансируя между законом и тенью.</DF_IndustrialFaction02.description>  
+
+  <DF_IndustrialFaction03.label>Альянс</DF_IndustrialFaction03.label>
+  <DF_IndustrialFaction03.description>Союз нескольких сил ради общей цели. Часто нестабильный, но мощный, пока интересы участников совпадают.</DF_IndustrialFaction03.description>
+
+  <DF_IndustrialFaction04.label>Объединение</DF_IndustrialFaction04.label>
+  <DF_IndustrialFaction04.description>Группировка предприятий или поселений, связанных экономикой или защитой. Их сплачивает общее выживание.</DF_IndustrialFaction04.description>
+
+  <DF_IndustrialFaction05.label>Завод</DF_IndustrialFaction05.label>
+  <DF_IndustrialFaction05.description>Дисциплинированная система производства, где человек — часть механизма. Символ индустриальной эффективности и тяжёлого труда.</DF_IndustrialFaction05.description>
+
+  <DF_IndustrialFaction06.label>Фабрика</DF_IndustrialFaction06.label>
+  <DF_IndustrialFaction06.description>Место непрерывного потока товаров, шума и пара. Рабочие живут в тени машин, питая прогресс своим потом.</DF_IndustrialFaction06.description>
+
+  <DF_IndustrialFaction07.label>Профсоюз</DF_IndustrialFaction07.label>
+  <DF_IndustrialFaction07.description>Сообщество трудящихся, отстаивающих свои права. Иногда мирное, иногда готовое к мятежу ради справедливости.</DF_IndustrialFaction07.description>
+
+  <DF_IndustrialFaction08.label>Ассоциация</DF_IndustrialFaction08.label>
+  <DF_IndustrialFaction08.description>Гибкая сеть специалистов и мастеров. Их сила — в сотрудничестве и свободе обмена знаниями.</DF_IndustrialFaction08.description>
+
+  <DF_IndustrialFaction09.label>Комплекс</DF_IndustrialFaction09.label>
+  <DF_IndustrialFaction09.description>Замкнутая структура, объединяющая заводы, лаборатории и поселения. Часто живёт по собственным законам и уставам.</DF_IndustrialFaction09.description>
+
+  <DF_IndustrialFaction10.label>Организация</DF_IndustrialFaction10.label>
+  <DF_IndustrialFaction10.description>Строго структурированная власть с иерархией и порядком. Внутри кипит борьба интересов и скрытых амбиций.</DF_IndustrialFaction10.description>
+
+  <DF_IndustrialFaction11.label>Город</DF_IndustrialFaction11.label>
+  <DF_IndustrialFaction11.description>Сердце промышленной цивилизации. Башни, дым и неон создают пульс живого мегаполиса.</DF_IndustrialFaction11.description>
+
+  <DF_IndustrialFaction12.label>Фронт</DF_IndustrialFaction12.label>
+  <DF_IndustrialFaction12.description>Военное или идеологическое объединение. Сражается не только оружием, но и словом, влиянием и верой.</DF_IndustrialFaction12.description>
+
+  <DF_IndustrialFaction13.label>Глобальный союз</DF_IndustrialFaction13.label>
+  <DF_IndustrialFaction13.description>Договор между народами или корпорациями. За внешним чувством единства всегда скрывается конкуренция.</DF_IndustrialFaction13.description>
+
+  <DF_IndustrialFaction14.label>Лига</DF_IndustrialFaction14.label>
+  <DF_IndustrialFaction14.description>Старый союз с традициями и уставом. Часто превращается в элитарное собрание, где решают судьбы других.</DF_IndustrialFaction14.description>
+
+  <DF_IndustrialFaction15.label>Флот</DF_IndustrialFaction15.label>
+  <DF_IndustrialFaction15.description>Организованная сила, господствующая на воде или в воздухе. Символ мобильности и военной мощи эпохи машин.</DF_IndustrialFaction15.description>
+
+  <DF_IndustrialFaction16.label>Коллектив</DF_IndustrialFaction16.label>
+  <DF_IndustrialFaction16.description>Сообщество, где равенство важнее статусов. Их идеалы нередко сталкиваются с суровой реальностью индустрии.</DF_IndustrialFaction16.description>
+
+  <DF_IndustrialFaction17.label>Нация</DF_IndustrialFaction17.label>
+  <DF_IndustrialFaction17.description>Народ, объединённый общей культурой и целью. Их гордость движет прогресс вперёд, но легко обращается в фанатизм.</DF_IndustrialFaction17.description>
+
+  <DF_IndustrialFaction18.label>Коалиция</DF_IndustrialFaction18.label>
+  <DF_IndustrialFaction18.description>Временный союз сил против большей угрозы. После победы часто рушится под тяжестью разногласий.</DF_IndustrialFaction18.description>
+
+  <DF_IndustrialFaction19.label>Общество</DF_IndustrialFaction19.label>
+  <DF_IndustrialFaction19.description>Объединение людей с общими убеждениями или целью. Определяет дух эпохи — прогрессивный или догматичный.</DF_IndustrialFaction19.description>
+
+  <DF_IndustrialFaction20.label>Компания</DF_IndustrialFaction20.label>
+  <DF_IndustrialFaction20.description>Группа, движимая прибылью и амбициями. От маленьких торговцев до огромных корпораций — в их сердце всегда авантюра.</DF_IndustrialFaction20.description>
+
+</LanguageData>

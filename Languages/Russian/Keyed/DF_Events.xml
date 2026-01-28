@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Глобальный кризис -->
+  <DF_GlobalCrisis_Label>Мировой кризис</DF_GlobalCrisis_Label>
+  <DF_GlobalCrisis_Text>Дипломатия рухнула! {0}/{1} фракций вступили в войну (напряженность {2}).</DF_GlobalCrisis_Text>
+  
+
+  <!-- Чума: Начало -->
+  <DF_PlagueStart_Label>Вспышка Черной Чумы</DF_PlagueStart_Label>
+  <DF_PlagueStart_Text>Мир охватила смертельная пандемия.</DF_PlagueStart_Text>
+  
+  
+
+  <!-- Чума: Конец -->
+  <DF_PlagueEnd_Label>Конец пандемии</DF_PlagueEnd_Label>
+  <DF_PlagueEnd_Text>Вспышка Черной Чумы пошла на спад.</DF_PlagueEnd_Text>
+
+  <!-- Чума: Город уничтожен -->
+  <DF_CityDestroyed_Label>Город вымер</DF_CityDestroyed_Label>
+  <DF_CityDestroyed_Text>Пандемия уничтожила всё население города {0}, принадлежавшего фракции {1}. На его месте остались лишь руины.</DF_CityDestroyed_Text>
+
+</LanguageData>
