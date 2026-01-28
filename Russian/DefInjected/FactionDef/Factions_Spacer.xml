@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- ==================== КОСМИЧЕСКИЕ ФРАКЦИИ ==================== -->
+  
+  <DF_SpacerFaction01.label>Астралис</DF_SpacerFaction01.label>
+  <DF_SpacerFaction01.description>Цивилизация звёздных навигаторов, освоивших пути между галактиками и рассматривающих космос как единый живой организм.</DF_SpacerFaction01.description>
+  
+    <DF_SpacerFaction02.label>Кванториум</DF_SpacerFaction02.label>
+  <DF_SpacerFaction02.description>Общество, где наука стала религией, а каждый атом подчинён воле аналитического разума. Их технологии переплетают логику и веру.</DF_SpacerFaction02.description>
+
+  <DF_SpacerFaction03.label>Омнидекс</DF_SpacerFaction03.label>
+  <DF_SpacerFaction03.description>Информационный разум, вобравший в себя знания тысяч миров. Управляет цивилизациями, как процессами в гигантской сети.</DF_SpacerFaction03.description>
+
+  <DF_SpacerFaction04.label>Нексус</DF_SpacerFaction04.label>
+  <DF_SpacerFaction04.description>Центральный узел межзвёздных связей. Здесь сходятся маршруты, торговля и сознания — место, где всё соединяется со всем.</DF_SpacerFaction04.description>
+
+  <DF_SpacerFaction05.label>Гелион</DF_SpacerFaction05.label>
+  <DF_SpacerFaction05.description>Народ энергетических инженеров, способных управлять звёздами. Они строят и гасят солнца, меняя баланс галактик.</DF_SpacerFaction05.description>
+
+  <DF_SpacerFaction06.label>Эшелон</DF_SpacerFaction06.label>
+  <DF_SpacerFaction06.description>Иерархичная технократия, где каждый уровень общества отражает ступень доступа к бездне космических тайн.</DF_SpacerFaction06.description>
+
+  <DF_SpacerFaction07.label>Архонт</DF_SpacerFaction07.label>
+  <DF_SpacerFaction07.description>Империя ментальных правителей, сливших разум с машиной. Их воля управляет армиями дронов одной мыслью.</DF_SpacerFaction07.description>
+
+  <DF_SpacerFaction08.label>Орбис</DF_SpacerFaction08.label>
+  <DF_SpacerFaction08.description>Цивилизация кольцевых миров, создающая искусственные планеты вокруг умирающих звёзд. Эстеты, инженеры и хранители равновесия.</DF_SpacerFaction08.description>
+
+  <DF_SpacerFaction09.label>Гиперион</DF_SpacerFaction09.label>
+  <DF_SpacerFaction09.description>Древнее сверхгосударство, поднявшееся к звёздам задолго до прочих. Их парящие города сияют в облаках света.</DF_SpacerFaction09.description>
+
+  <DF_SpacerFaction10.label>Альтум</DF_SpacerFaction10.label>
+  <DF_SpacerFaction10.description>Вознесённые философы, отвергшие материю. Их присутствие ощущается как искажение пространства и времени.</DF_SpacerFaction10.description>
+
+  <DF_SpacerFaction11.label>Термис</DF_SpacerFaction11.label>
+  <DF_SpacerFaction11.description>Индустриальная цивилизация термостроителей, черпающих энергию из самих недр планет. Их миры — кузницы галактик.</DF_SpacerFaction11.description>
+
+  <DF_SpacerFaction12.label>Континуум</DF_SpacerFaction12.label>
+  <DF_SpacerFaction12.description>Культура, слившая время и пространство в единую нить. Они живут сразу во всех возможных прошлых и будущих.</DF_SpacerFaction12.description>
+
+  <DF_SpacerFaction13.label>Азурис</DF_SpacerFaction13.label>
+  <DF_SpacerFaction13.description>Океаническая раса, населившая жидкие миры. Их технологии текучи и живы, словно сама вода обрела сознание.</DF_SpacerFaction13.description>
+
+  <DF_SpacerFaction14.label>Эфириум</DF_SpacerFaction14.label>
+  <DF_SpacerFaction14.description>Сообщество энергетических существ, для которых материя — форма сигнала. Свет — их язык, энергия — жизнь.</DF_SpacerFaction14.description>
+
+  <DF_SpacerFaction15.label>Аркатум</DF_SpacerFaction15.label>
+  <DF_SpacerFaction15.description>Хранители космических архивов, собирающие историю звёзд. Их библиотеки сияют в небе как созвездия памяти.</DF_SpacerFaction15.description>
+
+  <DF_SpacerFaction16.label>Эгония</DF_SpacerFaction16.label>
+  <DF_SpacerFaction16.description>Народ, превративший самосознание в источник силы. Каждый разум здесь — уникальная вселенная внутри другого разума.</DF_SpacerFaction16.description>
+
+  <DF_SpacerFaction17.label>Теракс</DF_SpacerFaction17.label>
+  <DF_SpacerFaction17.description>Колонизаторы бесплодных планет, превращающие камень в жизнь. Их искусственные экосистемы растут, как живые миры.</DF_SpacerFaction17.description>
+
+  <DF_SpacerFaction18.label>Паноптиум</DF_SpacerFaction18.label>
+  <DF_SpacerFaction18.description>Сеть наблюдателей, охватывающая всю галактику. Их глаза — спутники, дроны и волны, пронизывающие время и тьму.</DF_SpacerFaction18.description>
+
+  <DF_SpacerFaction19.label>Омнилайн</DF_SpacerFaction19.label>
+  <DF_SpacerFaction19.description>Квантовая структура мгновенной связи между мирами. Мысль здесь движется быстрее света и творит миры в момент намерения.</DF_SpacerFaction19.description>
+
+  <DF_SpacerFaction20.label>Метатрон</DF_SpacerFaction20.label>
+  <DF_SpacerFaction20.description>Разумы‑творцы, управляющие законами физики как кодом. Их речь формирует галактики, а воля творит само пространство.</DF_SpacerFaction20.description>
+
+
+  
+
+</LanguageData>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+	  <li>Vanilla Factions Expanded - Medieval 2</li>
+    </mods>
+    
+    <match Class="PatchOperationSequence">
+      <operations>
+        <!-- Переключаем родителя для DF_MedievalFaction01 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction01"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction02 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction02"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction03 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction03"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+		
+		        <!-- Переключаем родителя для DF_MedievalFaction04 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction04"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction05 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction05"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction06 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction06"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+		
+		        <!-- Переключаем родителя для DF_MedievalFaction07 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction07"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction08 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction08"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction09 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction09"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+		
+		        <!-- Переключаем родителя для DF_MedievalFaction10 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction10"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction11 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction11"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction12 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction12"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+		
+		        <!-- Переключаем родителя для DF_MedievalFaction13 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction13"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction14 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction14"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction15 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction15"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+		
+		        <!-- Переключаем родителя для DF_MedievalFaction16 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction16"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction17 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction17"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+
+        <!-- Переключаем родителя для DF_MedievalFaction18 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction18"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_MedievalFactionBase</value>
+        </li>
+		
+		<!-- Переключаем родителя для DF_MedievalFaction19 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction19"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+		
+		<!-- Переключаем родителя для DF_MedievalFaction20 -->
+        <li Class="PatchOperationAttributeSet">
+          <xpath>/Defs/FactionDef[defName="DF_MedievalFaction20"]</xpath>
+          <attribute>ParentName</attribute>
+          <value>VFEM2_VikingBase</value>
+        </li>
+        
+        <!-- Если у вас есть 04, 05 и т.д., скопируйте блок <li>...</li> и поменяйте цифру -->
+      </operations>
+    </match>
+  </Operation>
+</Patch>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Событие: Мировой Кризис -->
+  <IncidentDef>
+    <defName>DF_GlobalCrisis</defName>
+    <label>DF_GlobalCrisis_JournalLabel</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass> <!-- Тот же воркер -->
+    <baseChance>0</baseChance>
+  </IncidentDef>
+
+  <!-- Событие: Чума -->
+  <IncidentDef>
+    <defName>DF_PlagueOutbreak</defName>
+    <label>DF_PlagueOutbreak_JournalLabel</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass> <!-- Тот же воркер -->
+    <baseChance>0</baseChance>
+  </IncidentDef>
+  
+  <!-- Добавь сюда столько копий, сколько у тебя уникальных событий -->
+</Defs>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Dynamic Factions</name>
+  <author>helldan</author>
+  <packageId>helldan.dynamicneolithicfactions</packageId>
+  <supportedVersions><li>1.6</li></supportedVersions>
+  <description>Hidden factions with custom icons.</description>
+  
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+    <li>oskarpotocki.vfe.medieval2</li> <!-- Твой ID VFE Medieval 2 -->
+  </loadAfter>
+  
+</ModMetaData>

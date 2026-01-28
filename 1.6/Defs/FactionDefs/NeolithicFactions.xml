@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ГЕНЕРАТОРЫ ИМЕН -->
+  <RulePackDef>
+    <defName>DF_NamerFactionNeolithic</defName>
+    <rulePack>
+      <rulesFiles>
+        <li>r_name->Namebanks/Names/Neolithic_Faction</li>
+      </rulesFiles>
+    </rulePack>
+  </RulePackDef>
+
+  <RulePackDef>
+    <defName>DF_NamerSettlementNeolithic</defName>
+    <rulePack>
+      <rulesFiles>
+        <li>r_name->Namebanks/Names/Neolithic_Settlement</li>
+      </rulesFiles>
+    </rulePack>
+  </RulePackDef>
+
+    <!-- ОСНОВНЫЕ ЦВЕТА RGB 255 → XML (каждый канал / 255) -->
+<!--
+Красный:     (255,0,0)   → <li>(1.0, 0.0, 0.0)</li>
+Кровавый:    (153,22,22)   → <li>(0.6, 0.08, 0.08)</li>
+Зелёный:     (0,255,0)   → <li>(0.0, 1.0, 0.0)</li>
+Салатовый:  (56,231,100)   → <li>(0.21, 0.9, 0.39)</li>
+Синий:       (0,0,255)   → <li>(0.0, 0.0, 1.0)</li>
+Грязно-синий: (10,120,133)   → <li>(0.03, 0.47, 0.52)</li>
+Темно-синий  (22,40,153)   → <li>(0.08, 0.15, 0.6)</li>
+Белый:       (255,255,255) → <li>(1.0, 1.0, 1.0)</li>
+Чёрный:      (0,0,0)     → <li>(0.0, 0.0, 0.0)</li>
+Серый:       (128,128,128) → <li>(0.5, 0.5, 0.5)</li>
+Жёлтый:      (255,255,0) → <li>(1.0, 1.0, 0.0)</li>
+Оранжевый:   (255,165,0) → <li>(1.0, 0.65, 0.0)</li>
+Грязно оранжевый:   (181,74,26) → <li>(0.7, 0.29, 0.1)</li>
+Фиолетовый:  (128,0,128) → <li>(0.5, 0.0, 0.5)</li>
+Фиолетово синий:   (47,61,198) → <li>(0.18, 0.24, 0.77)</li>
+Строгий розовый (181,26,110) → <li>(0.7, 0.1, 0.43)</li>
+Темно-фиолетовый (85,28,115) → <li>(0.33, 0.1, 0.45)</li>
+Бирюзовый:  (47,196,197) → <li>(0.18, 0.76, 0.77)</li>
+КОРИЧНЕВЫЙ:  (139,69,19) → <li>(0.55, 0.27, 0.07)</li>
+СИНЕ-ГОЛУБОЙ:(0,191,255) → <li>(0.0, 0.75, 1.0)</li>
+РОЗОВЫЙ:    (255,192,203) → <li>(1.0, 0.75, 0.8)</li>
+ЗОЛОТОЙ:     (255,215,0)  → <li>(1.0, 0.84, 0.0)</li>
+МОРОЗНЫЙ:    (173,216,230) → <li>(0.68, 0.85, 0.9)</li>
+Лайм:        (50,205,50)  → <li>(0.2, 0.8, 0.2)</li>
+Бирюзовый:   (64,224,208) → <li>(0.25, 0.88, 0.82)</li>
+-->
+
+
+  <!-- ФРАКЦИЯ 01 -->
+  <!-- Используем TribeBase вместо OutlanderFactionBase для полной привязки к неолиту -->
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction01</defName>
+    <label>Neolithic Faction 01</label>
+    <description>Neolithic Faction 02</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_01</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker>
+    <techLevel>Neolithic</techLevel>
+    
+	<colorSpectrum>
+    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 1.0, 0.0)</li>      <!-- Зелёный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>
+
+  <!-- ФРАКЦИЯ 02 -->
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction02</defName>
+    <label>Neolithic Faction 02</label>
+	<description>Neolithic Faction 02</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_02</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker>
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+	    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 1.0, 0.0)</li>      <!-- Зелёный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>
+
+  <!-- ФРАКЦИЯ 03 -->
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction03</defName>
+    <label>Neolithic Faction 03</label>
+	<description>Neolithic Faction 03</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_03</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker>
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(1.0, 0.0, 0.0)</li>  <!-- Красный -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(0.0, 1.0, 0.0)</li>      <!-- Зелёный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+	 </colorSpectrum>
+  </FactionDef>
+
+  <!-- ФРАКЦИЯ 04 -->
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction04</defName>
+    <label>Neolithic Faction 04</label>
+	<description>Neolithic Faction 04</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_04</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker>
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.7, 0.1, 0.43)</li> <!-- Строгий розовый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 1.0, 0.0)</li>      <!-- Зелёный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>
+
+  <!-- ФРАКЦИЯ 05 -->
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction05</defName>
+    <label>Neolithic Faction 05</label>
+	<description>Neolithic Faction 05</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_05</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>
+
+  <!-- ФРАКЦИЯ 06 --> 
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction06</defName>
+    <label>Neolithic Faction 06</label>
+	<description>Neolithic Faction 06</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_06</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 07 -->  
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction07</defName>
+    <label>Neolithic Faction 07</label>
+	<description>Neolithic Faction 07</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_07</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 08 -->  
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction08</defName>
+    <label>Neolithic Faction 08</label>
+	<description>Neolithic Faction 08</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_08</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 09 --> 
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction09</defName>
+    <label>Neolithic Faction 09</label>
+	<description>Neolithic Faction 09</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_09</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 10 -->  
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction10</defName>
+    <label>Neolithic Faction 10</label>
+	<description>Neolithic Faction 10</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_10</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 11 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction11</defName>
+    <label>Neolithic Faction 11</label>
+	<description>Neolithic Faction 11</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_11</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 12 -->  
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction12</defName>
+    <label>Neolithic Faction 12</label>
+	<description>Neolithic Faction 12</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_12</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 13 --> 
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction13</defName>
+    <label>Neolithic Faction 13</label>
+	<description>Neolithic Faction 13</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_13</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 14 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction14</defName>
+    <label>Neolithic Faction 14</label>
+	<description>Neolithic Faction 14</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_14</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>  
+  <!-- ФРАКЦИЯ 15 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction15</defName>
+    <label>Neolithic Faction 15</label>
+	<description>Neolithic Faction 15</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_15</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>    
+    <!-- ФРАКЦИЯ 16 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction16</defName>
+    <label>Neolithic Faction 16</label>
+	<description>Neolithic Faction 16</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_16</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>   
+    <!-- ФРАКЦИЯ 17 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction17</defName>
+    <label>Neolithic Faction 17</label>
+	<description>Neolithic Faction 17</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_17</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>   
+    <!-- ФРАКЦИЯ 18 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction18</defName>
+    <label>Neolithic Faction 18</label>
+	<description>Neolithic Faction 18</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_18</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>   
+    <!-- ФРАКЦИЯ 19 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction19</defName>
+    <label>Neolithic Faction 19</label>
+	<description>Neolithic Faction 19</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_19</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>   
+    <!-- ФРАКЦИЯ 20 -->
+  
+  <FactionDef ParentName="TribeBase">
+    <defName>DF_NeolithicFaction20</defName>
+    <label>Neolithic Faction 20</label>
+	<description>Neolithic Faction 20</description>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>0</configurationListOrderPriority>
+    <factionIconPath>UI/FactionIcons/Neolithic/DF_Neolithic_20</factionIconPath>
+    <factionNameMaker>DF_NamerFactionNeolithic</factionNameMaker>
+    <settlementNameMaker>DF_NamerSettlementNeolithic</settlementNameMaker> 
+    <techLevel>Neolithic</techLevel>
+	<colorSpectrum>
+    <li>(0.0, 1.0, 0.0)</li> <!-- Зеленый -->
+		    <li>(0.03, 0.47, 0.52)</li> <!-- Грязно-синий -->
+	   <li>(0.6, 0.08, 0.08)</li> <!-- Кровавый -->
+  <li>(0.7, 0.29, 0.1)</li>  <!-- Грязно оранжевый -->
+  <li>(1.0, 0.0, 0.0)</li>      <!-- Красный -->
+  <li>(0.0, 0.0, 1.0)</li>      <!-- Синий -->  
+  <li>(0.49, 0.98, 0.98)</li>   <!-- Голубой -->
+  <li>(1.0, 1.0, 0.0)</li>      <!-- Жёлтый -->
+  <li>(1.0, 0.65, 0.0)</li>     <!-- Оранжевый -->
+  <li>(0.5, 0.0, 0.5)</li>      <!-- Фиолетовый -->
+  <li>(0.5, 0.5, 0.5)</li>      <!-- Серый -->
+  <li>(1.0, 0.84, 0.0)</li>     <!-- Золотой -->
+  <li>(0.18, 0.76, 0.77)</li>   <!-- Бирюзовый -->
+  <li>(0.21, 0.9, 0.39)</li>    <!-- Салатовый -->
+  <li>(0.18, 0.24, 0.77)</li>   <!-- Фиолетово-синий -->
+  <li>(0.55, 0.27, 0.07)</li>   <!-- Коричневый -->
+  <li>(0.0, 0.75, 1.0)</li>     <!-- Сине-голубой -->
+  <li>(1.0, 0.75, 0.8)</li>     <!-- Розовый -->
+  <li>(0.68, 0.85, 0.9)</li>    <!-- Морозный -->
+  <li>(0.2, 0.8, 0.2)</li>      <!-- Лайм -->
+  <li>(0.82, 0.12, 0.12)</li>   <!-- Приглушённый красный -->
+  <li>(0.57, 0.17, 0.7)</li>    <!-- Фиолетовый приглушённый -->
+  <li>(0.7, 0.1, 0.43)</li>     <!-- Ярко-розовый -->
+  <li>(0.4, 0.8, 0.6)</li>      <!-- Мятный -->
+  <li>(0.9, 0.4, 0.7)</li>      <!-- Лавандовый -->
+  <li>(0.2, 0.6, 0.9)</li>      <!-- Небесный -->	
+    </colorSpectrum>
+  </FactionDef>   
+
+</Defs>
