@@ -1,4 +1,5 @@
 
+I want to mention right away that I translated the text using a neural network, as English is not my native language.
 
 I had an initial idea that I was missing some activity outside my own colony. I wanted factions to actively change and trigger events based on some logic. At the same time, whether you play for 1 year or 10 years, the set of factions doesn't change, and the number of religions in the world doesn't really grow. Of course, mods like Dynamic Diplomacy or RimWar add some activity, but the first is too random, and the second is too straightforward and labor-intensive, without any interesting political events. So, I came up with this system.
 
@@ -44,9 +45,6 @@ I realized that I set myself an overly ambitious task, especially for a person w
 Here you can contact me or support me, or not contact and not support:
 Discord: [https://discord.gg/zDhKjAz8](https://discord.gg/zDhKjAz8)
 Boosty: [https://boosty.to/helldan](https://boosty.to/helldan)
-
-Uploaded the mod to GitHub:
-[https://github.com/helldanpwnz/dynamic_factions](https://github.com/helldanpwnz/dynamic_factions)
 
 ***
 ***
