@@ -18,10 +18,6 @@ If patched, inheritance can be made from anyone. Currently, I added a patch for 
 *   **Settings:** I tried to put important things in the settings, such as point multipliers, limiting the TechLevel to Medieval (so Industrial and higher factions don't appear), disabling messages until you have a Comms Console (events will still happen), mod update frequency, chance of World Crisis, Nuclear War, Black Plague, and more. You can disable Attack and Defense systems if you play with other combat mods.
 *   **Compatibility:** Potential compatibility with anything, as I didn't change game files, but only built a layer on top. Conversely, many mods and DLCs can nicely complement this: for example, Ideology mods will add more diverse religions for new factions.
 
-[h1]FULL LIST OF EVENTS AND FORMULAS[/h1]
-Since the description of all mechanics, attack/defense formulas, and event lists does not fit into the Steam description limit, I moved them to a separate topic:
-[b][url=INSERT_DISCUSSION_LINK_HERE]👉 Read the detailed breakdown of mechanics (Annexation, Revolutions, Nuclear War, and Formulas)[/url][/b]
-
 # Performance
 The mod is completely passive in the background; activity occurs only at the moment of the mod update/tick when calculations happen. But the calculations are quite simple: I compared it with the Dynamic Diplomacy mod, which many consider lightweight, and my mod works noticeably faster. Of course, if you max out the settings and spawn 100 factions in the game, it might lag, but that doesn't apply to the mod itself. Additionally, the mod regularly clears the cache, removing dead factions and other junk. The factions themselves stored in the hidden pool can increase the save size by a couple of megabytes at most, so performance is excellent.
 
