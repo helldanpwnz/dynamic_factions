@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Corrected Tags and Labels according to the first file -->
+  <DF_GlobalCrisis_Label>Global Crisis</DF_GlobalCrisis_Label>
+  <DF_PlagueOutbreak_Label>Plague Outbreak</DF_PlagueOutbreak_Label>
+  <DF_FactionDestroyed_Label>Faction Destroyed</DF_FactionDestroyed_Label>
+  <DF_DefenseInvestment_Label>Defense Investment</DF_DefenseInvestment_Label>
+  <DF_LandGift_Label>Helping the Needy</DF_LandGift_Label>
+<DF_PuppetGovernment_Label>Puppet Government: {0}</DF_PuppetGovernment_Label>
+  <DF_ReligiousConversion_Label>Heresy</DF_ReligiousConversion_Label>
+  <DF_EconomicCollapse_Label>Economic Decline</DF_EconomicCollapse_Label>
+  <DF_EconomicFallback_Label>Economic Decline</DF_EconomicFallback_Label>
+  <DF_AllianceBreak_Label>Alliance Break</DF_AllianceBreak_Label>
+  <DF_LandSale_Label>Land Sale</DF_LandSale_Label>
+  <DF_Dictatorship_Label>Dictatorship</DF_Dictatorship_Label>
+  <DF_AlliesAid_Label>Allies Aid</DF_AlliesAid_Label>
+  <DF_Annexation_Label>Annexation</DF_Annexation_Label>
+  <DF_NewFriendship_Label>New Alliance</DF_NewFriendship_Label>
+  <DF_LeaderDeath_Label>Leader Death at Negotiations</DF_LeaderDeath_Label>
+  <DF_ProsperityEra_Label>Prosperity Era</DF_ProsperityEra_Label>
+  <DF_ColorRevolution_Label>Color Revolution</DF_ColorRevolution_Label>
+  <DF_CulturalPropaganda_Label>Cultural Victory</DF_CulturalPropaganda_Label>
+  <DF_IdeologicalSchism_Label>Faith Schism</DF_IdeologicalSchism_Label>
+  <DF_PyrrhicVictory_Label>Disputed Victory</DF_PyrrhicVictory_Label>
+  <DF_Invasion_Label>Sudden Attack</DF_Invasion_Label>
+  <DF_IdeologicalCapitulation_Label>Ideological Capitulation</DF_IdeologicalCapitulation_Label>
+  <DF_BarbarianSlaughter_Label>Massacre</DF_BarbarianSlaughter_Label>
+  <DF_Raid_Label>Raid</DF_Raid_Label>
+  <DF_WarAtHome_Label>Counterattack</DF_WarAtHome_Label>
+  <DF_PyrrhicVictory_Industrial_Label>Disputed Victory</DF_PyrrhicVictory_Industrial_Label>
+  <DF_Blitzkrieg_Label>Sudden Attack</DF_Blitzkrieg_Label>
+  <DF_InformationalVictory_Label>Propaganda</DF_InformationalVictory_Label>
+  <DF_PrecisionStrike_Label>Precision Strike</DF_PrecisionStrike_Label>
+  <DF_RocketStrike_Label>Rocket Barrage</DF_RocketStrike_Label>
+  <DF_NuclearWar_Label>NUCLEAR WAR</DF_NuclearWar_Label>
+  <DF_Defense_Label>Defense Successful</DF_Defense_Label>
+  <DF_HeavyDefense_Label>Heavy Defense</DF_HeavyDefense_Label>
+  <DF_Repelled_Label>Attack Repelled</DF_Repelled_Label>
+  <DF_Counteroffensive_Label>Counteroffensive</DF_Counteroffensive_Label>
+  
+  <!-- New elements from the second file, left unchanged -->
+  <DF_Strengthening_Label>Strengthening of Combat Power</DF_Strengthening_Label>
+  <DF_Intrigues_Label>Intrigues</DF_Intrigues_Label>
+  <DF_Colonization_Label>Colonization</DF_Colonization_Label>
+  <DF_MajorDeal_Label>Major Deal</DF_MajorDeal_Label>
+  <DF_ScientificBreakthrough_Label>Scientific Breakthrough</DF_ScientificBreakthrough_Label>
+  <DF_GoldenAge_Label>Golden Age</DF_GoldenAge_Label>
+  <DF_LeaderHero_Label>Hero Leader</DF_LeaderHero_Label>
+  <DF_LeaderUnites_Label>Leader Unites</DF_LeaderUnites_Label>
+  <DF_CivilWar_Label>Civil War</DF_CivilWar_Label>
+  <DF_MilitaryCoup_Label>Military Coup</DF_MilitaryCoup_Label>
+  <DF_SocietyCollapse_Label>Society Collapse</DF_SocietyCollapse_Label>
+  <DF_Epidemic_Label>Epidemic</DF_Epidemic_Label>
+  <DF_Isolation_Label>Isolation</DF_Isolation_Label>
+  
+  <!-- Corrected labels for plague events according to the first file -->
+  <DF_EndOfPandemic_Label>End of Pandemic</DF_EndOfPandemic_Label>
+  <DF_CityDied_Label>City Died Out</DF_CityDied_Label>
+  
+  <!-- Corrected label for peace event -->
+  <DF_PeaceMade_Label>Peace Agreement</DF_PeaceMade_Label>
+  
+  <!-- Other elements only in the second file -->
+  <DF_RandomSettlement_Label>Random Settlement</DF_RandomSettlement_Label>
+  <DF_CaptureBases_Label>Bases Captured</DF_CaptureBases_Label>
+  <DF_DestroyBases_Label>Bases Destroyed</DF_DestroyBases_Label>
+  <DF_SplitFaction_Label>Faction Split</DF_SplitFaction_Label>
+
+</LanguageData>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Errors and System Messages -->
+  <DF_ExecuteDefenseInvestment_Reason>Influence spent on strengthening defense.</DF_ExecuteDefenseInvestment_Reason>
+  <DF_LandGift_NoTile>Failed to transfer lands (no suitable territory).</DF_LandGift_NoTile>
+  <DF_ReligiousConversion_NoTarget>No target found for heresy.</DF_ReligiousConversion_NoTarget>
+  <DF_Annexation_NoTarget>Failed to annex target.</DF_Annexation_NoTarget>
+  <DF_NewFriendship_NoEnemies>No enemies found for friendship.</DF_NewFriendship_NoEnemies>
+  <DF_LandSale_NoBuyer>Nothing to sell or no buyer.</DF_LandSale_NoBuyer>
+  <DF_Colonization_NoLand>Expedition found no lands for colonization.</DF_Colonization_NoLand>
+  <DF_ScientificBreakthrough_NoAcademy>Scientists found no place for an academy.</DF_ScientificBreakthrough_NoAcademy>
+  <DF_SettlementCapture_Additional>\\n\\nSettlements captured: {0}. Bases renamed and rebuilt under new authority.</DF_SettlementCapture_Additional>
+
+  <!-- Causes of Wars and Conflicts -->
+  <DF_AttackReason_Aggression>aggression</DF_AttackReason_Aggression>
+  <DF_ConflictReason_Diplomatic>diplomatic incident</DF_ConflictReason_Diplomatic>
+  <DF_ConflictReason_Border>border dispute</DF_ConflictReason_Border>
+  <DF_ConflictReason_Ideological>ideological dispute</DF_ConflictReason_Ideological>
+  <DF_ConflictReason_Economic>economic competition</DF_ConflictReason_Economic>
+  <DF_AttackReason_IdeologyThreat>threat of domination by ideology {0}</DF_AttackReason_IdeologyThreat>
+  <DF_AttackReason_IdeologyContainment>containment of ideology {0}</DF_AttackReason_IdeologyContainment>
+  <DF_AttackReason_TechnologicalRivalry>technological rivalry</DF_AttackReason_TechnologicalRivalry>
+  <DF_AttackReason_TerritorialDispute>territorial dispute</DF_AttackReason_TerritorialDispute>
+
+  <!-- Peace Negotiations -->
+  <DF_PeaceMade_Label>Peace Made</DF_PeaceMade_Label>
+  <DF_PeaceMade_Text>{0} and {1} made peace after negotiations!\\nChance: {2}</DF_PeaceMade_Text>
+
+  <!-- Logs (for debugging) -->
+  <DF_Log_Focus_Attack>⚔️ ATTACK</DF_Log_Focus_Attack>
+  <DF_Log_Focus_Defense>🛡️ DEFENSE</DF_Log_Focus_Defense>
+
+</LanguageData>

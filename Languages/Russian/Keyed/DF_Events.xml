@@ -4,20 +4,193 @@
   <!-- Глобальный кризис -->
   <DF_GlobalCrisis_Label>Мировой кризис</DF_GlobalCrisis_Label>
   <DF_GlobalCrisis_Text>Дипломатия рухнула! {0}/{1} фракций вступили в войну (напряженность {2}).</DF_GlobalCrisis_Text>
-  
 
-  <!-- Чума: Начало -->
+  <!-- Чума -->
   <DF_PlagueStart_Label>Вспышка Черной Чумы</DF_PlagueStart_Label>
   <DF_PlagueStart_Text>Мир охватила смертельная пандемия.</DF_PlagueStart_Text>
-  
-  
-
-  <!-- Чума: Конец -->
   <DF_PlagueEnd_Label>Конец пандемии</DF_PlagueEnd_Label>
   <DF_PlagueEnd_Text>Вспышка Черной Чумы пошла на спад.</DF_PlagueEnd_Text>
-
-  <!-- Чума: Город уничтожен -->
   <DF_CityDestroyed_Label>Город вымер</DF_CityDestroyed_Label>
-  <DF_CityDestroyed_Text>Пандемия уничтожила всё население города {0}, принадлежавшего фракции {1}. На его месте остались лишь руины.</DF_CityDestroyed_Text>
+  <DF_CityDestroyed_Text>Пандемия уничтожила всё население города {0} ({1}). Руины остались напоминанием о трагедии.</DF_CityDestroyed_Text>
+  <DF_FactionDestroyed_Label>Фракция уничтожена</DF_FactionDestroyed_Label>
+  <DF_FactionDestroyed_Text>Мир облетела весть: фракция {0} прекратила существование. Города пали, выжившие разбрелись по пустоши.</DF_FactionDestroyed_Text>
+    <DF_CityDied_Label>Город вымер</DF_CityDied_Label>
+	
+  <!-- Инвестиции -->
+  <DF_DefenseInvestment_Label>Инвестиции в армию</DF_DefenseInvestment_Label>
+  <DF_DefenseInvestment_Text>{0} тратит влияние на укрепление армии.\n\n• Атака: +20\n• Оборона: +20</DF_DefenseInvestment_Text>
+
+  <!-- Земельные вопросы -->
+  <DF_LandGift_Label>Дар земель</DF_LandGift_Label>
+  <DF_LandGift_Text>{0} совершает широкий жест и передает земли фракции {2} для стабилизации региона. И теряет 50 влияния. \nОсновано новое поселение: {3}.</DF_LandGift_Text>
+  <DF_LandSale_Label>Продажа земель</DF_LandSale_Label>
+  <DF_LandSale_Text>{0} продает поселение {1} фракции. Чтобы расплатиться с долгами и купить снаряжение для армии {2}.\n\n• Атака: +30\n• Оборона: +30</DF_LandSale_Text>
+  <DF_Annexation_Label>Аннексия</DF_Annexation_Label>
+  <DF_Annexation_Text>{0} на правах самой влиятельной фракции мирно поглощает {1}!</DF_Annexation_Text>
+  
+  <!-- Политика и перевороты -->
+  <DF_PuppetGovernment_Label>Марионеточное правительство: {0}</DF_PuppetGovernment_Label>
+  <DF_PuppetGovernment_Text>В результате политических интриг власть во фракции {0} сменилась. Новый лидер, {2}, полностью подконтролен фракции {1}.\n\nПравительство {0} официально приняло идеологию своих покровителей и разорвало дипломатические отношения со всеми врагами {1}. Фактически, независимость фракции утрачена.</DF_PuppetGovernment_Text>
+  <DF_PuppetGov_NoMaster>Попытка государственного переворота провалилась из-за отсутствия внешней поддержки.</DF_PuppetGov_NoMaster>
+  <DF_Dictatorship_Label>Диктатура</DF_Dictatorship_Label>
+  <DF_Dictatorship_Text>В {0} установлен военный режим.\n\n• Стабильность: -30\n• Лидер: -5\n• Атака/Оборона: +30\n• Потеряно союзников: {1}</DF_Dictatorship_Text>
+  <DF_LeaderDeath_Label>Смерть лидера на переговорах</DF_LeaderDeath_Label>
+  <DF_LeaderDeath_Text>Лидера {0} ({1}) подставили, он был убит на переговорах.\nАрмия в ярости: \n• Атака: +50\n• Оборона: -50</DF_LeaderDeath_Text>
+  
+  <!-- Экономика -->
+  <DF_EconomicCollapse_Label>Экономический спад</DF_EconomicCollapse_Label>
+  <DF_EconomicCollapse_Text>Экономика {0} в глубоком кризисе.\n• Убыток стабильности: -20\n• Лидер теряет легитимность: -5</DF_EconomicCollapse_Text>
+  <DF_EconomicFallback_Label>Экономический спад</DF_EconomicFallback_Label>
+  <DF_EconomicFallback_Text>Экономика {0} в глубоком кризисе.\n• Убыток стабильности: -20\n• Лидер теряет легитимность: -5</DF_EconomicFallback_Text>
+  <DF_ProsperityEra_Label>Эпоха процветания</DF_ProsperityEra_Label>
+  <DF_ProsperityEra_Text>{0} переживает расцвет.\n• Рост стабильности: +20\n• Легитимность лидера: +5</DF_ProsperityEra_Text>
+
+  <!-- Дипломатия -->
+  <DF_AllianceBreak_Label>Разрыв союза</DF_AllianceBreak_Label>
+  <DF_AllianceBreak_Text>{0} и {1} не смогли разрешить свои многочисленные конфликты и разрывает мирный союз! Теперь они враги.</DF_AllianceBreak_Text>
+  <DF_NewFriendship_Label>Новый союз</DF_NewFriendship_Label>
+  <DF_NewFriendship_Text>{0} и {1} в ходе преговоров решили, что выгоднее быть на одной стороне и начали плотное сотрудничество. Вражда окончена.</DF_NewFriendship_Text>
+  <DF_AlliesAid_Label>Помощь союзников</DF_AlliesAid_Label>
+  <DF_AlliesAid_Text>{0} получает помощь от своего верного союзника — {1}.\\n• Стабильность, Атака и Оборона: +10</DF_AlliesAid_Text>
+  <DF_PeaceMade_Label>Мирное соглашение</DF_PeaceMade_Label>
+  <DF_PeaceMade_Text>{0} и {1} заключили мир.\nШанс успеха был: {2}.\n• {0}: Снижение агрессии, рост стабильности.\n• {1}: Рост влияния и стабильности.</DF_PeaceMade_Text>
+
+  <!-- Религия и Идеология -->
+  <DF_ReligiousConversion_Label>Ересь</DF_ReligiousConversion_Label>
+  <DF_ReligiousConversion_Text>{0} принимает новую веру под давлением {1}.\n• Эффект: Фанатизм (Оборона +30)</DF_ReligiousConversion_Text>
+  <DF_IdeologicalSchism_Label>Раскол веры</DF_IdeologicalSchism_Label>
+  <DF_IdeologicalSchism_Text>{0} отвергает {1}! Новая вера: {2}.</DF_IdeologicalSchism_Text>
+  <DF_CulturalPropaganda_Label>Культурная победа</DF_CulturalPropaganda_Label>
+  <DF_CulturalPropaganda_Text>Культура {0} доминирует! {1} принимает идеологию {2}.</DF_CulturalPropaganda_Text>
+  <DF_IdeologicalCapitulation_Label>Идеологическая капитуляция</DF_IdeologicalCapitulation_Label>
+  <DF_IdeologicalCapitulation_Text>{0} признает духовное лидерство {1}.\n• Потеря влияния: -50</DF_IdeologicalCapitulation_Text>
+
+  <!-- Революция -->
+  <DF_ColorRevolution_Label>Цветная революция</DF_ColorRevolution_Label>
+  <DF_ColorRevolution_Text>{0} устраивает переворот в {1}!\n\n• Новая фракция: {2}\n• Новая база: {3}\n• Ущерб {1}: Стабильность -30\n• Выгода {0}: Влияние +50</DF_ColorRevolution_Text>
+
+  <!-- Военные действия (Industrial+) -->
+  <DF_PyrrhicVictory_Industrial_Label>Спорная победа</DF_PyrrhicVictory_Industrial_Label>
+  <DF_PyrrhicVictory_Industrial_Text>Лидер {0} погиб при штурме, но база захвачена.\n• Влияние: -30\n• Атака: -30%\n• Оборона цели: -60%\n•</DF_PyrrhicVictory_Industrial_Text>
+  <DF_Blitzkrieg_Label>Нападение врасплох</DF_Blitzkrieg_Label>
+  <DF_Blitzkrieg_Text>{0} проводит неожиданную атаку! Захвачено поселений у {2}: {1}.</DF_Blitzkrieg_Text>
+  <DF_InformationalVictory_Label>Пропаганда</DF_InformationalVictory_Label>
+  <DF_InformationalVictory_Text>{0} дистабилизирует общество {1} путем пропаганды.\n• Ущерб цели: Влияние -50.\n• Оборона цели +50</DF_InformationalVictory_Text>
+  <DF_PrecisionStrike_Label>Точечная атака</DF_PrecisionStrike_Label>
+  <DF_PrecisionStrike_Text>{0} уничтожает ключевой объект {1}. Одна база стерта с лица земли.</DF_PrecisionStrike_Text>
+  <DF_RocketStrike_Label>Ракетный обстрел</DF_RocketStrike_Label>
+  <DF_RocketStrike_Text>{0} наносит массированный ракетный удар по {2}.\n• Уничтожено баз: {1}\n• Паника: Стабильность -30.</DF_RocketStrike_Text>
+  <DF_NuclearWar_Label>ЯДЕРНАЯ ВОЙНА</DF_NuclearWar_Label>
+  <DF_NuclearWar_Text>Война. Война никогда не меняется...</DF_NuclearWar_Text>
+
+  <!-- Обычные военные действия -->
+  <DF_PyrrhicVictory_Label>Спорная победа</DF_PyrrhicVictory_Label>
+  <DF_PyrrhicVictory_Text>Лидер {0} погиб при штурме, но база захвачена.\n• Влияние: -30\n• Атака: -30%\n• Оборона цели: -60%\n•</DF_PyrrhicVictory_Text>
+  <DF_Invasion_Label>Нападение врасплох</DF_Invasion_Label>
+  <DF_Invasion_Text>{0} проводит неожиданную атаку! Захвачено поселений у {2}: {1}.</DF_Invasion_Text>
+  <DF_BarbarianSlaughter_Label>Резня</DF_BarbarianSlaughter_Label>
+  <DF_BarbarianSlaughter_Text>{0} сжигает поселение {1} дотла. Выживших нет. Стабильность -30.</DF_BarbarianSlaughter_Text>
+  <DF_Raid_Label>Налёт</DF_Raid_Label>
+  <DF_Raid_Text>{0} пользуется хаосом и захватывает базу {1}.</DF_Raid_Text>
+  <DF_WarAtHome_Label>Контрудар</DF_WarAtHome_Label>
+  <DF_WarAtHome_Text>Пока {0} захватывала {1}, враг ({2}) ударил в тыл и захватил {3}.</DF_WarAtHome_Text>
+
+  <!-- Результаты обороны (ИСПРАВЛЕНО: удалены конкретные цифры, чтобы избежать пустых скобок) -->
+  <DF_Defense_Label>Оборона успешна</DF_Defense_Label>
+  <DF_Defense_Text>{0} отбивает атаку {1}.\n\n• Атака {1} снижена.\n• Оборона {0} пострадала, но устояла.</DF_Defense_Text>
+
+  <DF_HeavyDefense_Label>Тяжелая оборона</DF_HeavyDefense_Label>
+  <DF_HeavyDefense_Text>{0} с трудом отбивает атаку {1}.\n\n• Атака {1} остановлена.\n• Оборона {0} понесла тяжелые потери.</DF_HeavyDefense_Text>
+
+  <DF_Repelled_Label>Атака отражена</DF_Repelled_Label>
+  <DF_Repelled_Text>{0} легко отбивает атаку {1}.\n\n• Враг ({1}) отброшен.\n• Оборона {0} не пострадала.</DF_Repelled_Text>
+
+  <DF_Counteroffensive_Label>Контрнаступление</DF_Counteroffensive_Label>
+  <DF_Counteroffensive_Text>{0} отбивает атаку и переходит в наступление на {1}!\n\n• Захвачена база: {2}</DF_Counteroffensive_Text>
+  <DF_Counteroffensive_NoBases_Text>{0} отбивает атаку и переходит в наступление на {1}!\n\n</DF_Counteroffensive_NoBases_Text>
+
+  <!-- События без цели (Фоллбеки) -->
+  <DF_Annexation_NoTarget_Text>{0} инвестирует в армию.\n(Атака +20, Оборона +20)</DF_Annexation_NoTarget_Text>
+  <DF_NewFriendship_NoEnemies_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_NewFriendship_NoEnemies_Text>
+  <DF_LandGift_NoTile_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_LandGift_NoTile_Text>
+  <DF_LandSale_NoBuyer_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_LandSale_NoBuyer_Text>
+  <DF_ReligiousConversion_NoTarget_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_ReligiousConversion_NoTarget_Text>
+  <DF_ColorRevolution_NoTarget_Text> {0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_ColorRevolution_NoTarget_Text>
+  <DF_ColorRevolution_NoSettlements_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_ColorRevolution_NoSettlements_Text>
+  <DF_ColorRevolution_NoDefs_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_ColorRevolution_NoDefs_Text>
+  <DF_ColorRevolution_NoTile_Text>Н{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_ColorRevolution_NoTile_Text>
+  <DF_CulturalPropaganda_NoDLC_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_CulturalPropaganda_NoDLC_Text>
+  <DF_CulturalPropaganda_NoTarget_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_CulturalPropaganda_NoTarget_Text>
+  <DF_ScientificBreakthrough_NoAcademy_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_ScientificBreakthrough_NoAcademy_Text>
+  <DF_Colonization_NoLand_Text>{0} укрепляет армию.\n(Атака +20, Оборона +20)</DF_Colonization_NoLand_Text>
+
+  <!-- Спавн случайных фракций -->
+  <DF_SpawnLetterTitle_Animal>Появление диких племён</DF_SpawnLetterTitle_Animal>
+  <DF_SpawnLetterTitle_Neolithic>Дикие племена</DF_SpawnLetterTitle_Neolithic>
+  <DF_SpawnLetterTitle_Medieval>Средневековая община</DF_SpawnLetterTitle_Medieval>
+  <DF_SpawnLetterTitle_Industrial>Древние выжившие</DF_SpawnLetterTitle_Industrial>
+  <DF_SpawnLetterTitle_Spacer>Падение космического корабля</DF_SpawnLetterTitle_Spacer>
+  <DF_SpawnLetterTitle_Ultra>Квантовый скачок</DF_SpawnLetterTitle_Ultra>
+  <DF_SpawnLetterTitle_Archotech>След Архотеков</DF_SpawnLetterTitle_Archotech>
+  <DF_SpawnLetterTitle_Default>Новое поселение</DF_SpawnLetterTitle_Default>
+
+  <DF_SpawnDescription_Neolithic>Слоняющиеся по миру изгнанники, выгнанные из старых племён или просто одиночки, решили объединиться. Их сила в сплочённости и знании диких земель.</DF_SpawnDescription_Neolithic>
+  <DF_SpawnDescription_Medieval>Выжившие организовали новую общину со строгими законами и стенами из обломков. Они отвергают хаос пустошей и строят порядок на своих условиях.</DF_SpawnDescription_Medieval>
+  <DF_SpawnDescription_Industrial>Древние выжившие, пробудившиеся из криосна, решили возродить былую мощь. Их знания и технологии брошены в вызов этому дикому миру.</DF_SpawnDescription_Industrial>
+  <DF_SpawnDescription_Spacer>Космические беженцы, чей корабль разбился на планете. Они цепляются за остатки цивилизации, используя обломки для выживания и возрождения.</DF_SpawnDescription_Spacer>
+  <DF_SpawnDescription_Ultra>Высокотехнологичный синдикат, действующий из тени, появившийся на первый взгляд из неоткуда. Их дроны и мехи превосходят всё известное, а цели скрыты даже от разведки.</DF_SpawnDescription_Ultra>
+  <DF_SpawnDescription_Default>неизвестная группа</DF_SpawnDescription_Default>
+  
+  <DF_SpawnDescription_WithName>{0}. Они назвали поселение '{1}'.</DF_SpawnDescription_WithName>
+
+  <!-- Случайные фразы -->
+  <DF_SpawnFlavor_1>Их намерения пока неясны.</DF_SpawnFlavor_1>
+  <DF_SpawnFlavor_2>Как это повлияет на баланс сил?</DF_SpawnFlavor_2>
+  <DF_SpawnFlavor_3>Разведка ведет наблюдение.</DF_SpawnFlavor_3>
+  <DF_SpawnFlavor_4>Торговцы уже интересуются ими.</DF_SpawnFlavor_4>
+  <DF_SpawnFlavor_5>Откуда эти чужаки?</DF_SpawnFlavor_5>
+  <DF_SpawnFlavor_6>Их технологии вызывают вопросы.</DF_SpawnFlavor_6>
+  <DF_SpawnFlavor_7>Что они ищут здесь?</DF_SpawnFlavor_7>
+  
+  <!-- Разное -->
+  <DF_Strengthening_Label>Укрепление</DF_Strengthening_Label>
+  <DF_Strengthening_Text>{0} {1} направляет ресурсы на армию.\n• Атака: +15\n• Оборона: +15\n• Лидер: +5</DF_Strengthening_Text>
+  
+  <DF_Intrigues_Label>Интриги в {0}</DF_Intrigues_Label>
+  <DF_Intrigues_Text>Внутренние интриги привели к расколу в {0}: {1} поселений отошли новой группировке.</DF_Intrigues_Text>
+  
+  <DF_Colonization_Label>Колонизация у {0}</DF_Colonization_Label>
+  <DF_Colonization_Text>Основана новое поселение: {0}.</DF_Colonization_Text>
+  
+  <DF_MajorDeal_Label>Крупная сделка в {0}</DF_MajorDeal_Label>
+  <DF_MajorDeal_Text>Фракция заключила выгодный контракт на своих условиях. \n• Влияние: +20\n• Лидер: +5</DF_MajorDeal_Text>
+  
+  <DF_ScientificBreakthrough_Label>Научный прорыв у {0}</DF_ScientificBreakthrough_Label>
+  <DF_ScientificBreakthrough_Text>Технологический скачок! Фракция переходит в новую эру.</DF_ScientificBreakthrough_Text>
+  
+  <DF_GoldenAge_Label>Великий правитель в {0}</DF_GoldenAge_Label>
+  <DF_GoldenAge_Text>Народ славит лидера.\n• Легитимность: +10</DF_GoldenAge_Text>
+  
+  <DF_LeaderHero_Label>Лидер-герой в {0}</DF_LeaderHero_Label>
+  <DF_LeaderHero_Text>Лидер {1} спас ситуацию и не допустил военного переворота.\n• Легитимность: +5</DF_LeaderHero_Text>
+
+  <DF_LeaderUnites_Label>Лидер смог договориться в {0}</DF_LeaderUnites_Label>
+  <DF_LeaderUnites_Text>{1} предотвратил захват фракции. Бунтовщики основали базу {2} рядом с {3}.\n• Легитимность: +5</DF_LeaderUnites_Text>
+
+  <DF_CivilWar_Label>Гражданская война в {0}</DF_CivilWar_Label>
+  <DF_CivilWar_Text>{0} расколота! Сепаратисты основали свое государство и объявили войну метрополии.</DF_CivilWar_Text>
+
+  <DF_MilitaryCoup_Label>Военный переворот в {0}</DF_MilitaryCoup_Label>
+  <DF_MilitaryCoup_Text>Военные {0} захватили власть. Часть городов перешла под контроль хунты.</DF_MilitaryCoup_Text>
+  
+  <DF_SocietyCollapse_Label>Крах общества в {0}</DF_SocietyCollapse_Label>
+  <DF_SocietyCollapse_Text>{0} распалась. Выжившие деградировали до уровня {1}.</DF_SocietyCollapse_Text>
+
+  <DF_Epidemic_Label>Эпидемия в {0}</DF_Epidemic_Label>
+  <DF_Epidemic_Text>Болезнь в {0}.\n• Атака +15 (мобилизация)\n• Оборона -15 (потери)\n• Влияние -15</DF_Epidemic_Text>
+  
+  <DF_Isolation_Label>Изоляция в {0}</DF_Isolation_Label>
+  <DF_Isolation_Text>{0} закрывает границы для стабилизации фракции. \n• Атака +20\n• Оборона +20\n• Влияние -20</DF_Isolation_Text>
+  
 
 </LanguageData>

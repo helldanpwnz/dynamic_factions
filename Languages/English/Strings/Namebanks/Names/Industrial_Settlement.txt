@@ -1,0 +1,111 @@
+Cliff
+Landing
+Crossroads
+Canyon
+Barter Yard
+Outpost
+Shelter
+Hive
+Nest
+Camp
+Farm
+Homestead
+Settlement
+Village
+Aul
+Village by the Pipe
+Sloboda
+Outskirts
+Hamlet
+Pogost
+Fishing Village
+Forest Outpost
+Mountain Village
+Salt Village
+Trading Post
+Barracks
+Mining Settlement
+Sawmill
+Mill
+Wind Farm
+Solar Farm
+Hydropost
+Radio Base
+Weather Station
+Watchtower
+Chapel
+Monastery
+Hermitage
+Hut in the Slums
+Oasis
+Well
+Spring
+Swamp Village
+Floating Settlement
+Cave Town
+Bunker Settlement
+Trailer
+Trailer Park
+Elevator
+Warehouse Complex
+Garage Settlement
+Station
+Port
+Dock
+Shipyard
+Docks
+Aerodrome
+Hangar
+Laboratory
+Clinic
+Library
+School
+Prison
+Fortress
+Redoubt
+Checkpoint
+Camp
+Caravan Camp
+Station
+Depot
+Tunnel
+Bridge
+Dam
+Reservoir
+Greenhouse
+Greenhouses
+Nursery
+Apiary
+Fort
+Bastion
+Citadel
+Acropolis
+Kremlin
+Town Hall
+City Hall
+Embassy District
+Diplomatic Quarter
+University Town
+Science Town
+Medical Town
+Sports Town
+Resort
+Sanatorium
+Rest House
+Canteen
+Cafe
+Bar
+Hotel
+Inn
+Tavern
+Tavern
+Market
+Bazaar
+Fair
+Trading Square
+Collective Farm
+State Farm
+Commune
+Artel
+Brigade
+Link

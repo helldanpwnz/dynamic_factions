@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Настройки мода -->
+  <DF_Setting_ShowDebugLogs>Показывать логи отладки</DF_Setting_ShowDebugLogs>
+  <DF_Setting_ShowDebugLogs_Tip>Включает подробные логи</DF_Setting_ShowDebugLogs_Tip>
+  <DF_Setting_EnableDynamicFactions>✅ Включить систему Динамических Фракций</DF_Setting_EnableDynamicFactions>
+  <DF_Setting_LimitTechLevel>🛡️ Ограничить технологии (макс. Средневековье)</DF_Setting_LimitTechLevel>
+  <DF_Setting_LimitTechLevel_Tip>Если включено, новые фракции никогда не будут выше уровня Medieval (средневековье).</DF_Setting_LimitTechLevel_Tip>
+  <DF_Setting_TriggerIntervalHours>⏰ Интервал пересчета (часов):</DF_Setting_TriggerIntervalHours>
+  <DF_Setting_TriggerIntervalHours_Value>Каждые {0} ч. (6-24)</DF_Setting_TriggerIntervalHours_Value>
+  <DF_Setting_SplitMaxDistanceTiles>⚔️ Радиус новой фракции (тайлов):</DF_Setting_SplitMaxDistanceTiles>
+  <DF_Setting_SplitMaxDistanceTiles_Value>{0} тайлов</DF_Setting_SplitMaxDistanceTiles_Value>
+  <DF_Setting_AttackMultiplier>⚔️ Множитель очков АТАКИ:</DF_Setting_AttackMultiplier>
+  <DF_Setting_AttackMultiplier_Value>x{0} (0 = отключить систему)</DF_Setting_AttackMultiplier_Value>
+  <DF_Setting_DefenseMultiplier>🛡️ Множитель очков БРОНИ:</DF_Setting_DefenseMultiplier>
+  <DF_Setting_DefenseMultiplier_Value>x{0} (0 = отключить систему)</DF_Setting_DefenseMultiplier_Value>
+  <DF_Setting_LeaderPointsMultiplier>👑 Множитель очков ЛИДЕРА:</DF_Setting_LeaderPointsMultiplier>
+  <DF_Setting_LeaderPointsMultiplier_Value>x{0} (0 = отключить)</DF_Setting_LeaderPointsMultiplier_Value>
+  <DF_Setting_StabilityMultiplier>🏛️ Множитель изменений СТАБИЛЬНОСТИ:</DF_Setting_StabilityMultiplier>
+  <DF_Setting_StabilityMultiplier_Value>x{0} (0 = отключить)</DF_Setting_StabilityMultiplier_Value>
+  <DF_Setting_InfluenceMultiplier>🌟 Множитель очков ВЛИЯНИЯ:</DF_Setting_InfluenceMultiplier>
+  <DF_Setting_InfluenceMultiplier_Value>x{0} (0 = отключить систему)</DF_Setting_InfluenceMultiplier_Value>
+  <DF_Setting_RandomSettlementChance>🎲 Шанс спавна случайной базы (%):</DF_Setting_RandomSettlementChance>
+  <DF_Setting_RandomSettlementChance_Value>{0}% (0 = отключить спавн)</DF_Setting_RandomSettlementChance_Value>
+  <DF_Setting_GlobalCrisisChance>💥 Шанс Мирового Кризиса (% за обновление):</DF_Setting_GlobalCrisisChance>
+  <DF_Setting_GlobalCrisisChance_Value>{0}% (0 = отключить кризисы)</DF_Setting_GlobalCrisisChance_Value>
+  <DF_Setting_PlagueChance>🦠 Шанс Пандемии Чумы (% за обновление):</DF_Setting_PlagueChance>
+  <DF_Setting_PlagueChance_Value>{0}% (0 = отключить чуму)</DF_Setting_PlagueChance_Value>
+  <DF_Setting_EntropyPerUpdate>💀 Энтропия за обновление:</DF_Setting_EntropyPerUpdate>
+  <DF_Setting_EntropyPerUpdate_Value>{0} (0 = отключить энтропию)</DF_Setting_EntropyPerUpdate_Value>
+  <DF_Setting_ResetButton>🔄 Сбросить</DF_Setting_ResetButton>
+  
+  <!-- Настройки Dynamic Factions -->
+<DF_RequireCommsForNews>Требовать связь для новостей</DF_RequireCommsForNews>
+<DF_RequireCommsForNews_Tip>Если включено, новости о политике фракций (мир, война, интриги) будут приходить только когда у колонии есть работающая консоль связи (Comms Console) или её аналог из модов (сигнальный костёр, стол птичьей почты и т.д.). События будут происходить все равно, только без оповещений игрока. Угрозы (ThreatBig) будут показываться всегда.\n\nОтлично работает с модом "No Quests Without Comms".</DF_RequireCommsForNews_Tip>
+
+  <DF_Setting_NuclearWarChance> Шанс Ядерной Войны (при атаке):</DF_Setting_NuclearWarChance>
+  <DF_Setting_NuclearWarChance_Value>{0}% (0 = отключить, шанс проверяется при каждом бое только у индустриальных и выше уровня фракций)</DF_Setting_NuclearWarChance_Value>
+
+</LanguageData>

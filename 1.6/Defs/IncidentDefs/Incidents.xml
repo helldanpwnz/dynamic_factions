@@ -20,6 +20,617 @@
     <baseChance>0</baseChance>
   </IncidentDef>
   
+    <!-- Событие: Фракция уничтожена -->
+  <IncidentDef>
+    <defName>DF_FactionDestroyed</defName>
+    <label>Faction destroyed</label> <!-- Англ. название для логов, в игре будет русский перевод -->
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef> <!-- Тип письма по умолчанию -->
+  </IncidentDef>
+  
+    <!-- Событие: Инвестиции в армию -->
+  <IncidentDef>
+    <defName>DF_DefenseInvestment</defName>
+    <label>Defense investment</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+  <!-- Событие: Дар земель -->
+  <IncidentDef>
+    <defName>DF_LandGift</defName>
+    <label>Land gift</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+  
+  <!-- Событие: Марионеточное правительство -->
+  <IncidentDef>
+    <defName>DF_PuppetGovernment</defName>  <!-- ЭТО ВАЖНО: Должно совпадать с кодом C# -->
+    <label>Puppet government</label>        <!-- Это внутреннее название для логов (на англ) -->
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>              <!-- 0, так как мы вызываем его вручную из кода -->
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+
+
+  <!-- Событие: Ересь -->
+  <IncidentDef>
+    <defName>DF_ReligiousConversion</defName>
+    <label>Religious conversion</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+  <!-- Событие: Экономический коллапс -->
+  <IncidentDef>
+    <defName>DF_EconomicCollapse</defName>
+    <label>Economic collapse</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+  
+    <!-- Событие: Экономический коллапс (фоллбек) -->
+  <IncidentDef>
+    <defName>DF_EconomicFallback</defName>
+    <label>Economic fallback</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+  
+    <!-- Событие: Разрыв отношений -->
+  <IncidentDef>
+    <defName>DF_AllianceBreak</defName>
+    <label>Alliance break</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+  <!-- Событие: Продажа земель -->
+  <IncidentDef>
+    <defName>DF_LandSale</defName>
+    <label>Land sale</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+  <!-- Событие: Диктатура -->
+  <IncidentDef>
+    <defName>DF_Dictatorship</defName>
+    <label>Dictatorship established</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+  <!-- Событие: Помощь союзников -->
+  <IncidentDef>
+    <defName>DF_AlliesAid</defName>
+    <label>Allies aid</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+  <!-- Событие: Аннексия -->
+  <IncidentDef>
+    <defName>DF_Annexation</defName>
+    <label>Annexation</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+  <!-- Событие: Новая дружба -->
+  <IncidentDef>
+    <defName>DF_NewFriendship</defName>
+    <label>New friendship</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+  <!-- Событие: Смерть лидера -->
+  <IncidentDef>
+    <defName>DF_LeaderDeath</defName>
+    <label>Leader death</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+  <!-- Событие: Эпоха процветания -->
+  <IncidentDef>
+    <defName>DF_ProsperityEra</defName>
+    <label>Prosperity era</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+
+
+  <!-- Событие: Цветная революция -->
+  <IncidentDef>
+    <defName>DF_ColorRevolution</defName>
+    <label>Color revolution</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+  
+  <!-- Событие: Культурная пропаганда -->
+<IncidentDef>
+    <defName>DF_CulturalPropaganda</defName>
+    <label>Cultural propaganda</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Идеологический раскол -->
+<IncidentDef>
+    <defName>DF_IdeologicalSchism</defName>
+    <label>Ideological schism</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+  <!-- Событие: Пиррова победа -->
+  <IncidentDef>
+    <defName>DF_PyrrhicVictory</defName>
+    <label>Pyrrhic victory</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+  </IncidentDef>
+  
+<!-- Событие: Вторжение -->
+<IncidentDef>
+    <defName>DF_Invasion</defName>
+    <label>Invasion</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Идеологическая капитуляция -->
+<IncidentDef>
+    <defName>DF_IdeologicalCapitulation</defName>
+    <label>Ideological capitulation</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Варварская расправа -->
+<IncidentDef>
+    <defName>DF_BarbarianSlaughter</defName>
+    <label>Barbarian slaughter</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Налёт -->
+<IncidentDef>
+    <defName>DF_Raid</defName>
+    <label>Raid</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Война пришла в дом -->
+<IncidentDef>
+    <defName>DF_WarAtHome</defName>
+    <label>War at home</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+<!-- Событие: Пиррова победа (Industrial+) -->
+<IncidentDef>
+    <defName>DF_PyrrhicVictory_Industrial</defName>
+    <label>Pyrrhic victory (Industrial)</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Блицкриг -->
+<IncidentDef>
+    <defName>DF_Blitzkrieg</defName>
+    <label>Blitzkrieg</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Информационная победа -->
+<IncidentDef>
+    <defName>DF_InformationalVictory</defName>
+    <label>Informational victory</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Точечный удар -->
+<IncidentDef>
+    <defName>DF_PrecisionStrike</defName>
+    <label>Precision strike</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Ракетный удар -->
+<IncidentDef>
+    <defName>DF_RocketStrike</defName>
+    <label>Rocket strike</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+<!-- Событие: Ядерная война -->
+<IncidentDef>
+    <defName>DF_NuclearWar</defName>
+    <label>Nuclear war</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>ThreatBig</letterDef>
+</IncidentDef>
+
+<!-- Событие: Оборона -->
+<IncidentDef>
+    <defName>DF_Defense</defName>
+    <label>Defense</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Тяжелая оборона -->
+<IncidentDef>
+    <defName>DF_HeavyDefense</defName>
+    <label>Heavy defense</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+<!-- Событие: Отражено -->
+<IncidentDef>
+    <defName>DF_Repelled</defName>
+    <label>Repelled</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Контрнаступление -->
+<IncidentDef>
+    <defName>DF_Counteroffensive</defName>
+    <label>Counteroffensive</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Укрепление боевой мощи -->
+<IncidentDef>
+    <defName>DF_Strengthening</defName>
+    <label>Strengthening</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+<!-- Событие: Интриги -->
+<IncidentDef>
+    <defName>DF_Intrigues</defName>
+    <label>Intrigues</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Колонизация -->
+<IncidentDef>
+    <defName>DF_Colonization</defName>
+    <label>Colonization</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Крупная сделка -->
+<IncidentDef>
+    <defName>DF_MajorDeal</defName>
+    <label>Major deal</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Научный прорыв -->
+<IncidentDef>
+    <defName>DF_ScientificBreakthrough</defName>
+    <label>Scientific breakthrough</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Золотой век -->
+<IncidentDef>
+    <defName>DF_GoldenAge</defName>
+    <label>Golden age</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Лидер-герой -->
+<IncidentDef>
+    <defName>DF_LeaderHero</defName>
+    <label>Leader hero</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Лидер объединяет -->
+<IncidentDef>
+    <defName>DF_LeaderUnites</defName>
+    <label>Leader unites</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Гражданская война -->
+<IncidentDef>
+    <defName>DF_CivilWar</defName>
+    <label>Civil war</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+<!-- Событие: Военный переворот -->
+<IncidentDef>
+    <defName>DF_MilitaryCoup</defName>
+    <label>Military coup</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+<!-- Событие: Крах общества -->
+<IncidentDef>
+    <defName>DF_SocietyCollapse</defName>
+    <label>Society collapse</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Эпидемия -->
+<IncidentDef>
+    <defName>DF_Epidemic</defName>
+    <label>Epidemic</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Изоляция -->
+<IncidentDef>
+    <defName>DF_Isolation</defName>
+    <label>Isolation</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Конец пандемии -->
+<IncidentDef>
+    <defName>DF_EndOfPandemic</defName>
+    <label>End of pandemic</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>PositiveEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Город вымер -->
+<IncidentDef>
+    <defName>DF_CityDied</defName>
+    <label>City died</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Случайное поселение -->
+<IncidentDef>
+    <defName>DF_RandomSettlement</defName>
+    <label>Random settlement</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Мир заключён -->
+<IncidentDef>
+    <defName>DF_PeaceMade</defName>
+    <label>Peace made</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Захват баз -->
+<IncidentDef>
+    <defName>DF_CaptureBases</defName>
+    <label>Capture bases</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>ThreatBig</letterDef>
+</IncidentDef>
+
+<!-- Событие: Разрушение баз -->
+<IncidentDef>
+    <defName>DF_DestroyBases</defName>
+    <label>Destroy bases</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+<!-- Событие: Разделение фракции -->
+<IncidentDef>
+    <defName>DF_SplitFaction</defName>
+    <label>Split faction</label>
+    <category>Misc</category>
+    <targetTags><li>World</li></targetTags>
+    <workerClass>DynamicFaction.IncidentWorker_GenericDF</workerClass>
+    <baseChance>0</baseChance>
+    <letterDef>NeutralEvent</letterDef>
+</IncidentDef>
+
+
+
   <!-- Добавь сюда столько копий, сколько у тебя уникальных событий -->
 </Defs>
 

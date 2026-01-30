@@ -2,4 +2,70 @@
 <LanguageData>
   <DF_GlobalCrisis.label>Мировой Кризис</DF_GlobalCrisis.label>
   <DF_PlagueOutbreak.label>Вспышка Чумы</DF_PlagueOutbreak.label>
+  <DF_FactionDestroyed.label>Уничтожение фракции</DF_FactionDestroyed.label>
+  <DF_DefenseInvestment.label>Инвестиции в армию</DF_DefenseInvestment.label>
+   <DF_LandGift.label>Дар земель</DF_LandGift.label>
+  <DF_PuppetGovernment_Label>Марионеточное правительство: {0}</DF_PuppetGovernment_Label>
+	  <DF_ReligiousConversion.label>Ересь</DF_ReligiousConversion.label>
+	   <DF_EconomicCollapse.label>Экономический коллапс</DF_EconomicCollapse.label>
+  <DF_EconomicFallback.label>Экономический коллапс</DF_EconomicFallback.label>
+  <DF_AllianceBreak.label>Разрыв отношений</DF_AllianceBreak.label>
+   <DF_LandSale.label>Продажа земель</DF_LandSale.label>
+    <DF_Dictatorship.label>Диктатура</DF_Dictatorship.label>
+	<DF_AlliesAid.label>Помощь союзников</DF_AlliesAid.label>
+  <DF_Annexation.label>Аннексия</DF_Annexation.label>
+    <DF_NewFriendship.label>Новая дружба</DF_NewFriendship.label>
+	  <DF_LeaderDeath.label>Смерть лидера</DF_LeaderDeath.label>
+  <DF_ProsperityEra.label>Эпоха процветания</DF_ProsperityEra.label>
+  <DF_ColorRevolution.label>Цветная революция</DF_ColorRevolution.label>
+    <DF_CulturalPropaganda.label>Культурная пропаганда</DF_CulturalPropaganda.label>
+	  <DF_IdeologicalSchism.label>Идеологический раскол</DF_IdeologicalSchism.label>
+	  <DF_PyrrhicVictory.label>Пиррова победа</DF_PyrrhicVictory.label>
+    <DF_Invasion.label>Вторжение</DF_Invasion.label>
+	    <DF_IdeologicalCapitulation.label>Идеологическая капитуляция</DF_IdeologicalCapitulation.label>
+		 <DF_BarbarianSlaughter.label>Варварская расправа</DF_BarbarianSlaughter.label>
+		  <DF_Raid.label>Налёт</DF_Raid.label>
+		      <DF_WarAtHome.label>Война пришла в дом</DF_WarAtHome.label>
+ <DF_PyrrhicVictory_Industrial.label>Пиррова победа</DF_PyrrhicVictory_Industrial.label>
+    <DF_Blitzkrieg.label>Блицкриг</DF_Blitzkrieg.label>
+	    <DF_InformationalVictory.label>Информационная победа</DF_InformationalVictory.label>
+		 <DF_PrecisionStrike.label>Точечный удар</DF_PrecisionStrike.label>
+		 <DF_RocketStrike.label>Ракетный удар</DF_RocketStrike.label>
+		  <DF_NuclearWar.label>ЯДЕРНАЯ ВОЙНА</DF_NuclearWar.label>
+		      <DF_Defense.label>Оборона</DF_Defense.label>
+			    <DF_Repelled.label>Отражено</DF_Repelled.label>
+    <DF_Counteroffensive.label>Контрнаступление</DF_Counteroffensive.label>
+<DF_Strengthening.label>Укрепление боевой мощи</DF_Strengthening.label>
+<DF_Intrigues.label>Интриги</DF_Intrigues.label>
+<DF_Colonization.label>Колонизация</DF_Colonization.label>
+<DF_MajorDeal.label>Крупная сделка</DF_MajorDeal.label>
+    <DF_ScientificBreakthrough.label>Научный прорыв</DF_ScientificBreakthrough.label>
+	   <DF_GoldenAge.label>Золотой век</DF_GoldenAge.label>
+    <DF_LeaderHero.label>Лидер-герой</DF_LeaderHero.label>
+	<DF_LeaderUnites.label>Лидер объединяет</DF_LeaderUnites.label>
+	<DF_CivilWar.label>Гражданская война</DF_CivilWar.label>
+	 <DF_MilitaryCoup.label>Военный переворот</DF_MilitaryCoup.label>
+	 <DF_SocietyCollapse.label>Крах общества</DF_SocietyCollapse.label>
+	 <DF_Epidemic.label>Эпидемия</DF_Epidemic.label>
+	 <DF_Isolation.label>Изоляция</DF_Isolation.label>
+	 <DF_EndOfPandemic.label>Конец пандемии</DF_EndOfPandemic.label>
+	     <DF_CityDied.label>Город вымер</DF_CityDied.label>
+<DF_RandomSettlement.label>Случайное поселение</DF_RandomSettlement.label>
+<DF_PeaceMade.label>Мир заключён</DF_PeaceMade.label>
+<DF_CaptureBases.label>Захват баз</DF_CaptureBases.label>
+<DF_DestroyBases.label>Разрушение баз</DF_DestroyBases.label>
+<DF_SplitFaction.label>Разделение фракции</DF_SplitFaction.label>
+<DF_HeavyDefense.label>Тяжелая оборона</DF_HeavyDefense.label>
+		 
+
+
+
+
+
+ 
+
+	
+  
+
+
 </LanguageData>

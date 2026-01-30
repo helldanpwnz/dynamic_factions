@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Исправлены теги и названия в соответствии с первым файлом -->
+  <DF_GlobalCrisis_Label>Мировой Кризис</DF_GlobalCrisis_Label>
+  <DF_PlagueOutbreak_Label>Вспышка Черной Чумы</DF_PlagueOutbreak_Label>
+  <DF_FactionDestroyed_Label>Фракция уничтожена</DF_FactionDestroyed_Label>
+  <DF_DefenseInvestment_Label>Инвестиции в армию</DF_DefenseInvestment_Label>
+  <DF_LandGift_Label>Дар земель</DF_LandGift_Label>
+  <DF_PuppetGovernment_Label>Марионеточное правительство: {0}</DF_PuppetGovernment_Label>
+  <DF_ReligiousConversion_Label>Ересь</DF_ReligiousConversion_Label>
+  <DF_EconomicCollapse_Label>Экономический спад</DF_EconomicCollapse_Label>
+  <DF_EconomicFallback_Label>Экономический спад</DF_EconomicFallback_Label>
+  <DF_AllianceBreak_Label>Разрыв союза</DF_AllianceBreak_Label>
+  <DF_LandSale_Label>Продажа земель</DF_LandSale_Label>
+  <DF_Dictatorship_Label>Диктатура</DF_Dictatorship_Label>
+  <DF_AlliesAid_Label>Помощь союзников</DF_AlliesAid_Label>
+  <DF_Annexation_Label>Аннексия</DF_Annexation_Label>
+  <DF_NewFriendship_Label>Новый союз</DF_NewFriendship_Label>
+  <DF_LeaderDeath_Label>Смерть лидера на переговорах</DF_LeaderDeath_Label>
+  <DF_ProsperityEra_Label>Эпоха процветания</DF_ProsperityEra_Label>
+  <DF_ColorRevolution_Label>Цветная революция</DF_ColorRevolution_Label>
+  <DF_CulturalPropaganda_Label>Культурная победа</DF_CulturalPropaganda_Label>
+  <DF_IdeologicalSchism_Label>Раскол веры</DF_IdeologicalSchism_Label>
+  <DF_PyrrhicVictory_Label>Спорная победа</DF_PyrrhicVictory_Label>
+  <DF_Invasion_Label>Нападение врасплох</DF_Invasion_Label>
+  <DF_IdeologicalCapitulation_Label>Идеологическая капитуляция</DF_IdeologicalCapitulation_Label>
+  <DF_BarbarianSlaughter_Label>Резня</DF_BarbarianSlaughter_Label>
+  <DF_Raid_Label>Налёт</DF_Raid_Label>
+  <DF_WarAtHome_Label>Контрудар</DF_WarAtHome_Label>
+  <DF_PyrrhicVictory_Industrial_Label>Спорная победа</DF_PyrrhicVictory_Industrial_Label>
+  <DF_Blitzkrieg_Label>Нападение врасплох</DF_Blitzkrieg_Label>
+  <DF_InformationalVictory_Label>Пропаганда</DF_InformationalVictory_Label>
+  <DF_PrecisionStrike_Label>Точечная атака</DF_PrecisionStrike_Label>
+  <DF_RocketStrike_Label>Ракетный обстрел</DF_RocketStrike_Label>
+  <DF_NuclearWar_Label>ЯДЕРНАЯ ВОЙНА</DF_NuclearWar_Label>
+  <DF_Defense_Label>Оборона успешна</DF_Defense_Label>
+  <DF_HeavyDefense_Label>Тяжелая оборона</DF_HeavyDefense_Label>
+  <DF_Repelled_Label>Атака отражена</DF_Repelled_Label>
+  <DF_Counteroffensive_Label>Контрнаступление</DF_Counteroffensive_Label>
+  
+  <!-- Новые элементы из второго файла, которых не было в первом, оставлены без изменений -->
+  <DF_Strengthening_Label>Укрепление боевой мощи</DF_Strengthening_Label>
+  <DF_Intrigues_Label>Интриги</DF_Intrigues_Label>
+  <DF_Colonization_Label>Колонизация</DF_Colonization_Label>
+  <DF_MajorDeal_Label>Крупная сделка</DF_MajorDeal_Label>
+  <DF_ScientificBreakthrough_Label>Научный прорыв</DF_ScientificBreakthrough_Label>
+  <DF_GoldenAge_Label>Золотой век</DF_GoldenAge_Label>
+  <DF_LeaderHero_Label>Лидер-герой</DF_LeaderHero_Label>
+  <DF_LeaderUnites_Label>Лидер объединяет</DF_LeaderUnites_Label>
+  <DF_CivilWar_Label>Гражданская война</DF_CivilWar_Label>
+  <DF_MilitaryCoup_Label>Военный переворот</DF_MilitaryCoup_Label>
+  <DF_SocietyCollapse_Label>Крах общества</DF_SocietyCollapse_Label>
+  <DF_Epidemic_Label>Эпидемия</DF_Epidemic_Label>
+  <DF_Isolation_Label>Изоляция</DF_Isolation_Label>
+  
+  <!-- Исправленные названия для событий чумы в соответствии с первым файлом -->
+  <DF_EndOfPandemic_Label>Конец пандемии</DF_EndOfPandemic_Label>
+  <DF_CityDied_Label>Город вымер</DF_CityDied_Label>
+  
+  <!-- Исправленное название для события мира -->
+  <DF_PeaceMade_Label>Мирное соглашение</DF_PeaceMade_Label>
+  
+  <!-- Остальные элементы, которые были только во втором файле -->
+  <DF_RandomSettlement_Label>Случайное поселение</DF_RandomSettlement_Label>
+  <DF_CaptureBases_Label>Захват баз</DF_CaptureBases_Label>
+  <DF_DestroyBases_Label>Разрушение баз</DF_DestroyBases_Label>
+  <DF_SplitFaction_Label>Разделение фракции</DF_SplitFaction_Label>
+
+</LanguageData>

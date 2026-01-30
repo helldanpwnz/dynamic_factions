@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- ==================== NEOLITHIC FACTIONS ==================== -->
+  
+  <DF_NeolithicFaction01.label>Clan</DF_NeolithicFaction01.label>
+  <DF_NeolithicFaction01.description>A small but strong community of blood-related people. For them, traditions and ancestors' memory matter more than power or wealth.</DF_NeolithicFaction01.description>
+
+  <DF_NeolithicFaction02.label>Ancient Tribe</DF_NeolithicFaction02.label>
+  <DF_NeolithicFaction02.description>A community united by a common totem and legends. They live as one, following their chieftain and spirits.</DF_NeolithicFaction02.description>
+
+  <DF_NeolithicFaction03.label>Tribe</DF_NeolithicFaction03.label>
+  <DF_NeolithicFaction03.description>A stable structure with a clear hierarchy. Everyone knows their place, and the tribe's honor is above all.</DF_NeolithicFaction03.description>
+
+  <DF_NeolithicFaction04.label>Community</DF_NeolithicFaction04.label>
+  <DF_NeolithicFaction04.description>A group where equality and mutual aid rule. Decisions are made collectively, like in a family.</DF_NeolithicFaction04.description>
+
+  <DF_NeolithicFaction05.label>Gatherers</DF_NeolithicFaction05.label>
+  <DF_NeolithicFaction05.description>Nomads living on nature's gifts. They believe the world feeds those who are not greedy.</DF_NeolithicFaction05.description>
+
+  <DF_NeolithicFaction06.label>Hunters</DF_NeolithicFaction06.label>
+  <DF_NeolithicFaction06.description>Skilled trackers and fighters who honor the law of the hunt. Their life is endless pursuit and waiting.</DF_NeolithicFaction06.description>
+
+  <DF_NeolithicFaction07.label>Keepers</DF_NeolithicFaction07.label>
+  <DF_NeolithicFaction07.description>Guardians of ancient knowledge, sacred places, and relics. They see themselves as the link between past and future.</DF_NeolithicFaction07.description>
+
+  <DF_NeolithicFaction08.label>Ancestors</DF_NeolithicFaction08.label>
+  <DF_NeolithicFaction08.description>Spirits or legendary founders of peoples. Their names are spoken in rituals, asking for wisdom and protection.</DF_NeolithicFaction08.description>
+
+  <DF_NeolithicFaction09.label>Herds</DF_NeolithicFaction09.label>
+  <DF_NeolithicFaction09.description>A primitive alliance guided by instincts. The strength of each lies in merging with the mass, with nature's rhythm.</DF_NeolithicFaction09.description>
+
+  <DF_NeolithicFaction10.label>Wanderers</DF_NeolithicFaction10.label>
+  <DF_NeolithicFaction10.description>Eternal travelers who left home for the horizon. They carry memories of foreign lands.</DF_NeolithicFaction10.description>
+
+  <DF_NeolithicFaction11.label>Comrades</DF_NeolithicFaction11.label>
+  <DF_NeolithicFaction11.description>Those bound not by blood, but by choice. Their unity is born from a shared path and brotherhood.</DF_NeolithicFaction11.description>
+
+  <DF_NeolithicFaction12.label>Children of Mist</DF_NeolithicFaction12.label>
+  <DF_NeolithicFaction12.description>Mysterious nomads appearing from nowhere and vanishing into haze. It is said they see what is hidden from others.</DF_NeolithicFaction12.description>
+
+  <DF_NeolithicFaction13.label>People of Stone</DF_NeolithicFaction13.label>
+  <DF_NeolithicFaction13.description>Strong, resilient highlanders. Their life is slow, but unbreakable, like the rocks among which they live.</DF_NeolithicFaction13.description>
+
+  <DF_NeolithicFaction14.label>Battle Clan</DF_NeolithicFaction14.label>
+  <DF_NeolithicFaction14.description>A warrior brotherhood born from war. Their creed is honor, strength, and memory of the fallen.</DF_NeolithicFaction14.description>
+
+  <DF_NeolithicFaction15.label>Wind Wanderers</DF_NeolithicFaction15.label>
+  <DF_NeolithicFaction15.description>Spirited travelers who value freedom above all laws. Their steps leave no trace.</DF_NeolithicFaction15.description>
+
+  <DF_NeolithicFaction16.label>Ancient Community</DF_NeolithicFaction16.label>
+  <DF_NeolithicFaction16.description>A group that has survived centuries, whose roots are lost in time. They guard forgotten rituals.</DF_NeolithicFaction16.description>
+
+  <DF_NeolithicFaction17.label>Tree Tribe</DF_NeolithicFaction17.label>
+  <DF_NeolithicFaction17.description>A people living in unity with the forest. Their life is a cycle of growth, death, and rebirth.</DF_NeolithicFaction17.description>
+
+  <DF_NeolithicFaction18.label>Death Tribe</DF_NeolithicFaction18.label>
+  <DF_NeolithicFaction18.description>Dark servants of the passage between worlds. They do not fear the end, seeing it as part of the journey.</DF_NeolithicFaction18.description>
+
+  <DF_NeolithicFaction19.label>Fate Tribe</DF_NeolithicFaction19.label>
+  <DF_NeolithicFaction19.description>Prophets and seers walking the path drawn by stars. They believe every living being has a destiny.</DF_NeolithicFaction19.description>
+
+  <DF_NeolithicFaction20.label>Spirit Tribe</DF_NeolithicFaction20.label>
+  <DF_NeolithicFaction20.description>Beings living on the border of worlds. Their voice is the whisper of the wind, and their presence is felt when darkness thickens.</DF_NeolithicFaction20.description>
+
+</LanguageData>

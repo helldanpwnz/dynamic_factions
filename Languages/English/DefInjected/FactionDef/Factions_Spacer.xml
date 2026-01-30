@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- ==================== SPACER FACTIONS ==================== -->
+  
+  <DF_SpacerFaction01.label>Astralis</DF_SpacerFaction01.label>
+  <DF_SpacerFaction01.description>A civilization of star navigators who mastered the paths between galaxies and see the cosmos as a single living organism.</DF_SpacerFaction01.description>
+  
+  <DF_SpacerFaction02.label>Quantorium</DF_SpacerFaction02.label>
+  <DF_SpacerFaction02.description>A society where science became religion, and every atom obeys the will of analytical reason. Their technologies intertwine logic and faith.</DF_SpacerFaction02.description>
+
+  <DF_SpacerFaction03.label>Omnidex</DF_SpacerFaction03.label>
+  <DF_SpacerFaction03.description>An informational mind, absorbing knowledge from thousands of worlds. It governs civilizations like processes in a giant network.</DF_SpacerFaction03.description>
+
+  <DF_SpacerFaction04.label>Nexus</DF_SpacerFaction04.label>
+  <DF_SpacerFaction04.description>The central hub of interstellar connections. Here, routes, trade, and consciousness converge—a place where everything connects to everything.</DF_SpacerFaction04.description>
+
+  <DF_SpacerFaction05.label>Helion</DF_SpacerFaction05.label>
+  <DF_SpacerFaction05.description>A people of energy engineers capable of controlling stars. They build and extinguish suns, altering the balance of galaxies.</DF_SpacerFaction05.description>
+
+  <DF_SpacerFaction06.label>Echelon</DF_SpacerFaction06.label>
+  <DF_SpacerFaction06.description>A hierarchical technocracy, where each level of society reflects a step closer to the abyss of cosmic secrets.</DF_SpacerFaction06.description>
+
+  <DF_SpacerFaction07.label>Archon</DF_SpacerFaction07.label>
+  <DF_SpacerFaction07.description>An empire of mental rulers who merged mind with machine. Their will commands drone armies with a single thought.</DF_SpacerFaction07.description>
+
+  <DF_SpacerFaction08.label>Orbis</DF_SpacerFaction08.label>
+  <DF_SpacerFaction08.description>A civilization of ring worlds, creating artificial planets around dying stars. Aesthetes, engineers, and guardians of balance.</DF_SpacerFaction08.description>
+
+  <DF_SpacerFaction09.label>Hyperion</DF_SpacerFaction09.label>
+  <DF_SpacerFaction09.description>An ancient superstate that rose to the stars long before others. Their floating cities shine in clouds of light.</DF_SpacerFaction09.description>
+
+  <DF_SpacerFaction10.label>Altum</DF_SpacerFaction10.label>
+  <DF_SpacerFaction10.description>Ascended philosophers who rejected matter. Their presence is felt as a distortion of space and time.</DF_SpacerFaction10.description>
+
+  <DF_SpacerFaction11.label>Thermis</DF_SpacerFaction11.label>
+  <DF_SpacerFaction11.description>An industrial civilization of thermobuilders, drawing energy from the very heart of planets. Their worlds are forges of galaxies.</DF_SpacerFaction11.description>
+
+  <DF_SpacerFaction12.label>Continuum</DF_SpacerFaction12.label>
+  <DF_SpacerFaction12.description>A culture that merged time and space into a single thread. They live simultaneously in all possible pasts and futures.</DF_SpacerFaction12.description>
+
+  <DF_SpacerFaction13.label>Azuris</DF_SpacerFaction13.label>
+  <DF_SpacerFaction13.description>An oceanic race inhabiting liquid worlds. Their technologies are fluid and alive, as if water itself gained consciousness.</DF_SpacerFaction13.description>
+
+  <DF_SpacerFaction14.label>Etherium</DF_SpacerFaction14.label>
+  <DF_SpacerFaction14.description>A community of energy beings for whom matter is a form of signal. Light is their language, energy is life.</DF_SpacerFaction14.description>
+
+  <DF_SpacerFaction15.label>Arkatum</DF_SpacerFaction15.label>
+  <DF_SpacerFaction15.description>Guardians of cosmic archives, collecting the history of stars. Their libraries shine in the sky like constellations of memory.</DF_SpacerFaction15.description>
+
+  <DF_SpacerFaction16.label>Egonia</DF_SpacerFaction16.label>
+  <DF_SpacerFaction16.description>A people who turned self-awareness into a source of power. Every mind here is a unique universe within another mind.</DF_SpacerFaction16.description>
+
+  <DF_SpacerFaction17.label>Terax</DF_SpacerFaction17.label>
+  <DF_SpacerFaction17.description>Colonizers of barren planets, turning stone into life. Their artificial ecosystems grow like living worlds.</DF_SpacerFaction17.description>
+
+  <DF_SpacerFaction18.label>Panoptium</DF_SpacerFaction18.label>
+  <DF_SpacerFaction18.description>A network of observers spanning the entire galaxy. Their eyes are satellites, drones, and waves that pierce time and darkness.</DF_SpacerFaction18.description>
+
+  <DF_SpacerFaction19.label>Omniline</DF_SpacerFaction19.label>
+  <DF_SpacerFaction19.description>A quantum structure of instant connection between worlds. Thought here moves faster than light and creates worlds at the moment of intention.</DF_SpacerFaction19.description>
+
+  <DF_SpacerFaction20.label>Metatron</DF_SpacerFaction20.label>
+  <DF_SpacerFaction20.description>Creator minds who govern the laws of physics as code. Their speech shapes galaxies, and their will creates space itself.</DF_SpacerFaction20.description>
+
+</LanguageData>

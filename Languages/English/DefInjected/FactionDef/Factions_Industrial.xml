@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<!-- ==================== INDUSTRIAL FACTIONS ==================== -->
+<LanguageData>
+<DF_IndustrialFaction01.label>Corporation</DF_IndustrialFaction01.label>
+<DF_IndustrialFaction01.description>A structure built on profit and production. Power belongs to capital, and decisions are made by those who control resources.</DF_IndustrialFaction01.description>
+
+<DF_IndustrialFaction02.label>Cartel</DF_IndustrialFaction02.label>
+<DF_IndustrialFaction02.description>An alliance controlling profitable industries and markets. They operate in the shadows, balancing between law and darkness.</DF_IndustrialFaction02.description>
+
+<DF_IndustrialFaction03.label>Alliance</DF_IndustrialFaction03.label>
+<DF_IndustrialFaction03.description>A union of several powers for a common goal. Often unstable, but powerful as long as participants' interests align.</DF_IndustrialFaction03.description>
+
+<DF_IndustrialFaction04.label>Union</DF_IndustrialFaction04.label>
+<DF_IndustrialFaction04.description>A grouping of enterprises or settlements linked by economy or defense. Their cohesion is born from shared survival.</DF_IndustrialFaction04.description>
+
+<DF_IndustrialFaction05.label>Factory</DF_IndustrialFaction05.label>
+<DF_IndustrialFaction05.description>A disciplined production system where man is a cog in the machine. Symbol of industrial efficiency and hard labor.</DF_IndustrialFaction05.description>
+
+<DF_IndustrialFaction06.label>Plant</DF_IndustrialFaction06.label>
+<DF_IndustrialFaction06.description>A place of endless flow of goods, noise, and steam. Workers live in the shadow of machines, feeding progress with their sweat.</DF_IndustrialFaction06.description>
+
+<DF_IndustrialFaction07.label>Union</DF_IndustrialFaction07.label>
+<DF_IndustrialFaction07.description>A community of laborers defending their rights. Sometimes peaceful, sometimes ready to revolt for justice.</DF_IndustrialFaction07.description>
+
+<DF_IndustrialFaction08.label>Association</DF_IndustrialFaction08.label>
+<DF_IndustrialFaction08.description>A flexible network of specialists and masters. Their strength lies in cooperation and the free exchange of knowledge.</DF_IndustrialFaction08.description>
+
+<DF_IndustrialFaction09.label>Complex</DF_IndustrialFaction09.label>
+<DF_IndustrialFaction09.description>A closed structure uniting factories, laboratories, and settlements. Often lives by its own laws and statutes.</DF_IndustrialFaction09.description>
+
+<DF_IndustrialFaction10.label>Organization</DF_IndustrialFaction10.label>
+<DF_IndustrialFaction10.description>A strictly structured authority with hierarchy and order. Inside, struggles of interests and hidden ambitions rage.</DF_IndustrialFaction10.description>
+
+<DF_IndustrialFaction11.label>City</DF_IndustrialFaction11.label>
+<DF_IndustrialFaction11.description>The heart of industrial civilization. Towers, smoke, and neon create the pulse of a living metropolis.</DF_IndustrialFaction11.description>
+
+<DF_IndustrialFaction12.label>Front</DF_IndustrialFaction12.label>
+<DF_IndustrialFaction12.description>A military or ideological alliance. Fights not only with weapons, but with words, influence, and faith.</DF_IndustrialFaction12.description>
+
+<DF_IndustrialFaction13.label>Global Union</DF_IndustrialFaction13.label>
+<DF_IndustrialFaction13.description>An agreement between peoples or corporations. Behind the facade of unity always lies competition.</DF_IndustrialFaction13.description>
+
+<DF_IndustrialFaction14.label>League</DF_IndustrialFaction14.label>
+<DF_IndustrialFaction14.description>An old alliance with traditions and statutes. Often turns into an elitist gathering where the fate of others is decided.</DF_IndustrialFaction14.description>
+
+<DF_IndustrialFaction15.label>Fleet</DF_IndustrialFaction15.label>
+<DF_IndustrialFaction15.description>An organized force dominating on water or in the air. Symbol of mobility and military might of the machine age.</DF_IndustrialFaction15.description>
+
+<DF_IndustrialFaction16.label>Collective</DF_IndustrialFaction16.label>
+<DF_IndustrialFaction16.description>A community where equality is more important than status. Their ideals often clash with the harsh reality of industry.</DF_IndustrialFaction16.description>
+
+<DF_IndustrialFaction17.label>Nation</DF_IndustrialFaction17.label>
+<DF_IndustrialFaction17.description>A people united by common culture and purpose. Their pride drives progress forward, but easily turns into fanaticism.</DF_IndustrialFaction17.description>
+
+<DF_IndustrialFaction18.label>Coalition</DF_IndustrialFaction18.label>
+<DF_IndustrialFaction18.description>A temporary alliance of forces against a greater threat. After victory, it often collapses under the weight of disagreements.</DF_IndustrialFaction18.description>
+
+<DF_IndustrialFaction19.label>Society</DF_IndustrialFaction19.label>
+<DF_IndustrialFaction19.description>A union of people with shared beliefs or goals. Defines the spirit of the era—progressive or dogmatic.</DF_IndustrialFaction19.description>
+
+<DF_IndustrialFaction20.label>Company</DF_IndustrialFaction20.label>
+<DF_IndustrialFaction20.description>A group driven by profit and ambition. From small traders to huge corporations—adventure always lies at their heart.</DF_IndustrialFaction20.description>
+
+</LanguageData>

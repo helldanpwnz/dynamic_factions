@@ -11,136 +11,169 @@ namespace DynamicFaction
 {
 	
     // ============================================ БЛОК 1: НАСТРОЙКИ ============================================
-    public class DynamicFactionsSettings : ModSettings
-    {
-        public bool enableSplitFaction = true;
-		public bool showDebugLogs = false;
-		public bool limitTechLevel = false; 
-		public float entropyPerUpdate = 3f; 
-        public int triggerIntervalHours = 24;
-        public int splitMaxDistanceTiles = 25;	
-        public float randomSettlementChance = 0f;
-        public float attackMultiplier = 1f;
-        public float defenseMultiplier = 1f;
-		public float leaderPointsMultiplier = 1f;
-        public float influenceMultiplier = 1f;
-		public float stabilityMultiplier = 1f;
-		public float globalCrisisChance = 0.1f; // 0.1% за обновление
-		public float plagueChance = 0.1f;
-        
-        public override void ExposeData()
-        {
-            Scribe_Values.Look(ref randomSettlementChance, "randomSettlementChance", 1f);
-            Scribe_Values.Look(ref enableSplitFaction, "enableSplitFaction", true);
-			Scribe_Values.Look(ref limitTechLevel, "limitTechLevel", false);
-            Scribe_Values.Look(ref triggerIntervalHours, "triggerIntervalHours", 6);
-			Scribe_Values.Look(ref entropyPerUpdate, "entropyPerUpdate", 3f);
-            Scribe_Values.Look(ref splitMaxDistanceTiles, "splitMaxDistanceTiles", 25);
-            Scribe_Values.Look(ref attackMultiplier, "attackMultiplier", 1f);
-            Scribe_Values.Look(ref defenseMultiplier, "defenseMultiplier", 1f);
-			Scribe_Values.Look(ref leaderPointsMultiplier, "leaderPointsMultiplier", 1f);
-            Scribe_Values.Look(ref influenceMultiplier, "influenceMultiplier", 1f);
-			Scribe_Values.Look(ref stabilityMultiplier, "stabilityMultiplier", 1f);
-			Scribe_Values.Look(ref globalCrisisChance, "globalCrisisChance", 0.01f);
-			Scribe_Values.Look(ref plagueChance, "plagueChance", 0.01f);
-        }
-    }
 
-    // ============================================ БЛОК 2: МОД И НАСТРОЙКИ UI ============================================
-    public class DynamicFactionsMod : Mod
+public class DynamicFactionsSettings : ModSettings
+{
+    public bool enableSplitFaction = true;
+    public bool showDebugLogs = false;
+    public bool limitTechLevel = false; 
+	public bool requireCommsForNews = false;
+    public float entropyPerUpdate = 2f; 
+    public int triggerIntervalHours = 24;
+    public int splitMaxDistanceTiles = 25;    
+    public float randomSettlementChance = 0f;
+    public float attackMultiplier = 1f;
+    public float defenseMultiplier = 1f;
+    public float leaderPointsMultiplier = 1f;
+    public float influenceMultiplier = 1f;
+    public float stabilityMultiplier = 1f;
+    public float globalCrisisChance = 0.1f;
+    public float plagueChance = 0.1f;
+	public float nuclearWarChance = 5f;
+    
+    public override void ExposeData()
     {
-        public static DynamicFactionsSettings settings;
-        private static Vector2 scrollPosition = Vector2.zero;
-        
-        public DynamicFactionsMod(ModContentPack content) : base(content)
-        {
-            settings = GetSettings<DynamicFactionsSettings>();
-        }
-        
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
-            const float ScrollBarWidthMargin = 18f;
-            Rect outerRect = inRect.ContractedBy(10f);
-            float totalHeight = 70f * 21;
-            Rect scrollViewRect = new Rect(0f, 0f, outerRect.width - ScrollBarWidthMargin, totalHeight);
-            
-            Widgets.BeginScrollView(outerRect, ref scrollPosition, scrollViewRect);
-            Listing_Standard listing = new Listing_Standard();
-            listing.Begin(scrollViewRect);
-			listing.CheckboxLabeled("Показывать логи отладки", 
-			ref settings.showDebugLogs, 
-			"Включает подробные логи");
-            listing.CheckboxLabeled("✅ Включить систему Динамических Фракций", ref settings.enableSplitFaction);
-			listing.CheckboxLabeled("🛡️ Ограничить технологии (макс. Средневековье)", 
-			ref settings.limitTechLevel, 
-			"Если включено, новые фракции никогда не будут выше уровня Medieval (средневековье).");
-			listing.GapLine();
-            listing.Label("⏰ Интервал пересчета (часов):");
-            listing.Label($"Каждые {settings.triggerIntervalHours} ч. (6-24)");
-            settings.triggerIntervalHours = (int)listing.Slider(settings.triggerIntervalHours, 1f, 168f);
-            listing.GapLine();
-            listing.Label("⚔️ Радиус новой фракции (тайлов):");
-            listing.Label($"{settings.splitMaxDistanceTiles} тайлов");
-            settings.splitMaxDistanceTiles = (int)listing.Slider(settings.splitMaxDistanceTiles, 5f, 300f);
-            listing.GapLine();
-			listing.Label("⚔️ Множитель очков АТАКИ:");
-			listing.Label($"x{settings.attackMultiplier:F1} (0 = отключить систему)");
-			settings.attackMultiplier = listing.Slider(settings.attackMultiplier, 0f, 5f);
-            listing.Gap();
-			listing.Label("🛡️ Множитель очков БРОНИ:");
-			listing.Label($"x{settings.defenseMultiplier:F1} (0 = отключить систему)");
-			settings.defenseMultiplier = listing.Slider(settings.defenseMultiplier, 0f, 5f);
-            listing.GapLine();
-			listing.Label("👑 Множитель очков ЛИДЕРА:");
-			listing.Label($"x{settings.leaderPointsMultiplier:F1} (0 = отключить)");
-			settings.leaderPointsMultiplier = listing.Slider(settings.leaderPointsMultiplier, 0f, 5f);
-			listing.GapLine();
-			listing.Label("🏛️ Множитель изменений СТАБИЛЬНОСТИ:");
-			listing.Label($"x{settings.stabilityMultiplier:F1} (0 = отключить)");
-			settings.stabilityMultiplier = listing.Slider(settings.stabilityMultiplier, 0f, 5f);
-			listing.GapLine();
-			listing.Label("🌟 Множитель очков ВЛИЯНИЯ:");
-			listing.Label($"x{settings.influenceMultiplier:F1} (0 = отключить систему)");
-			settings.influenceMultiplier = listing.Slider(settings.influenceMultiplier, 0f, 5f);
-            listing.GapLine();		
-			listing.Label("🎲 Шанс спавна случайной базы (%):");
-			listing.Label($"{settings.randomSettlementChance:F1}% (0 = отключить спавн)");
-			settings.randomSettlementChance = listing.Slider(settings.randomSettlementChance, 0f, 10f);
-			listing.GapLine();
-			listing.Label("💥 Шанс Мирового Кризиса (% за обновление):");
-			listing.Label($"{settings.globalCrisisChance:F1}% (0 = отключить кризисы)");
-			settings.globalCrisisChance = listing.Slider(settings.globalCrisisChance, 0f, 10f);
-			listing.GapLine();
-			listing.Label("🦠 Шанс Пандемии Чумы (% за обновление):");
-			listing.Label($"{settings.plagueChance:F1}% (0 = отключить чуму)");
-			settings.plagueChance = listing.Slider(settings.plagueChance, 0f, 10f);  // ← ПРОСТОЙ слайдер
-			listing.GapLine();
-			listing.Label("💀 Энтропия за обновление:");
-			listing.Label($"{settings.entropyPerUpdate:F1} (0 = отключить энтропию)");
-			settings.entropyPerUpdate = listing.Slider(settings.entropyPerUpdate, 0f, 10f);
-			listing.GapLine();
-            
-            if (listing.ButtonText("🔄 Сбросить"))
-            {
-                settings.randomSettlementChance = 0f;
-                settings.enableSplitFaction = true;
-                settings.triggerIntervalHours = 6;
-                settings.splitMaxDistanceTiles = 50;
-                settings.influenceMultiplier = 1f;
-				settings.entropyPerUpdate = 3f;
-				settings.limitTechLevel = false;
-				settings.plagueChance = 0.1f; 
-				settings.globalCrisisChance = 0.1f; // ← 0.1% кризис
-				 
-            }
-            
-            listing.End();
-            Widgets.EndScrollView();
-            settings.Write();
-        }
-        
-        public override string SettingsCategory() => "Dynamic Factions";
+        // ТОЧНО ТАК КАК ТЫ УКАЗАЛ:
+        Scribe_Values.Look(ref randomSettlementChance, "randomSettlementChance", 1f);
+        Scribe_Values.Look(ref enableSplitFaction, "enableSplitFaction", true);
+        Scribe_Values.Look(ref limitTechLevel, "limitTechLevel", false);
+        Scribe_Values.Look(ref triggerIntervalHours, "triggerIntervalHours", 6);
+        Scribe_Values.Look(ref entropyPerUpdate, "entropyPerUpdate", 3f);
+        Scribe_Values.Look(ref splitMaxDistanceTiles, "splitMaxDistanceTiles", 100);
+        Scribe_Values.Look(ref attackMultiplier, "attackMultiplier", 1f);
+        Scribe_Values.Look(ref defenseMultiplier, "defenseMultiplier", 1f);
+        Scribe_Values.Look(ref leaderPointsMultiplier, "leaderPointsMultiplier", 1f);
+        Scribe_Values.Look(ref influenceMultiplier, "influenceMultiplier", 1f);
+        Scribe_Values.Look(ref stabilityMultiplier, "stabilityMultiplier", 1f);
+        Scribe_Values.Look(ref globalCrisisChance, "globalCrisisChance", 0.5f);
+        Scribe_Values.Look(ref plagueChance, "plagueChance", 0.5f);
+		Scribe_Values.Look(ref nuclearWarChance, "nuclearWarChance", 5f);
+		Scribe_Values.Look(ref requireCommsForNews, "requireCommsForNews", false);
+
     }
+}
+
+// ============================================ БЛОК 2: МОД И НАСТРОЙКИ UI ============================================
+public class DynamicFactionsMod : Mod
+{
+    public static DynamicFactionsSettings settings;
+    private static Vector2 scrollPosition = Vector2.zero;
+    
+    public DynamicFactionsMod(ModContentPack content) : base(content)
+    {
+        settings = GetSettings<DynamicFactionsSettings>();
+    }
+    
+    public override void DoSettingsWindowContents(Rect inRect)
+    {
+        const float ScrollBarWidthMargin = 18f;
+        Rect outerRect = inRect.ContractedBy(10f);
+        float totalHeight = 70f * 21;
+        Rect scrollViewRect = new Rect(0f, 0f, outerRect.width - ScrollBarWidthMargin, totalHeight);
+        
+        Widgets.BeginScrollView(outerRect, ref scrollPosition, scrollViewRect);
+        Listing_Standard listing = new Listing_Standard();
+        listing.Begin(scrollViewRect);
+		
+		listing.CheckboxLabeled("DF_RequireCommsForNews".Translate(), ref settings.requireCommsForNews, "DF_RequireCommsForNews_Tip".Translate());
+        
+        listing.CheckboxLabeled("DF_Setting_ShowDebugLogs".Translate(), 
+            ref settings.showDebugLogs, 
+            "DF_Setting_ShowDebugLogs_Tip".Translate());
+        listing.CheckboxLabeled("DF_Setting_EnableDynamicFactions".Translate(), ref settings.enableSplitFaction);
+        listing.CheckboxLabeled("DF_Setting_LimitTechLevel".Translate(), 
+            ref settings.limitTechLevel, 
+            "DF_Setting_LimitTechLevel_Tip".Translate());
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_TriggerIntervalHours".Translate());
+        listing.Label("DF_Setting_TriggerIntervalHours_Value".Translate(settings.triggerIntervalHours));
+        settings.triggerIntervalHours = (int)listing.Slider(settings.triggerIntervalHours, 1f, 168f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_SplitMaxDistanceTiles".Translate());
+        listing.Label("DF_Setting_SplitMaxDistanceTiles_Value".Translate(settings.splitMaxDistanceTiles));
+        settings.splitMaxDistanceTiles = (int)listing.Slider(settings.splitMaxDistanceTiles, 5f, 300f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_AttackMultiplier".Translate());
+        listing.Label("DF_Setting_AttackMultiplier_Value".Translate(settings.attackMultiplier.ToString("F1")));
+        settings.attackMultiplier = listing.Slider(settings.attackMultiplier, 0f, 5f);
+        listing.Gap();
+        
+        listing.Label("DF_Setting_DefenseMultiplier".Translate());
+        listing.Label("DF_Setting_DefenseMultiplier_Value".Translate(settings.defenseMultiplier.ToString("F1")));
+        settings.defenseMultiplier = listing.Slider(settings.defenseMultiplier, 0f, 5f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_LeaderPointsMultiplier".Translate());
+        listing.Label("DF_Setting_LeaderPointsMultiplier_Value".Translate(settings.leaderPointsMultiplier.ToString("F1")));
+        settings.leaderPointsMultiplier = listing.Slider(settings.leaderPointsMultiplier, 0f, 5f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_StabilityMultiplier".Translate());
+        listing.Label("DF_Setting_StabilityMultiplier_Value".Translate(settings.stabilityMultiplier.ToString("F1")));
+        settings.stabilityMultiplier = listing.Slider(settings.stabilityMultiplier, 0f, 5f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_InfluenceMultiplier".Translate());
+        listing.Label("DF_Setting_InfluenceMultiplier_Value".Translate(settings.influenceMultiplier.ToString("F1")));
+        settings.influenceMultiplier = listing.Slider(settings.influenceMultiplier, 0f, 5f);
+        listing.GapLine();        
+    
+        listing.Label("DF_Setting_RandomSettlementChance".Translate());
+        listing.Label("DF_Setting_RandomSettlementChance_Value".Translate(settings.randomSettlementChance.ToString("F1")));
+        settings.randomSettlementChance = listing.Slider(settings.randomSettlementChance, 0f, 10f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_GlobalCrisisChance".Translate());
+        listing.Label("DF_Setting_GlobalCrisisChance_Value".Translate(settings.globalCrisisChance.ToString("F1")));
+        settings.globalCrisisChance = listing.Slider(settings.globalCrisisChance, 0f, 10f);
+        listing.GapLine();
+        
+        listing.Label("DF_Setting_PlagueChance".Translate());
+        listing.Label("DF_Setting_PlagueChance_Value".Translate(settings.plagueChance.ToString("F1")));
+        settings.plagueChance = listing.Slider(settings.plagueChance, 0f, 10f);
+        listing.GapLine();
+		
+		listing.Label("DF_Setting_NuclearWarChance".Translate());
+		listing.Label("DF_Setting_NuclearWarChance_Value".Translate(settings.nuclearWarChance.ToString("F1")));
+		settings.nuclearWarChance = listing.Slider(settings.nuclearWarChance, 0f, 100f);
+		listing.GapLine();
+        
+        listing.Label("DF_Setting_EntropyPerUpdate".Translate());
+        listing.Label("DF_Setting_EntropyPerUpdate_Value".Translate(settings.entropyPerUpdate.ToString("F1")));
+        settings.entropyPerUpdate = listing.Slider(settings.entropyPerUpdate, 0f, 10f);
+        listing.GapLine();
+        
+        // ИСПРАВЛЕННАЯ КНОПКА СБРОСА - ВСЕ ПОЛЯ:
+        if (listing.ButtonText("DF_Setting_ResetButton".Translate()))
+        {
+            // СБРАСЫВАЕМ ВСЕ ПОЛЯ К ЗНАЧЕНИЯМ ИЗ ExposeData:
+            settings.randomSettlementChance = 1f;
+            settings.enableSplitFaction = true;
+            settings.showDebugLogs = false;
+            settings.limitTechLevel = false;
+            settings.triggerIntervalHours = 6;
+            settings.splitMaxDistanceTiles = 100;
+            settings.entropyPerUpdate = 2f;
+            settings.plagueChance = 0.5f;
+			settings.nuclearWarChance = 5f;
+            settings.globalCrisisChance = 0.5f;
+            settings.attackMultiplier = 1f;    // ← ДОБАВЛЕНО
+            settings.defenseMultiplier = 1f;   // ← ДОБАВЛЕНО
+            settings.leaderPointsMultiplier = 1f; // ← ДОБАВЛЕНО
+            settings.influenceMultiplier = 1f;    // ← ДОБАВЛЕНО (в коде был, но проверь)
+            settings.stabilityMultiplier = 1f;    // ← ДОБАВЛЕНО
+        }
+        
+        listing.End();
+        Widgets.EndScrollView();
+        settings.Write();
+    }
+    
+    public override string SettingsCategory() => "Dynamic Factions";
+}
 
     // ============================================ БЛОК 3: ДАННЫЕ СТАБИЛЬНОСТИ ============================================
     public class FactionStabilityData : IExposable
@@ -213,13 +246,13 @@ private static readonly HashSet<string> IgnoredFactionNames = new HashSet<string
 // В начало класса (рядом с другими словарями)
 private static readonly Dictionary<TechLevel, string> SpawnLetterTitles = new()
 {
-    [TechLevel.Animal] = "Появление диких племён",
-    [TechLevel.Neolithic] = "Кочующие охотники",
-    [TechLevel.Medieval] = "Новые феодальные владения",
-    [TechLevel.Industrial] = "Индустриальная экспансия",
-    [TechLevel.Spacer] = "Космические колонисты",
-    [TechLevel.Ultra] = "Ультратехнологическая угроза",
-    [TechLevel.Archotech] = "Аркотех-явления"
+    [TechLevel.Animal] = "DF_SpawnLetterTitle_Animal".Translate(),
+    [TechLevel.Neolithic] = "DF_SpawnLetterTitle_Neolithic".Translate(),
+    [TechLevel.Medieval] = "DF_SpawnLetterTitle_Medieval".Translate(),
+    [TechLevel.Industrial] = "DF_SpawnLetterTitle_Industrial".Translate(),
+    [TechLevel.Spacer] = "DF_SpawnLetterTitle_Spacer".Translate(),
+    [TechLevel.Ultra] = "DF_SpawnLetterTitle_Ultra".Translate(),
+    [TechLevel.Archotech] = "DF_SpawnLetterTitle_Archotech".Translate()
 };		
         
 // ВЕСА ТЕХУРОВНЕЙ ДЛЯ СЛУЧАЙНОГО СПАВНА
@@ -235,11 +268,11 @@ private static readonly Dictionary<TechLevel, float> TechSpawnWeights = new()
 // ОПИСАНИЯ ФРАКЦИЙ ПО ТЕХУРОВНЯМ
 private static readonly Dictionary<TechLevel, string> SpawnDescriptions = new()
 {
-    [TechLevel.Neolithic] = "дикие охотники-кочевники, поклоняющиеся древним тотемам",
-    [TechLevel.Medieval] = "феодальные рыцари, верные своему сюзерену",
-    [TechLevel.Industrial] = "индустриальная корпорация с конвейерным производством",
-    [TechLevel.Spacer] = "космическая колония с орбитальными станциями",
-    [TechLevel.Ultra] = "ультра-технологический синдикат с ИИ-управлением"
+    [TechLevel.Neolithic] = "DF_SpawnDescription_Neolithic".Translate(),
+    [TechLevel.Medieval] = "DF_SpawnDescription_Medieval".Translate(),
+    [TechLevel.Industrial] = "DF_SpawnDescription_Industrial".Translate(),
+    [TechLevel.Spacer] = "DF_SpawnDescription_Spacer".Translate(),
+    [TechLevel.Ultra] = "DF_SpawnDescription_Ultra".Translate()
 };
 
 // ============================================ БЛОК 4.1: ГЛАВНЫЙ ЦИКЛ ============================================
@@ -270,12 +303,16 @@ var zombieFactions = Find.FactionManager.AllFactions
         // Если нет поселений
         if (!Find.WorldObjects.Settlements.Any(s => s.Faction == f))
         {
-			            // ✅ ОТПРАВЛЯЕМ ПИСЬМО (до того, как пометим фракцию скрытой)
-            Find.LetterStack.ReceiveLetter(
-                "Фракция уничтожена", 
-                $"Мир облетела весть: фракция {f.Name} больше не существует. Последние их города пали, а народ рассеялся по пустошам.", 
-                LetterDefOf.NeutralEvent
-            );
+// ФРАКЦИЯ УНИЧТОЖЕНА
+DF_EventManager.Fire(
+    "DF_FactionDestroyed",                                    // DefName события
+    "DF_FactionDestroyed_Label".Translate(),                  // Заголовок
+    "DF_FactionDestroyed_Text".Translate(f.Name),             // Текст (f.Name вставится вместо {0})
+    LetterDefOf.NeutralEvent,                                 // Тип письма
+    null                                                      // LookTargets: тут null, так как смотреть не на что (городов нет)
+    // Если у тебя есть переменная lastTile (тайл последнего города), 
+    // можешь заменить null на: new GlobalTargetInfo(lastTile)
+);
 			
             f.defeated = true;
             f.hidden = true; // ← ГЛАВНОЕ: скрывает из списка
@@ -369,18 +406,30 @@ if (DynamicFactionsMod.settings.showDebugLogs)
 
  
 // ============================================ БЛОК 4.2: СОБЫТИЯ ВЛИЯНИЯ ============================================
+//отрицательные события влияния
 private void TriggerInfluenceEvent(Faction faction, FactionStabilityData data, bool isPositive)
 {
-    bool ExecuteDefenseInvestment(string reason = "Влияние потрачено на укрепление обороны.")
+    bool ExecuteDefenseInvestment(string reason = null)
     {
+        reason ??= "DF_ExecuteDefenseInvestment_Reason".Translate();
         data.attackPoints += 20f;
         data.defensePoints += 20f;
-        data.accumulatedEntropy -= 1f;
+        data.accumulatedEntropy -= 2f;
+		data.influencePoints += 90f;
         data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
         data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-        Find.LetterStack.ReceiveLetter("🌟 Инвестиции в армию",
-            $"{faction.Name} {reason}\n\n• Атака: +20 (всего: {data.attackPoints:F1})\n• Броня: +20 (всего: {data.defensePoints:F1})",
-            LetterDefOf.PositiveEvent);
+// ✅ ОТПРАВЛЯЕМ ПИСЬМО: Инвестиции в армию (через менеджер событий)
+DF_EventManager.Fire(
+    "DF_DefenseInvestment",
+    "DF_DefenseInvestment_Label".Translate(),
+    "DF_DefenseInvestment_Text".Translate(
+        faction.Name, 
+        data.attackPoints, 
+        data.defensePoints
+    ),
+    LetterDefOf.NeutralEvent,
+    null  // Нет конкретной цели для камеры
+);
         return false;
     }
     
@@ -406,69 +455,170 @@ private void TriggerInfluenceEvent(Faction faction, FactionStabilityData data, b
                     newSett.Tile = newTile;
                     newSett.Name = SettlementNameGenerator.GenerateSettlementName(newSett, null);
                     Find.WorldObjects.Add(newSett);
-                    data.accumulatedEntropy -= 1f;
-                    Find.LetterStack.ReceiveLetter("🌟 Дар земель",
-                        $"{topFaction.Name} (Влияние: {topFactionData.influencePoints:F0}) передала земли фракции {faction.Name} для стабилизации региона.\nНовая база: {newSett.Name}", 
-                        LetterDefOf.NeutralEvent, newSett);
-                    return;
+                    data.accumulatedEntropy -= 2f;
+					data.influencePoints += 90f;
+                      // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Дар земель (через менеджер событий)
+        DF_EventManager.Fire(
+            "DF_LandGift",
+            "DF_LandGift_Label".Translate(),
+            "DF_LandGift_Text".Translate(
+                topFaction.Name,
+                topFactionData.influencePoints,
+                faction.Name,
+                newSett.Name
+            ),
+            LetterDefOf.NeutralEvent,
+            newSett  // Камера прыгнет к новой базе!
+        );
+        return;
                         }
 						}
         else
         {
             // Если не нашли тайл для поселения
-            ExecuteDefenseInvestment("не удалось передать земли (нет подходящей территории).");
+            ExecuteDefenseInvestment("DF_LandGift_NoTile".Translate());
             return; // ← Выходим
             }
         }
-        else if (rollNegative < 0.30f) // Свержение власти 20%
+else if (rollNegative < 0.25f) // Марионеточное правительство 15%
+{
+    // 1. Ищем кукловода
+    var puppetMasterData = factionDataList
+        .Where(d => d.faction != faction && !d.faction.defeated && !d.faction.IsPlayer && 
+                   !IgnoredFactionNames.Contains(d.faction.def.defName))
+        .OrderByDescending(d => d.influencePoints)
+        .FirstOrDefault();
+
+    if (puppetMasterData == null)
+    {
+        // ИСПОЛЬЗУЕМ СУЩЕСТВУЮЩУЮ ФУНКЦИЮ
+        ExecuteDefenseInvestment("DF_PuppetGov_NoMaster".Translate());
+        return;
+    }
+
+    Faction master = puppetMasterData.faction;
+
+    // 2. Восстанавливаем статы
+    data.stabilityPoints += 50f; 
+    data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -200f, 200f);
+    data.accumulatedEntropy -= 1f;
+    data.influencePoints += 90f; 
+
+    // 3. Смена лидера
+    if (faction.leader != null)
+    {
+        Pawn oldLeader = faction.leader;
+        Find.WorldPawns.RemovePawn(oldLeader);
+        oldLeader.Destroy();
+    }
+#pragma warning disable CS0618
+    faction.GenerateNewLeader();
+#pragma warning restore CS0618
+
+    // 4. Дипломатия
+    faction.TryAffectGoodwillWith(master, 100);
+    master.TryAffectGoodwillWith(faction, 100);
+
+    foreach (Faction other in Find.FactionManager.AllFactions)
+    {
+        if (other != faction && other != master && !other.IsPlayer && !other.defeated)
         {
-            Find.LetterStack.ReceiveLetter("🔥 Свержение власти", 
-                $"В {faction.Name} начался вооруженный мятеж! Часть гарнизонов перешла на сторону восставших.", 
-                LetterDefOf.NegativeEvent);
-            data.accumulatedEntropy -= 1f;
-            bool success = TrySpawnSplitFaction(faction, false);
-            if (success) { data.influencePoints += 100f; return; }
-        }
-        else if (rollNegative < 0.40f && ModsConfig.IdeologyActive) // Ересь 10%
-        {
-            var topInfluential = factionDataList
-                .Where(d => d.faction != faction && !d.faction.defeated && d.faction.ideos?.PrimaryIdeo != null && !IgnoredFactionNames.Contains(d.faction.def.defName))
-                .OrderByDescending(d => d.influencePoints)
-                .FirstOrDefault();
-            
-            if (topInfluential != null)
+            if (master.HostileTo(other))
             {
-                faction.ideos.SetPrimary(topInfluential.faction.ideos.PrimaryIdeo);
-                data.defensePoints += 20f;
-                data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-                data.accumulatedEntropy -= 1f;
-                Find.LetterStack.ReceiveLetter("🔥 Ересь",
-                    $"{faction.Name} отреклась от старых богов!\nПод давлением {topInfluential.faction.Name}, они приняли новую веру.\n\n• Идеология изменена\n• Броня: +20 (Фанатизм)", 
-                    LetterDefOf.NeutralEvent);
-                return;
+                faction.TryAffectGoodwillWith(other, -100); 
             }
+        }
+    }
+
+    // 5. Идеология
+    if (ModsConfig.IdeologyActive && master.ideos?.PrimaryIdeo != null)
+    {
+        faction.ideos.SetPrimary(master.ideos.PrimaryIdeo);
+    }
+
+    // 6. Письмо
+    string newLeaderName = faction.leader != null ? faction.leader.Name.ToStringFull : "Unknown";
+
+    DF_EventManager.Fire(
+        "DF_PuppetGovernment",
+        "DF_PuppetGovernment_Label".Translate(faction.Name), // Заголовок: "Марионеточное правительство: [Фракция]"
+        "DF_PuppetGovernment_Text".Translate(
+            faction.Name,    // {0} - Жертва
+            master.Name,     // {1} - Хозяин
+            newLeaderName    // {2} - Имя нового лидера
+        ),
+        LetterDefOf.NeutralEvent,
+        null 
+    );
+    
+    return;
+}
+
+
+
+        else if (rollNegative < 0.40f && ModsConfig.IdeologyActive) // Ересь 15%
+        {
+var topInfluential = factionDataList
+    .Where(d => d.faction != faction 
+                && !d.faction.defeated 
+                && d.faction.ideos?.PrimaryIdeo != null 
+                && !IgnoredFactionNames.Contains(d.faction.def.defName)
+                // ✅ ДОБАВЛЕНО: Идеология должна отличаться!
+                && (faction.ideos?.PrimaryIdeo == null || d.faction.ideos.PrimaryIdeo != faction.ideos.PrimaryIdeo))
+    .OrderByDescending(d => d.influencePoints)
+    .FirstOrDefault();
+            
+if (topInfluential != null)
+{
+    faction.ideos.SetPrimary(topInfluential.faction.ideos.PrimaryIdeo);
+    data.defensePoints += 30f;
+    data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+    data.accumulatedEntropy -= 2f;
+    
+    // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Ересь (через менеджер событий)
+	data.influencePoints += 90f;
+    DF_EventManager.Fire(
+        "DF_ReligiousConversion",
+        "DF_ReligiousConversion_Label".Translate(),
+        "DF_ReligiousConversion_Text".Translate(
+            faction.Name,
+            topInfluential.faction.Name
+        ),
+        LetterDefOf.NeutralEvent,
+        null  // Камера не нужна (идеологическое событие)
+    );
+    return;
+}
+
     else
     {
-        ExecuteDefenseInvestment("не нашла цель для ереси.");
+        ExecuteDefenseInvestment("DF_ReligiousConversion_NoTarget".Translate());
         return;
         }
         }
 	
-        else if (rollNegative < 0.50f) // Экономический коллапс 10% (было 20%)
-        {
-            data.stabilityPoints -= 20f;
-            if (faction.leader != null)
-            {
-                data.leaderLegitimacy -= 5f;
-                data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-            }
-            data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
-            data.accumulatedEntropy -= 1f;
-            Find.LetterStack.ReceiveLetter("📉 Экономический коллапс",
-                $"Экономика {faction.Name} рухнула под гнетом внешнего давления.\n\n• Стабильность: -20\n• Лидер: -5", 
-                LetterDefOf.NegativeEvent);
-            return;
-        }
+else if (rollNegative < 0.50f) // Экономический коллапс 50%
+{
+    data.stabilityPoints -= 20f;
+    if (faction.leader != null)
+    {
+        data.leaderLegitimacy -= 5f;
+        data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
+    }
+    data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
+    data.accumulatedEntropy -= 2f;
+	data.influencePoints += 90f;
+    
+    // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Экономический коллапс (через менеджер событий)
+    DF_EventManager.Fire(
+        "DF_EconomicCollapse",
+        "DF_EconomicCollapse_Label".Translate(),
+        "DF_EconomicCollapse_Text".Translate(faction.Name),
+        LetterDefOf.NeutralEvent,
+        null  // Камера не нужна (экономическое событие)
+    );
+    return;
+}
         else if (rollNegative < 0.60f) // ✅ НОВОЕ: Разрыв отношений 10%
         {
 var allies = Find.FactionManager.AllFactions
@@ -482,29 +632,45 @@ var allies = Find.FactionManager.AllFactions
             if (allies.Count == 0)
             {
                 // Фоллбек: экономический коллапс если нет союзников
-                data.stabilityPoints -= 20f;
-                if (faction.leader != null)
-                {
-                    data.leaderLegitimacy -= 5f;
-                    data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-                }
-                data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
-                data.accumulatedEntropy -= 1f;
-                Find.LetterStack.ReceiveLetter("📉 Экономический коллапс (фоллбек)",
-                    $"Нет союзников для предательства → Экономика {faction.Name} рухнула.\n\n• Стабильность: -20\n• Лидер: -5", 
-                    LetterDefOf.NegativeEvent);
-                return;
+data.stabilityPoints -= 20f;
+if (faction.leader != null)
+{
+    data.leaderLegitimacy -= 5f;
+    data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
+}
+data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
+data.accumulatedEntropy -= 2f;
+data.influencePoints += 90f;
+
+// ✅ ОТПРАВЛЯЕМ ПИСЬМО: Экономический коллапс (фоллбек) (через менеджер событий)
+DF_EventManager.Fire(
+    "DF_EconomicFallback",
+    "DF_EconomicFallback_Label".Translate(),
+    "DF_EconomicFallback_Text".Translate(faction.Name),
+    LetterDefOf.NeutralEvent,
+    null  // Камера не нужна
+);
+return;
             }
             
 Faction lostAlly = allies.RandomElement();
 faction.TryAffectGoodwillWith(lostAlly, -100);
-lostAlly.TryAffectGoodwillWith(faction, -100); // Добавляем обратное изменение
-data.accumulatedEntropy -= 1f;
-            Find.LetterStack.ReceiveLetter("💔 Разрыв отношений",
-                $"{faction.Name} предала старого союзника {lostAlly.Name}!\n\n" +
-                "Дипломатический скандал: теперь это враг.\n• Союзник → Враг", 
-                LetterDefOf.NegativeEvent);
-            return;
+lostAlly.TryAffectGoodwillWith(faction, -100);
+data.accumulatedEntropy -= 2f;
+data.influencePoints += 90f;
+
+// ✅ ОТПРАВЛЯЕМ ПИСЬМО: Разрыв отношений (через менеджер событий)
+DF_EventManager.Fire(
+    "DF_AllianceBreak",
+    "DF_AllianceBreak_Label".Translate(),
+    "DF_AllianceBreak_Text".Translate(
+        faction.Name,
+        lostAlly.Name
+    ),
+    LetterDefOf.NeutralEvent,
+    null  // Камера не нужна (дипломатическое событие)
+);
+return;
         }
         else if (rollNegative < 0.70f) // Продажа земель 10% (сдвинуто)
         {
@@ -521,86 +687,131 @@ if (topInfluential != null && mySettlements.Count > 0)
     int tile = soldSettlement.Tile;
     string oldName = soldSettlement.Name;
     
-    // ✅ ФИКС: Удаляем старое и создаем новое
-    Find.WorldObjects.Remove(soldSettlement);
-    Settlement newBase = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
-    newBase.SetFaction(topInfluential.faction);
-    newBase.Tile = tile;
-    newBase.Name = oldName + " (продано)";
-    Find.WorldObjects.Add(newBase);
-    
-    data.attackPoints += 30f;
-    data.defensePoints += 30f;
-    data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
-    data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-    data.accumulatedEntropy -= 1f;
-    Find.LetterStack.ReceiveLetter("💰 Продажа земель",
-        $"{faction.Name} продала поселение {oldName} фракции {topInfluential.faction.Name} за военные поставки.\n\n• Атака: +30\n• Броня: +30", 
-        LetterDefOf.NeutralEvent, newBase);
-    return;
+// ✅ ФИКС: Удаляем старое и создаем новое
+Find.WorldObjects.Remove(soldSettlement);
+Settlement newBase = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
+newBase.SetFaction(topInfluential.faction);
+newBase.Tile = tile;
+newBase.Name = oldName;
+Find.WorldObjects.Add(newBase);
+
+data.attackPoints += 30f;
+data.defensePoints += 30f;
+data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
+data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+data.accumulatedEntropy -= 2f;
+data.influencePoints += 90f;
+
+// ✅ ОТПРАВЛЯЕМ ПИСЬМО: Продажа земель (через менеджер событий)
+DF_EventManager.Fire(
+    "DF_LandSale",
+    "DF_LandSale_Label".Translate(),
+    "DF_LandSale_Text".Translate(
+        faction.Name,
+        oldName,
+        topInfluential.faction.Name
+    ),
+    LetterDefOf.NeutralEvent,
+    newBase  // Камера прыгнет к проданному поселению!
+);
+return;
+
     }
     else
     {
-        ExecuteDefenseInvestment("нечего продавать или нет покупателя.");
+        ExecuteDefenseInvestment("DF_LandSale_NoBuyer".Translate());
         return;
     }
         }
-        else if (rollNegative < 0.90f) // Диктатура 20% (сдвинуто)
-        {
-            data.stabilityPoints -= 30f;
-            if (faction.leader != null) 
-            {
-                data.leaderLegitimacy -= 5f;
-                data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-            }
-            data.attackPoints += 30f;
-            data.defensePoints += 30f;
-            data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
-            data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
-            data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-            data.accumulatedEntropy -= 1f;
-            
-            // ✅ НОВОЕ: потеря 1-2 союзников
-            var allies = Find.FactionManager.AllFactions.Where(f => 
-                f != faction && !f.IsPlayer && !f.defeated && f.def.humanlikeFaction && 
-                !IgnoredFactionNames.Contains(f.def.defName) && !faction.HostileTo(f)).ToList();
-
-            int alliesToLose = Rand.RangeInclusive(1, Mathf.Min(2, allies.Count));
-for (int i = 0; i < alliesToLose; i++)
+else if (rollNegative < 0.90f) // Диктатура 40%
 {
-    if (allies.Count == 0) break;
-    Faction ally = allies.RandomElement();
-    faction.TryAffectGoodwillWith(ally, -100);  // -100 → hostile
-    ally.TryAffectGoodwillWith(faction, -100);  // Добавляем обратное изменение
-    allies.Remove(ally);
-}
-            
-            Find.LetterStack.ReceiveLetter("🛡️ Диктатура",
-                $"В {faction.Name} установлен жесткий военный режим для удержания власти.\n\n" +
-                $"• Стабильность: -30\n• Лидер: -5\n• Атака: +30\n• Броня: +30\n" +
-                $"• Потеряно союзников: {alliesToLose}", 
-                LetterDefOf.NegativeEvent);
-            return;
-        }
-        else // Помощь союзников 10% (сдвинуто)
-        {
-            data.stabilityPoints += 10f;
-            data.attackPoints += 10f;
-            data.defensePoints += 10f;
-            data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
-            data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
-            data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-            data.accumulatedEntropy -= 1f;
-            Find.LetterStack.ReceiveLetter("🤝 Помощь союзников",
-                $"{faction.Name} получила гуманитарную помощь от соседей.\n\n• Стабильность: +10\n• Атака: +10\n• Броня: +10", 
-                LetterDefOf.PositiveEvent);
-            return;
-        }
+    data.stabilityPoints -= 30f;
+    if (faction.leader != null) 
+    {
+        data.leaderLegitimacy -= 5f;
+        data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
     }
+    data.attackPoints += 30f;
+    data.defensePoints += 30f;
+    data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
+    data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
+    data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+    data.accumulatedEntropy -= 2f;
+	data.influencePoints += 90f;
+    
+    // ✅ НОВОЕ: потеря 1-2 союзников
+    var allies = Find.FactionManager.AllFactions.Where(f => 
+        f != faction && !f.IsPlayer && !f.defeated && f.def.humanlikeFaction && 
+        !IgnoredFactionNames.Contains(f.def.defName) && !faction.HostileTo(f)).ToList();
 
-    // Положительные события +100 влияния
+    int alliesToLose = Rand.RangeInclusive(1, Mathf.Min(2, allies.Count));
+    for (int i = 0; i < alliesToLose; i++)
+    {
+        if (allies.Count == 0) break;
+        Faction ally = allies.RandomElement();
+        faction.TryAffectGoodwillWith(ally, -100);
+        ally.TryAffectGoodwillWith(faction, -100);
+        allies.Remove(ally);
+    }
+    
+    // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Диктатура (через менеджер событий)
+    DF_EventManager.Fire(
+        "DF_Dictatorship",
+        "DF_Dictatorship_Label".Translate(),
+        "DF_Dictatorship_Text".Translate(
+            faction.Name,
+            alliesToLose
+        ),
+        LetterDefOf.NeutralEvent,
+        null  // Камера не нужна (политическое событие)
+    );
+    return;
+        }
+        else // Помощь союзников 10%
+        {
+            // 1. Ищем хотя бы одного реального союзника
+            var allies = Find.FactionManager.AllFactions.Where(f => 
+                !f.defeated && f != faction && !f.IsPlayer && 
+                !IgnoredFactionNames.Contains(f.def.defName) && 
+                faction.RelationKindWith(f) == FactionRelationKind.Ally).ToList();
+
+            if (allies.Count > 0)
+            {
+                // Есть союзники — всё честно
+                data.stabilityPoints += 10f;
+                data.attackPoints += 10f;
+                data.defensePoints += 10f;
+                data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
+                data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
+                data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+                data.accumulatedEntropy -= 2f;
+                data.influencePoints += 90f; // Восстанавливаем влияние
+                
+                // Берем случайного союзника для красоты текста
+                Faction ally = allies.RandomElement(); 
+
+                DF_EventManager.Fire(
+                    "DF_AlliesAid",
+                    "DF_AlliesAid_Label".Translate(),
+                    "DF_AlliesAid_Text".Translate(faction.Name, ally.Name),
+                    LetterDefOf.NeutralEvent,
+                    null
+                );
+                return;
+            }
+            else
+            {
+                // Союзников нет — запускаем обычное укрепление (фоллбек)
+                ExecuteDefenseInvestment("DF_AlliesAid_NoAllies".Translate());
+                return;
+            }
+        } // Закрываем блок else
+    } // <--- ВАЖНО: Закрываем метод TriggerInfluenceEvent
+
+
+// Положительные события +100 влияния
 float roll = Rand.Value;
-if (roll < 0.10f) // Аннексия 10% (было 20%)
+if (roll < 0.10f) // Аннексия 10%
 {
     var allFactionsData = factionDataList.Where(d => d.faction != null && !d.faction.defeated && d.faction != faction && !IgnoredFactionNames.Contains(d.faction.def.defName)).ToList();
     if (allFactionsData.Count > 0)
@@ -626,84 +837,125 @@ if (roll < 0.10f) // Аннексия 10% (было 20%)
                 Settlement newBase = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
                 newBase.SetFaction(faction);
                 newBase.Tile = capturedTile;
-                newBase.Name = oldName + " (аннексирована)";
+                newBase.Name = oldName;
                 Find.WorldObjects.Add(newBase);
                 
                 FactionStabilityData targetData = GetOrCreateData(targetFaction);
                 targetData.influencePoints -= 30f;
-                data.accumulatedEntropy += 1f;
-                Find.LetterStack.ReceiveLetter("🌟 Аннексия", $"{faction.Name} мирно поглотила {oldName}!", LetterDefOf.PositiveEvent, newBase);
+                data.accumulatedEntropy += 2f;
+				data.influencePoints -= 90f;
+                
+                // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Аннексия (через менеджер событий)
+                DF_EventManager.Fire(
+                    "DF_Annexation",
+                    "DF_Annexation_Label".Translate(),
+                    "DF_Annexation_Text".Translate(
+                        faction.Name,
+                        oldName
+                    ),
+                    LetterDefOf.NeutralEvent,
+                    newBase  // Камера прыгнет к аннексированному поселению!
+                );
                 return;
             }
-			
         }
     }
-    ExecuteDefenseInvestment("не смогла аннексировать цель.");
+    // Фоллбек: Инвестиции в армию
+    ExecuteDefenseInvestment("DF_Annexation_NoTarget".Translate());
     return;
 }
-    else if (roll < 0.20f) // ✅ НОВОЕ: Установить дружбу 10%
-    {
-var potentialFriends = Find.FactionManager.AllFactions
-    .Where(f => !f.IsPlayer 
-                && !f.defeated 
-                && f != faction
-                && !IgnoredFactionNames.Contains(f.def.defName))
-    .ToList();
+else if (roll < 0.20f) // ✅ НОВОЕ: Установить дружбу 10%
+{
+    var potentialFriends = Find.FactionManager.AllFactions
+        .Where(f => !f.IsPlayer 
+                    && !f.defeated 
+                    && f != faction
+                    && !IgnoredFactionNames.Contains(f.def.defName))
+        .ToList();
         
-        if (potentialFriends.Count > 0)
-        {
-Faction friendFaction = potentialFriends.RandomElement();
-faction.TryAffectGoodwillWith(friendFaction, 100);
-friendFaction.TryAffectGoodwillWith(faction, 100); // Добавляем обратное изменение
-data.accumulatedEntropy += 1f;
-            Find.LetterStack.ReceiveLetter("🤝 Новая дружба",
-                $"{faction.Name} протянула руку дружбы {friendFaction.Name}!\n\n" +
-                "Дипломатический прорыв: бывшие враги стали союзниками.\n• Враг → Друг", 
-                LetterDefOf.PositiveEvent);
-            return;
+    if (potentialFriends.Count > 0)
+    {
+        Faction friendFaction = potentialFriends.RandomElement();
+        faction.TryAffectGoodwillWith(friendFaction, 100);
+        friendFaction.TryAffectGoodwillWith(faction, 100);
+        data.accumulatedEntropy += 2f;
+		data.influencePoints -= 90f;
+        
+        // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Новая дружба (через менеджер событий)
+        DF_EventManager.Fire(
+            "DF_NewFriendship",
+            "DF_NewFriendship_Label".Translate(),
+            "DF_NewFriendship_Text".Translate(
+                faction.Name,
+                friendFaction.Name
+            ),
+            LetterDefOf.NeutralEvent,
+            null  // Камера не нужна (дипломатическое событие)
+        );
+        return;
         }
-        ExecuteDefenseInvestment("не нашла врагов для дружбы.");
+        ExecuteDefenseInvestment("DF_NewFriendship_NoEnemies".Translate());
         return;
     }
-    else if (roll < 0.30f) // Смерть на переговорах 10% (осталось)
-    {
-        if (faction.leader == null) { ExecuteDefenseInvestment(); return; }
-        Pawn oldLeader = faction.leader;
-        string oldLeaderName = oldLeader.Name.ToStringFull;
-        Find.WorldPawns.RemovePawn(oldLeader);
-        oldLeader.Destroy();
+else if (roll < 0.30f) // Смерть на переговорах 10%
+{
+    if (faction.leader == null) { ExecuteDefenseInvestment(); return; }
+    
+    Pawn oldLeader = faction.leader;
+    string oldLeaderName = oldLeader.Name.ToStringFull;
+    Find.WorldPawns.RemovePawn(oldLeader);
+    oldLeader.Destroy();
 #pragma warning disable CS0618
-        faction.GenerateNewLeader();
+    faction.GenerateNewLeader();
 #pragma warning restore CS0618
-        data.lastLeader = faction.leader;
-        data.leaderLegitimacy = Rand.Range(-8f, -2f);
-        float transferAmount = Mathf.Min(50f, data.defensePoints);
-        data.defensePoints -= transferAmount;
-        data.attackPoints += transferAmount;
-        data.stabilityPoints -= 15f;
-        data.accumulatedEntropy += 1f;
-        Find.LetterStack.ReceiveLetter("☠️ Смерть лидера",
-            $"Лидер {faction.Name}, {oldLeaderName}, убит на переговорах!\n\nАрмия в ярости: оборона ослаблена, атака усилена.\n• Атака: +{transferAmount:F0}\n• Броня: -{transferAmount:F0}",
-            LetterDefOf.NeutralEvent);
-        return;
+    data.lastLeader = faction.leader;
+    data.leaderLegitimacy = Rand.Range(-8f, -2f);
+    float transferAmount = Mathf.Min(50f, data.defensePoints);
+    data.defensePoints -= transferAmount;
+    data.attackPoints += transferAmount;
+    data.stabilityPoints -= 15f;
+    data.accumulatedEntropy += 2f;
+	data.influencePoints -= 90f;
+    
+    // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Смерть лидера (через менеджер событий)
+    DF_EventManager.Fire(
+        "DF_LeaderDeath",
+        "DF_LeaderDeath_Label".Translate(),
+        "DF_LeaderDeath_Text".Translate(
+            faction.Name,
+            oldLeaderName,
+            transferAmount
+        ),
+        LetterDefOf.NeutralEvent,
+        null  // Камера не нужна (лидер уничтожен)
+    );
+    return;
     }
     else if (roll < 0.40f) // Инвестирование в оборону 10% (было 20%)
     {
         ExecuteDefenseInvestment();
         return;
     }
-    else if (roll < 0.60f) // Благоустройство 20% (осталось)
-    {
-        data.stabilityPoints += 20f;
-        data.leaderLegitimacy += 5f;
-        data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
-        data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-        data.accumulatedEntropy += 1f;
-        Find.LetterStack.ReceiveLetter("🌟 Эпоха процветания",
-            $"{faction.Name} улучшила инфраструктуру.\n\n• Стабильность: +20\n• Лидер: +5",
-            LetterDefOf.PositiveEvent);
-        return;
-    }
+else if (roll < 0.60f) // Благоустройство 30%
+{
+    data.stabilityPoints += 20f;
+    data.leaderLegitimacy += 5f;
+    data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
+    data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
+    data.accumulatedEntropy += 2f;
+	data.influencePoints -= 90f;
+    
+    // ✅ ОТПРАВЛЯЕМ ПИСЬМО: Эпоха процветания (через менеджер событий)
+    DF_EventManager.Fire(
+        "DF_ProsperityEra",
+        "DF_ProsperityEra_Label".Translate(),
+        "DF_ProsperityEra_Text".Translate(faction.Name),
+        LetterDefOf.NeutralEvent,
+        null  // Камера не нужна (общее развитие)
+    );
+    return;
+}
+
 else if (roll < 0.75f) // Цветная революция 15%
 {
     // Выбираем цель - самую слабую по влиянию фракцию
@@ -715,7 +967,12 @@ else if (roll < 0.75f) // Цветная революция 15%
     
     if (targets.Count == 0)
     {
-        ExecuteDefenseInvestment("не нашла цель для революции.");
+        // ✅ Фоллбек: нет цели
+        DF_EventManager.Fire("DF_DefenseInvestment",
+            "DF_DefenseInvestment_Label".Translate(),
+            "DF_ColorRevolution_NoTarget_Text".Translate(faction.Name),
+            LetterDefOf.NeutralEvent, null);
+        ExecuteDefenseInvestment();
         return;
     }
     
@@ -728,7 +985,12 @@ else if (roll < 0.75f) // Цветная революция 15%
     
     if (targetSettlements.Count == 0)
     {
-        ExecuteDefenseInvestment("цель не имеет поселений.");
+        // ✅ Фоллбек: нет поселений
+        DF_EventManager.Fire("DF_DefenseInvestment",
+            "DF_DefenseInvestment_Label".Translate(),
+            "DF_ColorRevolution_NoSettlements_Text".Translate(faction.Name),
+            LetterDefOf.NeutralEvent, null);
+        ExecuteDefenseInvestment();
         return;
     }
     
@@ -747,7 +1009,12 @@ else if (roll < 0.75f) // Цветная революция 15%
     
     if (availableDefs.Count == 0)
     {
-        ExecuteDefenseInvestment("нет доступных шаблонов фракций.");
+        // ✅ Фоллбек: нет шаблонов
+        DF_EventManager.Fire("DF_DefenseInvestment",
+            "DF_DefenseInvestment_Label".Translate(),
+            "DF_ColorRevolution_NoDefs_Text".Translate(faction.Name),
+            LetterDefOf.NeutralEvent, null);
+        ExecuteDefenseInvestment();
         return;
     }
     
@@ -790,7 +1057,12 @@ else if (roll < 0.75f) // Цветная революция 15%
         {
             // Уничтожаем созданную фракцию
             rebelFaction.defeated = true;
-            ExecuteDefenseInvestment("не удалось найти место для поселения повстанцев.");
+            // ✅ Фоллбек: нет места
+            DF_EventManager.Fire("DF_DefenseInvestment",
+                "DF_DefenseInvestment_Label".Translate(),
+                "DF_ColorRevolution_NoTile_Text".Translate(faction.Name),
+                LetterDefOf.NeutralEvent, null);
+            ExecuteDefenseInvestment();
             return;
         }
     }
@@ -871,61 +1143,90 @@ else if (roll < 0.75f) // Цветная революция 15%
     targetData.stabilityPoints -= 30f;
     targetData.stabilityPoints = Mathf.Clamp(targetData.stabilityPoints, -100f, 100f);
     
-    // 7. ПОВЫШАЕМ ВЛИЯНИЕ СПОНСОРА
-    data.influencePoints += 50f;
-    data.accumulatedEntropy += 1f;
+    // 7. ПОНИЖАЕМ ВЛИЯНИЕ СПОНСОРА
+    data.influencePoints -= 50f;
+    data.accumulatedEntropy += 2f;
     
-    // 8. ОТПРАВЛЯЕМ СООБЩЕНИЕ
+    // ✅ ГЛАВНОЕ ПИСЬМО О СОБЫТИИ
     string sponsorName = faction.Name;
     string targetName = targetFaction.Name;
     string rebelName = rebelFaction.Name;
     
-    string letterText = $"{sponsorName} организовала цветную революцию в {targetName}!\n\n" +
-                       $"• Создана новая фракция: {rebelName}\n" +
-                       $"• Основана база: {rebelBase.Name}\n" +
-                       $"• {targetName}: стабильность -30\n" +
-                       $"• {sponsorName}: влияние +50\n\n" +
-                       $"Повстанцы враждуют с {targetName}, но дружественны к {sponsorName}.";
-    
-    Find.LetterStack.ReceiveLetter("🌟 Цветная революция", 
-        letterText, 
-        LetterDefOf.NeutralEvent, 
-        rebelBase);
+    DF_EventManager.Fire(
+        "DF_ColorRevolution",
+        "DF_ColorRevolution_Label".Translate(),
+        "DF_ColorRevolution_Text".Translate(sponsorName, targetName, rebelName, rebelBase.Name),
+        LetterDefOf.NeutralEvent,
+        rebelBase
+    );
     
     OnFactionUsed(newFactionDef);
     return;
 }
-    else if (roll < 0.90f) // Пропаганда 15% (осталось)
+else // Пропаганда (теперь занимает оставшиеся 25%)
+{
+    if (!ModsConfig.IdeologyActive)
     {
-        if (!ModsConfig.IdeologyActive)
-        {
-            ExecuteDefenseInvestment("использовала влияние без DLC Ideology.");
-            return;
-        }
-        
-        var targetData = factionDataList
-            .Where(d => d.faction != faction && !d.faction.defeated && !IgnoredFactionNames.Contains(d.faction.def.defName))
-            .OrderBy(d => d.stabilityPoints)
-            .FirstOrDefault();
-        
-        if (targetData != null && faction.ideos?.PrimaryIdeo != null)
-        {
-            Ideo myIdeo = faction.ideos.PrimaryIdeo;
-            targetData.faction.ideos.SetPrimary(myIdeo);
-            data.accumulatedEntropy += 1f;
-            Find.LetterStack.ReceiveLetter("🌟 Культурная победа",
-                $"Пропаганда {faction.Name} захватила умы {targetData.faction.Name}!\nПриняли идеологию: {myIdeo.name}.",
-                LetterDefOf.PositiveEvent);
-            return;
-        }
-        ExecuteDefenseInvestment("пропаганда не нашла цели.");
+        // Фоллбек: нет DLC Ideology
+        DF_EventManager.Fire("DF_DefenseInvestment",
+            "DF_DefenseInvestment_Label".Translate(),
+            "DF_CulturalPropaganda_NoDLC_Text".Translate(faction.Name),
+            LetterDefOf.NeutralEvent, null);
+        ExecuteDefenseInvestment();
         return;
     }
-    else // Фоллбек: Инвестирование в оборону 10%
+    
+    // Выбираем цель с самой низкой стабильностью
+var targetData = factionDataList
+    .Where(d => d.faction != faction 
+                && !d.faction.defeated 
+                && !IgnoredFactionNames.Contains(d.faction.def.defName)
+                // ✅ ДОБАВЛЕНО: Цель должна иметь ДРУГУЮ идеологию (или не иметь её, если это возможно)
+                && (d.faction.ideos?.PrimaryIdeo == null || d.faction.ideos.PrimaryIdeo != faction.ideos.PrimaryIdeo))
+    .OrderBy(d => d.stabilityPoints) 
+    .FirstOrDefault();
+    
+    if (targetData != null && faction.ideos?.PrimaryIdeo != null)
     {
-        ExecuteDefenseInvestment("использовала влияние на стандартное укрепление.");
+        Ideo myIdeo = faction.ideos.PrimaryIdeo;
+        targetData.faction.ideos.SetPrimary(myIdeo);
+        
+        // ✅ НОВОЕ: Наносим "ущерб" и бонусы цели
+        targetData.influencePoints -= 50f; // Теряют влияние из-за смены идеологии
+        targetData.defensePoints += 50f;   // Но армия усиливается (репрессии/сплочение)
+        
+        // Ограничиваем значения, чтобы не вылетело за рамки
+        targetData.influencePoints = Mathf.Clamp(targetData.influencePoints, -200f, 200f);
+        targetData.defensePoints = Mathf.Clamp(targetData.defensePoints, 0f, 200f);
+
+        // Расходы атакующего
+        data.accumulatedEntropy += 2f;
+        data.influencePoints -= 90f;
+        
+        // Отправляем письмо
+        DF_EventManager.Fire(
+            "DF_CulturalPropaganda",
+            "DF_CulturalPropaganda_Label".Translate(),
+            "DF_CulturalPropaganda_Text".Translate(
+                faction.Name,            
+                targetData.faction.Name, 
+                myIdeo.name              
+            ),
+            LetterDefOf.NeutralEvent,
+            null 
+        );
         return;
     }
+    
+    // Фоллбек: нет цели
+    DF_EventManager.Fire("DF_DefenseInvestment",
+        "DF_DefenseInvestment_Label".Translate(),
+        "DF_CulturalPropaganda_NoTarget_Text".Translate(faction.Name),
+        LetterDefOf.NeutralEvent, null);
+    ExecuteDefenseInvestment();
+    return;
+}
+
 }
 
         // ============================================ БЛОК 4.3: ОСНОВНАЯ ЛОГИКА СТАБИЛЬНОСТИ ============================================
@@ -982,9 +1283,17 @@ else if (roll < 0.75f) // Цветная революция 15%
                             .RandomElementWithFallback(oldIdeo);
                     }
                     schismFaction.ideos.SetPrimary(newIdeo);
-                    Find.LetterStack.ReceiveLetter("Идеологический раскол", 
-                        $"{schismFaction.Name} покинула {oldIdeo.name}!\nНовая вера: {newIdeo.name}", 
-                        LetterDefOf.NeutralEvent);
+                DF_EventManager.Fire(
+                    "DF_IdeologicalSchism",
+                    "DF_IdeologicalSchism_Label".Translate(),
+                    "DF_IdeologicalSchism_Text".Translate(
+                        schismFaction.Name,  // {0} - фракция
+                        oldIdeo.name,        // {1} - старая идеология
+                        newIdeo.name         // {2} - новая идеология
+                    ),
+                    LetterDefOf.NeutralEvent,
+                    null
+                );
                 }
             }
         }
@@ -1059,7 +1368,7 @@ if (data.lastSettlementCount > 0 && diff != 0)
 }
 data.lastSettlementCount = currentSettlements;
 
-// 2. Лидер (смена + пассивка) ← ОСТАВИТЬ КАК ЕСТЬ
+// 2. Лидер (смена + пассивка) ← ОСТАВЛЕНО КАК ЕСТЬ
 if (faction.leader != data.lastLeader)
 {
     if (data.lastLeader != null)
@@ -1078,12 +1387,39 @@ else if (faction.leader != null)
     data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
 }
 
-// 🔥 ПАССИВКА (НОВОЕ)
-float leaderStableBonus = (faction.leader != null ? data.leaderLegitimacy / 5f : 0f);
-float baseBonus = currentSettlements * 1f;
-data.stabilityPoints += leaderStableBonus + baseBonus;
+// 🔥 ПАССИВКА (ОБНОВЛЕННАЯ)
+// Используем префикс p_, чтобы избежать ошибок дублирования переменных (CS0128)
+float p_leaderStableBonus = (faction.leader != null ? data.leaderLegitimacy / 10f : 0f);
+
+// 1. Считаем врагов (Штраф -1 за каждого)
+int p_enemyCount = Find.FactionManager.AllFactions.Count(f => 
+    !f.defeated && 
+    f != faction && 
+    f.def.humanlikeFaction && 
+    !IgnoredFactionNames.Contains(f.def.defName) && 
+    faction.HostileTo(f));
+
+// 2. Считаем союзников (Бонус +1 за каждого)
+int p_allyCount = Find.FactionManager.AllFactions.Count(f => 
+    !f.defeated && 
+    f != faction && 
+    f.def.humanlikeFaction && 
+    !IgnoredFactionNames.Contains(f.def.defName) && 
+    faction.RelationKindWith(f) == FactionRelationKind.Ally);
+
+float p_warPenalty = p_enemyCount * 0.5f;
+float p_allyBonus = p_allyCount * 0.5f;
+
+// ИТОГОВАЯ ФОРМУЛА: Лидер + Союзники - Враги (без поселений)
+data.stabilityPoints += p_leaderStableBonus + p_allyBonus - p_warPenalty;
+
+if (DynamicFactionsMod.settings.showDebugLogs)
+{
+    Log.Message($"[DF] {faction.Name}: Leader({p_leaderStableBonus:F1}) + Allies({p_allyBonus:F1}) - War({p_warPenalty:F1}) = TotalChange({p_leaderStableBonus + p_allyBonus - p_warPenalty:F1})");
+}
 
 data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
+
 
 // ============================================
 // 🎲 РУЛЕТКА ВСТАВИТЬ СЮДА (СРАЗУ ПОСЛЕ CLAMP)
@@ -1136,38 +1472,72 @@ if (ModsConfig.IdeologyActive && faction.ideos?.PrimaryIdeo != null)
         other.ideos?.PrimaryIdeo == faction.ideos.PrimaryIdeo);
 }
 
-float leaderInfPassive = (faction.leader != null ? data.leaderLegitimacy / 5f : 0f);
+int enemyCount = Find.FactionManager.AllFactions.Count(f => 
+    f != faction && !f.IsPlayer && !f.defeated && !f.Hidden && 
+    !f.def.defName.Contains("Trade") && 
+    faction.HostileTo(f));
 
-float influenceChange = (allyCount * 1f) + (sameIdeoCount * 2f) + leaderInfPassive;
+int settlementCount = Find.WorldObjects.Settlements.Count(s => s.Faction == faction);
+
+// Штрафы
+float sizePenalty = settlementCount * 0.5f; // 0.5 за каждое поселение
+float enemyLoss   = enemyCount * -1f;    // -0.5 за каждого врага
+
+float leaderInfPassive = (faction.leader != null ? data.leaderLegitimacy / 10f : 0f);
+
+// ✅ ИСПРАВЛЕННАЯ ФОРМУЛА: убрал baseDecay
+float influenceChange = (allyCount * 0.5f) + (sameIdeoCount * 1f) + leaderInfPassive + sizePenalty + enemyLoss;
+
 influenceChange *= DynamicFactionsMod.settings.influenceMultiplier;
 data.influencePoints += influenceChange;
+data.influencePoints = Mathf.Clamp(data.influencePoints, -100f, 100f);
 
 // ЛОГИКА ШАНСА ВЛИЯНИЯ
 float infChance = 0f;
 if (data.influencePoints > 50f)
 {
-    infChance = (data.influencePoints - 50f) / 100f; // 70 -> 0.2 (20%)
+    infChance = (data.influencePoints - 50f) / 100f; 
 }
 else if (data.influencePoints < -50f)
 {
     infChance = (Mathf.Abs(data.influencePoints) - 50f) / 100f;
 }
 
-// Проверяем событие влияния только если не было других событий
+// Проверяем событие влияния
 if (selectedEvent == "Influence" && allowEvents && !eventOccurred && infChance > 0 && Rand.Value < infChance)
 {
     if (data.influencePoints > 50f)
     {
-        TriggerInfluenceEvent(faction, data, true);
-        data.influencePoints -= 100f;
+		TriggerInfluenceEvent(faction, data, true); // Очки спишутся внутри
     }
     else
     {
-        TriggerInfluenceEvent(faction, data, false);
-        data.influencePoints += 100f;
+    TriggerInfluenceEvent(faction, data, false); // Очки добавятся внутри
     }
-    eventOccurred = true; // Отмечаем, что событие произошло
+    eventOccurred = true; 
 }
+
+// Проверка изменения поселений
+if (data.lastSettlementCount != -1) 
+{
+    // ✅ ИСПРАВЛЕНО: settlementDiff вместо diff (чтобы не было конфликта имен)
+    int settlementDiff = settlementCount - data.lastSettlementCount;
+    
+    if (settlementDiff > 0)
+    {
+        // Захватили или основали (+15 за каждое)
+        float bonus = settlementDiff * 30f;
+        data.influencePoints += bonus;
+    }
+    else if (settlementDiff < 0)
+    {
+        // Потеряли или уничтожили (-30 за каждое)
+        float penalty = settlementDiff * 15f; 
+        data.influencePoints += penalty;
+    }
+}
+// Запоминаем текущее кол-во для следующего раза
+data.lastSettlementCount = settlementCount;
 
 
 // ============================================
@@ -1186,7 +1556,7 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
     {
         eventOccurred = true; 
         Faction enemyTarget = null;
-        string reason = "агрессия";
+        string reason = "DF_AttackReason_Aggression".Translate();
 	
         // ------------------------------------------------------------
         // ПОИСК ЦЕЛИ (полная логика из старого кода)
@@ -1244,13 +1614,13 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
                 float conflictChance = Rand.Value;
 
                 if (conflictChance < 0.3f)
-                    conflictReason = "дипломатический инцидент";
+                    conflictReason = "DF_ConflictReason_Diplomatic".Translate();
                 else if (conflictChance < 0.6f)
-                    conflictReason = "пограничный спор";
+                    conflictReason = "DF_ConflictReason_Border".Translate();
                 else if (conflictChance < 0.8f && ModsConfig.IdeologyActive)
-                    conflictReason = "идеологический спор";
+                    conflictReason = "DF_ConflictReason_Ideological".Translate();
                 else
-                    conflictReason = "экономическая конкуренция";
+                    conflictReason = "DF_ConflictReason_Economic".Translate();
 
                 potentialConflicts.Add((f, minDist, conflictReason));
             }
@@ -1285,7 +1655,7 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
                 if (cultEnemies.Count > 0)
                 {
                     enemyTarget = cultEnemies.OrderBy(x => x.dist).First().fac;
-                    reason = $"угроза доминирования идеологии {threatIdeo.name}";
+                    reason = "DF_AttackReason_IdeologyThreat".Translate(threatIdeo.name);
                 }
             }
             else if (moderateThreat && threatIdeo != null && Rand.Value < 0.50f)
@@ -1294,7 +1664,7 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
                 if (worthyCultEnemies.Count > 0)
                 {
                     enemyTarget = worthyCultEnemies.OrderBy(x => x.dist).First().fac;
-                    reason = $"сдерживание идеологии {threatIdeo.name}";
+                    reason = "DF_AttackReason_IdeologyContainment".Translate(threatIdeo.name);
                 }
             }
 
@@ -1308,12 +1678,12 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
                     if (worthyEnemies.Count > 0)
                     {
                         enemyTarget = worthyEnemies.OrderBy(x => x.dist).First().fac;
-                        reason = "технологическое соперничество";
+                        reason = "DF_AttackReason_TechnologicalRivalry".Translate();
                     }
                     else if (validEnemies.Count > 0)
                     {
                         enemyTarget = validEnemies[0].fac; // ближайший
-                        reason = "территориальный спор";
+                        reason = "DF_AttackReason_TerritorialDispute".Translate();
                     }
                 }
                 else // 20% ближайший
@@ -1321,7 +1691,7 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
                     if (validEnemies.Count > 0)
                     {
                         enemyTarget = validEnemies[0].fac;
-                        reason = "территориальный спор";
+                        reason = "DF_AttackReason_TerritorialDispute".Translate();
                     }
                 }
             }
@@ -1341,14 +1711,14 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
         // Если цель найдена, проверяем кулдаун:
         if (enemyTarget != null)
         {
-            // ✅ ПРОВЕРКА КУЛДАУНА 30 ДНЕЙ
+            // ✅ ИСПРАВЛЕННАЯ ПРОВЕРКА: Мир действует, пока текущее время меньше времени окончания
             if (data.lastPeaceFaction == enemyTarget && 
-                data.lastPeaceTick > 0 && 
-                Find.TickManager.TicksGame - data.lastPeaceTick < 30 * 60000)
+                data.lastPeaceTick > Find.TickManager.TicksGame)
             {
                 if (DynamicFactionsMod.settings.showDebugLogs)
                 {
-                    Log.Message($"[DF] ⏳ {faction.Name} пропускает атаку на {enemyTarget.Name} (30 дней мира)");
+                    float daysLeft = (data.lastPeaceTick - Find.TickManager.TicksGame) / 60000f;
+                    Log.Message($"[DF] ⏳ {faction.Name} пропускает атаку на {enemyTarget.Name} (до конца мира {daysLeft:F1} дн.)");
                 }
                 data.attackPoints *= 0.8f; // Штраф за нерешительность
                 // Выходим из блока атаки
@@ -1367,7 +1737,7 @@ if (selectedEvent == "Attack" && allowEvents && !eventOccurred && data.attackPoi
             // Если enemyTarget не null, продолжаем обычную логику
             FactionStabilityData targetData = GetOrCreateData(enemyTarget);
 			
-            // Полный расчет переговоров (как в старом коде)
+            // Полный расчет переговоров (как в старом кода)
             float defLeader = targetData.leaderLegitimacy;
             float defInfluence = targetData.influencePoints;
             float defStability = targetData.stabilityPoints;
@@ -1400,9 +1770,13 @@ if (Rand.Value < negotiationChance)
     data.lastPeaceFaction = enemyTarget;
     data.lastPeaceTick = Find.TickManager.TicksGame + peaceDays * 60000;
     
-    Find.LetterStack.ReceiveLetter("Мир заключён", 
-        $"{faction.Name} и {enemyTarget.Name} заключили мир после переговоров!\nШанс: {negotiationChance:P0}%", 
-        LetterDefOf.PositiveEvent);
+DF_EventManager.Fire(
+    "DF_PeaceMade",
+    "DF_PeaceMade_Label".Translate(),
+    "DF_PeaceMade_Text".Translate(faction.Name, enemyTarget.Name, negotiationChance.ToString("P0")),
+    LetterDefOf.NeutralEvent,
+    null
+);
 }
             // БОЙ (полная логика из старого кода)
             else
@@ -1422,23 +1796,25 @@ if (!faction.HostileTo(enemyTarget))
     }
 }
 
-                // Полный расчет боя с технологиями
-                float techAtkMult = BattleTechMultipliers.TryGetValue(faction.def.techLevel, out float ta) ? ta : 1f;
-                float techDefMult = BattleTechMultipliers.TryGetValue(enemyTarget.def.techLevel, out float td) ? td : 1f;
+// Полный расчет боя с технологиями
+float techAtkMult = BattleTechMultipliers.TryGetValue(faction.def.techLevel, out float ta) ? ta : 1f;
+float techDefMult = BattleTechMultipliers.TryGetValue(enemyTarget.def.techLevel, out float td) ? td : 1f;
 
-                float battleAtkLeader = data.leaderLegitimacy;
-                float battleAtkAttack = data.attackPoints * techAtkMult;
-                float battleDefLeader = targetData.leaderLegitimacy;
-                float battleDefDefense = targetData.defensePoints * techDefMult;
+float battleAtkLeader = data.leaderLegitimacy;
+float battleAtkAttack = (data.attackPoints + data.defensePoints * 0.5f) * techAtkMult;
 
-                float successChance = (battleAtkLeader + battleAtkAttack - battleDefLeader - battleDefDefense) / 100f;
-                successChance = Mathf.Clamp01(successChance);
+float battleDefLeader = targetData.leaderLegitimacy;
+float battleDefDefense = (targetData.defensePoints + targetData.attackPoints * 0.5f) * techDefMult;
 
-                if (DynamicFactionsMod.settings.showDebugLogs)
-                {
-                    Log.Message($"[DF] ⚔️ {faction.Name} T{techAtkMult:F1} vs {enemyTarget.Name} T{techDefMult:F1}: " +
-                                $"({battleAtkLeader:F0}+{battleAtkAttack:F0}-{battleDefLeader:F0}-{battleDefDefense:F0}) = {successChance:P1}");
-                }
+float successChance = (battleAtkLeader + battleAtkAttack - battleDefLeader - battleDefDefense) / 200f;
+successChance = Mathf.Clamp01(successChance);
+
+if (DynamicFactionsMod.settings.showDebugLogs)
+{
+    Log.Message($"[DF] ⚔️ {faction.Name} T{techAtkMult:F1} vs {enemyTarget.Name} T{techDefMult:F1}: " +
+                $"({battleAtkLeader:F0}+{battleAtkAttack:F0}-{battleDefLeader:F0}-{battleDefDefense:F0}) = {successChance:P1}");
+}
+
 
                 // Вспомогательная функция: шанс смерти лидера защитника 15%
                 Action MaybeKillDefenderLeader15 = () => {
@@ -1467,58 +1843,72 @@ if (!faction.HostileTo(enemyTarget))
 
                     if (isBarbarian)
                     {
-                        // 1) 10% Пиррова победа
-                        if (roll < 0.10f)
-                        {
-                            KillLeaderNegotiationsStyle(faction, data, -8f, -2f);
-                            data.influencePoints -= 30f;
+ // 1) 10% Пиррова победа
+if (roll < 0.10f)
+{
+    KillLeaderNegotiationsStyle(faction, data, -8f, -2f);
+    data.influencePoints -= 30f;
+ //Пиррова победа
+CaptureBases(
+    faction, 
+    targetBases, 
+    1, 
+    "DF_PyrrhicVictory_Label".Translate(),
+    "DF_PyrrhicVictory_Text".Translate(faction.Name, targetBases.RandomElement().Name),
+    "DF_PyrrhicVictory" // ← ДОБАВИЛИ DefName события
+);
 
-                            CaptureBases(faction, targetBases, 1, "Пиррова победа",
-                                $"Победа далась страшной ценой: лидер {faction.Name} погиб в бою.\n" +
-                                $"Влияние ослабло (-30), но армия захватила ближайшую базу врага.");
-                        }
-                        // 2) 40% Захват 1-3 ближайших + 15% смерть лидера защитника
-                        else if (roll < 0.10f + 0.40f)
-                        {
-                            int count = Mathf.Min(targetBases.Count, Rand.RangeInclusive(1, 3));
-                            MaybeKillDefenderLeader15();
+}
+// 2) 40% Захват 1-3 ближайших + 15% смерть лидера защитника
+else if (roll < 0.10f + 0.40f)
+{
+int count = Mathf.Min(targetBases.Count, Rand.RangeInclusive(1, 3));
+CaptureBases(faction, targetBases, count, 
+    "DF_Invasion_Label".Translate(),
+    "DF_Invasion_Text".Translate(faction.Name, count, enemyTarget.Name),
+    "DF_Invasion");
+}
 
-                            CaptureBases(faction, targetBases, count, "Вторжение",
-                                $"{faction.Name} прорвала оборону и захватила {count} ближайших поселений {enemyTarget.Name}.");
-                        }
-                        // 3) 20% Обращение в идеологию без потерь, защитник -50 влияния
-                        else if (roll < 0.10f + 0.40f + 0.20f)
-                        {
-                            if (ModsConfig.IdeologyActive && faction.ideos?.PrimaryIdeo != null && enemyTarget.ideos != null)
-                            {
-                                enemyTarget.ideos.SetPrimary(faction.ideos.PrimaryIdeo);
-                            }
-                            targetData.influencePoints -= 50f;
-
-                            Find.LetterStack.ReceiveLetter("Идеологическая капитуляция",
-                                $"{enemyTarget.Name} признала культурное превосходство {faction.Name} и приняла их идеологию.\n\n" +
-                                $"• {enemyTarget.Name}: -50 влияния",
-                                LetterDefOf.NeutralEvent);
+// 3) 20% Обращение в идеологию без потерь, защитник -50 влияния
+else if (roll < 0.10f + 0.40f + 0.20f)
+{
+    if (ModsConfig.IdeologyActive && faction.ideos?.PrimaryIdeo != null && enemyTarget.ideos != null)
+    {
+        enemyTarget.ideos.SetPrimary(faction.ideos.PrimaryIdeo);
+    }
+    targetData.influencePoints -= 50f;
+//Идеологическая капитуляция
+DF_EventManager.Fire(
+    "DF_IdeologicalCapitulation",
+    "DF_IdeologicalCapitulation_Label".Translate(),
+    "DF_IdeologicalCapitulation_Text".Translate(enemyTarget.Name, faction.Name),
+    LetterDefOf.NeutralEvent,
+    null
+);
 
                             data.attackPoints *= 0.85f;
                         }
-                        // 4) 20% Уничтожение 1 базы -> руины
-                        else if (roll < 0.10f + 0.40f + 0.20f + 0.20f)
-                        {
-                            targetData.stabilityPoints -= 30f;
-
-                            DestroyBases(targetBases, 1, "Варварская расправа",
-                                $"{faction.Name} уничтожила поселение {enemyTarget.Name}.\n" +
-                                $"Выжившие рассказывают о чудовищных зверствах: убиты дети, женщины подверглись насилию.\n\n" +
-                                $"• {enemyTarget.Name}: -30 стабильности (паника)");
+// 4) 20% Уничтожение 1 базы -> руины
+else if (roll < 0.10f + 0.40f + 0.20f + 0.20f)
+{
+    targetData.stabilityPoints -= 30f;
+//Варварская расправа
+DestroyBases(targetBases, 1, 
+    "DF_BarbarianSlaughter_Label".Translate(),
+    "DF_BarbarianSlaughter_Text".Translate(faction.Name, enemyTarget.Name),
+    "DF_BarbarianSlaughter");
                         }
                         // 5) 10% "Война пришла в дом": обмен ближайшими базами
                         else
                         {
                             if (attackerBases.Count == 0 || targetBases.Count == 0)
                             {
-                                CaptureBases(faction, targetBases, 1, "Налёт",
-                                    $"{faction.Name} воспользовалась хаосом и захватила ближайшую базу {enemyTarget.Name}.");
+								//налёт
+CaptureBases(faction, targetBases, 1, 
+    "DF_Raid_Label".Translate(),
+    "DF_Raid_Text".Translate(faction.Name, enemyTarget.Name),
+    "DF_Raid"
+);
                             }
                             else
                             {
@@ -1537,7 +1927,7 @@ if (!faction.HostileTo(enemyTarget))
                                 Settlement aNew = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
                                 aNew.SetFaction(enemyTarget);
                                 aNew.Tile = aTile;
-                                aNew.Name = aName + " (захвачена)";
+                                aNew.Name = aName;
                                 Find.WorldObjects.Add(aNew);
 
                                 // захват атакующим базы защитника
@@ -1547,95 +1937,38 @@ if (!faction.HostileTo(enemyTarget))
                                 Settlement dNew = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
                                 dNew.SetFaction(faction);
                                 dNew.Tile = dTile;
-                                dNew.Name = dName + " (захвачена)";
+                                dNew.Name = dName;
                                 Find.WorldObjects.Add(dNew);
-
-                                Find.LetterStack.ReceiveLetter("Война пришла в дом",
-                                    $"Фронт рухнул, и война пришла в тыл.\n" +
-                                    $"{faction.Name} захватила {dName}, а {enemyTarget.Name} в ответ захватила {aName}.",
-                                    LetterDefOf.NeutralEvent, new GlobalTargetInfo(dTile));
+// война пришла в дом
+DF_EventManager.Fire(
+    "DF_WarAtHome",
+    "DF_WarAtHome_Label".Translate(),
+    "DF_WarAtHome_Text".Translate(faction.Name, dName, enemyTarget.Name, aName),
+    LetterDefOf.NeutralEvent,
+    new GlobalTargetInfo(dTile)
+);
                             }
                         }
                     }
                     else // Industrial+
                     {
-                        // 1) 10% Пиррова победа
-                        if (roll < 0.10f)
+                        // 1. ПРОВЕРКА НА ЯДЕРНУЮ ВОЙНУ
+                        if (Rand.Value < DynamicFactionsMod.settings.nuclearWarChance / 100f)
                         {
-                            KillLeaderNegotiationsStyle(faction, data, -8f, -2f);
-                            data.influencePoints -= 30f;
-
-                            CaptureBases(faction, targetBases, 1, "Пиррова победа",
-                                $"Победа далась ценой жизни командующего {faction.Name}.\n" +
-                                $"Влияние ослабло (-30), но операция завершилась захватом ближайшей базы.");
-                        }
-                        // 2) 35% Захват 1-3 ближайших + 15% смерть лидера защитника
-                        else if (roll < 0.10f + 0.35f)
-                        {
-                            int count = Mathf.Min(targetBases.Count, Rand.RangeInclusive(1, 3));
-                            MaybeKillDefenderLeader15();
-
-                            CaptureBases(faction, targetBases, count, "Блицкриг",
-                                $"{faction.Name} провела успешную операцию: захвачено {count} ближайших баз {enemyTarget.Name}.");
-                        }
-                        // 3) 15% Обращение в идеологию
-                        else if (roll < 0.10f + 0.35f + 0.15f)
-                        {
-                            if (ModsConfig.IdeologyActive && faction.ideos?.PrimaryIdeo != null && enemyTarget.ideos != null)
-                            {
-                                enemyTarget.ideos.SetPrimary(faction.ideos.PrimaryIdeo);
-                            }
-                            targetData.influencePoints -= 50f;
-
-                            Find.LetterStack.ReceiveLetter("Информационная победа",
-                                $"{faction.Name} сломила сопротивление {enemyTarget.Name} через пропаганду и дипломатию.\n\n" +
-                                $"• {enemyTarget.Name}: -50 влияния",
-                                LetterDefOf.NeutralEvent);
-
-                            data.attackPoints *= 0.85f;
-                        }
-                        // 4) 20% Разрушить 1 базу -> руины + 15% смерть лидера защитника
-                        else if (roll < 0.10f + 0.35f + 0.15f + 0.20f)
-                        {
-                            MaybeKillDefenderLeader15();
-
-                            DestroyBases(targetBases, 1, "Точечный удар",
-                                $"{faction.Name} нанесла точечный удар по инфраструктуре {enemyTarget.Name}.\n" +
-                                $"Одна база уничтожена и превратилась в руины.");
-                        }
-                        // 5) 15% Ракетный удар
-                        else if (roll < 0.10f + 0.35f + 0.15f + 0.20f + 0.15f)
-                        {
-                            int count = Mathf.Min(targetBases.Count, Rand.RangeInclusive(1, 3));
-
-                            MaybeKillDefenderLeader15();
-                            targetData.stabilityPoints -= 30f;
-
-                            DestroyBases(targetBases, count, "Ракетный удар",
-                                $"{faction.Name} нанесла ракетный удар.\n" +
-                                $"Уничтожено {count} баз {enemyTarget.Name}; территория превратилась в руины.\n\n" +
-                                $"• {enemyTarget.Name}: -30 стабильности (шок)");
-                        }
-                        // 6) 5% Ядерная война
-                        else
-                        {
-                            // Ядерный удар по ВСЕМ фракциям
                             var factionsToNuke = Find.FactionManager.AllFactions.Where(f => !f.IsPlayer && !f.defeated).ToList();
                             
-                          foreach (Faction f in factionsToNuke)
-{
-    var fSettlements = Find.WorldObjects.Settlements.Where(s => s.Faction == f).ToList();
-    if (fSettlements.Count == 0) continue;
-    
-    // ✅ СЛУЧАЙНЫЙ диапазон ДЛЯ КАЖДОЙ фракции
-    int minDestroy = Verse.Rand.RangeInclusive(2, 6);
-    int maxDestroy = Verse.Rand.RangeInclusive(5, 10);
-    int toDestroy = Verse.Rand.RangeInclusive(minDestroy, Mathf.Min(maxDestroy, fSettlements.Count));
-    
-    var nukedBases = fSettlements.InRandomOrder().Take(toDestroy).ToList();
-    
-    foreach (Settlement s in nukedBases)
-
+                            foreach (Faction f in factionsToNuke)
+                            {
+                                var fSettlements = Find.WorldObjects.Settlements.Where(s => s.Faction == f).ToList();
+                                if (fSettlements.Count == 0) continue;
+                                
+                                int minDestroy = Verse.Rand.RangeInclusive(2, 6);
+                                int maxDestroy = Verse.Rand.RangeInclusive(4, 8);
+                                int toDestroy = Verse.Rand.RangeInclusive(minDestroy, Mathf.Min(maxDestroy, fSettlements.Count));
+                                
+                                var nukedBases = fSettlements.InRandomOrder().Take(toDestroy).ToList();
+                                
+                                foreach (Settlement s in nukedBases)
                                 {
                                     SpawnRuins(s.Tile, s.Name);
                                     Find.WorldObjects.Remove(s);
@@ -1647,29 +1980,91 @@ if (!faction.HostileTo(enemyTarget))
                                 fData.stabilityPoints -= 50f;
                             }
                             
-                            Find.LetterStack.ReceiveLetter("ЯДЕРНАЯ ВОЙНА", 
-                                "Война. Война никогда не меняется...", 
-                                LetterDefOf.ThreatBig);
-								
-// ✅ Toxic Fallout для ИГРОКА (30-60 дней)
-Map playerMap = Find.AnyPlayerHomeMap;
-if (playerMap != null)
-{
-    IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, playerMap);
-    parms.target = playerMap;
-    
-    IncidentDef falloutDef = DefDatabase<IncidentDef>.GetNamed("ToxicFallout");
-    if (falloutDef != null)
-    {
-        falloutDef.Worker.TryExecute(parms);  // ← Без durationDays!
-    }
-}
-								
+                            DF_EventManager.Fire(
+                                "DF_NuclearWar",
+                                "DF_NuclearWar_Label".Translate(),
+                                "DF_NuclearWar_Text".Translate(),
+                                LetterDefOf.ThreatBig,
+                                null
+                            );
+                            
+                            Map playerMap = Find.AnyPlayerHomeMap;
+                            if (playerMap != null)
+                            {
+                                IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, playerMap);
+                                parms.target = playerMap;
+                                IncidentDef falloutDef = DefDatabase<IncidentDef>.GetNamed("ToxicFallout");
+                                if (falloutDef != null) falloutDef.Worker.TryExecute(parms);
+                            }
                             return;
                         }
-                    }
-                }
-// ПОРАЖЕНИЕ
+
+                        // 2. ОБЫЧНАЯ РУЛЕТКА
+                        float normalRoll = Rand.Value;
+
+                        // Пиррова победа
+                        if (normalRoll < 0.10f)
+                        {
+                            KillLeaderNegotiationsStyle(faction, data, -8f, -2f);
+                            data.influencePoints -= 30f;
+                            CaptureBases(faction, targetBases, 1, 
+                                "DF_PyrrhicVictory_Industrial_Label".Translate(),
+                                "DF_PyrrhicVictory_Industrial_Text".Translate(faction.Name),
+                                "DF_PyrrhicVictory_Industrial");
+                        }
+                        // Блицкриг
+                        else if (normalRoll < 0.45f)
+                        {
+                            int count = Mathf.Min(targetBases.Count, Rand.RangeInclusive(1, 3));
+                            MaybeKillDefenderLeader15();
+                            CaptureBases(faction, targetBases, count, 
+                                "DF_Blitzkrieg_Label".Translate(),
+                                "DF_Blitzkrieg_Text".Translate(faction.Name, count, enemyTarget.Name),
+                                "DF_Blitzkrieg");
+                        }
+                        // Инфо победа
+                        else if (normalRoll < 0.60f)
+                        {
+                            if (ModsConfig.IdeologyActive && faction.ideos?.PrimaryIdeo != null && enemyTarget.ideos != null)
+                            {
+                                enemyTarget.ideos.SetPrimary(faction.ideos.PrimaryIdeo);
+                            }
+                            targetData.influencePoints -= 50f;
+                            DF_EventManager.Fire(
+                                "DF_InformationalVictory",
+                                "DF_InformationalVictory_Label".Translate(),
+                                "DF_InformationalVictory_Text".Translate(faction.Name, enemyTarget.Name),
+                                LetterDefOf.NeutralEvent,
+                                null
+                            );
+                            data.attackPoints *= 0.85f;
+                        }
+                        // Точечный удар
+                        else if (normalRoll < 0.80f)
+                        {
+                            MaybeKillDefenderLeader15();
+                            DestroyBases(targetBases, 1, 
+                                "DF_PrecisionStrike_Label".Translate(),
+                                "DF_PrecisionStrike_Text".Translate(faction.Name, enemyTarget.Name),
+                                "DF_PrecisionStrike"
+                            );
+                        }
+                        // Ракетный удар
+                        else
+                        {
+                            int count = Mathf.Min(targetBases.Count, Rand.RangeInclusive(1, 3));
+                            MaybeKillDefenderLeader15();
+                            targetData.stabilityPoints -= 30f;
+                            DestroyBases(targetBases, count, 
+                                "DF_RocketStrike_Label".Translate(),
+                                "DF_RocketStrike_Text".Translate(faction.Name, count, enemyTarget.Name),
+                                "DF_RocketStrike"
+                            );
+                        }
+                    } // <-- ЗАКРЫВАЕМ else (Industrial+)
+                } // <-- ЗАКРЫВАЕМ if (Rand.Value < successChance) (ПОБЕДА)
+
+                // ПОРАЖЕНИЕ
 else
 {
     // Удаляем старый фиксированный код и заменяем на систему событий
@@ -1685,11 +2080,14 @@ else
         targetData.influencePoints += 10f;
         targetData.stabilityPoints += 5f;
         
-        Find.LetterStack.ReceiveLetter("🛡️ Оборона", 
-            $"{enemyTarget.Name} успешно оборонялся от {faction.Name}!\n" +
-            $"• {faction.Name}: -20 атаки (теперь {data.attackPoints:F0})\n" +
-            $"• {enemyTarget.Name}: -20 защиты (теперь {targetData.defensePoints:F0})", 
-            LetterDefOf.NeutralEvent);
+DF_EventManager.Fire(
+    "DF_Defense",
+    "DF_Defense_Label".Translate(),
+    "DF_Defense_Text".Translate(enemyTarget.Name, faction.Name, data.attackPoints, targetData.defensePoints),
+    LetterDefOf.NeutralEvent,
+    null
+);
+
     }
     else if (outcomeRoll < 0.70f) // 20% - Тяжелая оборона
     {
@@ -1701,11 +2099,13 @@ else
         targetData.influencePoints += 15f;
         targetData.stabilityPoints += 10f;
         
-        Find.LetterStack.ReceiveLetter("🛡️ Тяжелая оборона", 
-            $"{enemyTarget.Name} отразил атаку {faction.Name}, но с большими потерями в обороне!\n" +
-            $"• {faction.Name}: -20 атаки (теперь {data.attackPoints:F0})\n" +
-            $"• {enemyTarget.Name}: -40 защиты (теперь {targetData.defensePoints:F0})", 
-            LetterDefOf.NeutralEvent);
+DF_EventManager.Fire(
+    "DF_HeavyDefense",
+    "DF_HeavyDefense_Label".Translate(),
+    "DF_HeavyDefense_Text".Translate(enemyTarget.Name, faction.Name, data.attackPoints, targetData.defensePoints),
+    LetterDefOf.NeutralEvent,
+    null
+);
     }
     else if (outcomeRoll < 0.90f) // 20% - Отражено
     {
@@ -1716,11 +2116,13 @@ else
         targetData.influencePoints += 20f;
         targetData.stabilityPoints += 15f;
         
-        Find.LetterStack.ReceiveLetter("🛡️ Отражено", 
-            $"{enemyTarget.Name} полностью отразил атаку {faction.Name} без потерь в обороне!\n" +
-            $"• {faction.Name}: -20 атаки (теперь {data.attackPoints:F0})\n" +
-            $"• {enemyTarget.Name}: оборона не повреждена ({targetData.defensePoints:F0})", 
-            LetterDefOf.PositiveEvent);
+DF_EventManager.Fire(
+    "DF_Repelled",
+    "DF_Repelled_Label".Translate(),
+    "DF_Repelled_Text".Translate(enemyTarget.Name, faction.Name, data.attackPoints, targetData.defensePoints),
+    LetterDefOf.NeutralEvent,
+    null
+);
     }
     else // 10% - Контрнаступление
     {
@@ -1764,34 +2166,37 @@ else
                 Settlement newBase = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
                 newBase.SetFaction(enemyTarget);
                 newBase.Tile = tile;
-                newBase.Name = oldName + " (захвачено)";
+                newBase.Name = oldName;
                 Find.WorldObjects.Add(newBase);
                 
-                Find.LetterStack.ReceiveLetter("🛡️ Контрнаступление", 
-                    $"{enemyTarget.Name} не только отразил атаку, но и перешел в контрнаступление!\n\n" +
-                    $"• {faction.Name}: -20 атаки, -20 защиты\n" +
-                    $"• {enemyTarget.Name}: -20 атаки\n" +
-                    $"• Захвачена база: {oldName} → теперь принадлежит {enemyTarget.Name}", 
-                    LetterDefOf.PositiveEvent, newBase);
+DF_EventManager.Fire(
+    "DF_Counteroffensive",
+    "DF_Counteroffensive_Label".Translate(),
+    "DF_Counteroffensive_Text".Translate(enemyTarget.Name, faction.Name, oldName),
+    LetterDefOf.NeutralEvent,
+    newBase
+);
             }
             else
             {
-                Find.LetterStack.ReceiveLetter("🛡️ Контрнаступление", 
-                    $"{enemyTarget.Name} не только отразил атаку, но и перешел в контрнаступление!\n" +
-                    $"• {faction.Name}: -20 атаки, -20 защиты\n" +
-                    $"• {enemyTarget.Name}: -20 атаки\n" +
-                    $"• Захватить базу не удалось (ошибка)", 
-                    LetterDefOf.PositiveEvent);
+DF_EventManager.Fire(
+    "DF_Counteroffensive",
+    "DF_Counteroffensive_Label".Translate(),
+    "DF_Counteroffensive_Text".Translate(enemyTarget.Name, faction.Name),
+    LetterDefOf.NeutralEvent,
+    null
+);
             }
         }
         else
         {
-            Find.LetterStack.ReceiveLetter("🛡️ Контрнаступление", 
-                $"{enemyTarget.Name} не только отразил атаку, но и перешел в контрнаступление!\n" +
-                $"• {faction.Name}: -20 атаки, -20 защиты\n" +
-                $"• {enemyTarget.Name}: -20 атаки\n" +
-                $"• {faction.Name} не имеет баз для захвата", 
-                LetterDefOf.PositiveEvent);
+DF_EventManager.Fire(
+    "DF_Counteroffensive",
+    "DF_Counteroffensive_Label".Translate(),
+    "DF_Counteroffensive_NoBases_Text".Translate(enemyTarget.Name, faction.Name),
+    LetterDefOf.NeutralEvent,
+    null
+);
         }
     }
     
@@ -1801,7 +2206,7 @@ else
     targetData.attackPoints = Mathf.Clamp(targetData.attackPoints, 0f, 200f);
     targetData.defensePoints = Mathf.Clamp(targetData.defensePoints, 0f, 200f);
     
-    data.influencePoints = Mathf.Clamp(data.influencePoints, -200f, 200f);
+    data.influencePoints = Mathf.Clamp(data.influencePoints, -100f, 100f);
     data.stabilityPoints = Mathf.Clamp(data.stabilityPoints, -100f, 100f);
     targetData.influencePoints = Mathf.Clamp(targetData.influencePoints, -200f, 200f);
     targetData.stabilityPoints = Mathf.Clamp(targetData.stabilityPoints, -100f, 100f);
@@ -1817,7 +2222,7 @@ else
              
 // ---------------- АТАКА И БРОНЯ (С ФОКУСОМ) ----------------
 bool militaryFocusAttack = Rand.Value < 0.5f;
-float leaderMilitaryBonus = faction.leader != null ? data.leaderLegitimacy / 5f : 0f;  // твой вариант, или *0.1f
+float leaderMilitaryBonus = faction.leader != null ? data.leaderLegitimacy / 10f : 0f;  // твой вариант, или *0.1f
 
 int enemyFactionCount = Find.FactionManager.AllFactions.Count(f => 
     f != faction && !f.IsPlayer && !f.defeated && f.def.humanlikeFaction && 
@@ -1829,20 +2234,20 @@ int allyFactionCount = Find.FactionManager.AllFactions.Count(f =>
 
 if (militaryFocusAttack)
 {
-    float newAttackGain = (enemyFactionCount + 1f) + leaderMilitaryBonus;  // +1f базовый
+    float newAttackGain = (enemyFactionCount + 0.5f) + leaderMilitaryBonus;  // +1f базовый
     newAttackGain *= DynamicFactionsMod.settings.attackMultiplier;
     data.attackPoints += newAttackGain;
 }
 else
 {
-    float newDefenseGain = (allyFactionCount + 1f) + leaderMilitaryBonus;  // +1f базовый
+    float newDefenseGain = (allyFactionCount + 0.5f) + leaderMilitaryBonus;  // +1f базовый
     newDefenseGain *= DynamicFactionsMod.settings.defenseMultiplier;
     data.defensePoints += newDefenseGain;
 }
 
 // Пассивные бонусы от influence/stability
-data.attackPoints += data.influencePoints / 50f;
-data.defensePoints += data.stabilityPoints / 50f;
+data.attackPoints += data.influencePoints / 100f;
+data.defensePoints += data.stabilityPoints / 100f;
 
 // Финальный Clamp
 data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
@@ -1874,15 +2279,13 @@ if (selectedEvent == "Stability" && allowEvents && !eventOccurred && stabChance 
 {
     if (data.stabilityPoints > 50f)
     {
-        Log.Warning($" 🔥 ТРИГГЕР +: {faction.Name} (стаб: {data.stabilityPoints:F1}, шанс: {stabChance:P0})");
-        if (TrySpawnSplitFaction(faction, true))
-            data.stabilityPoints -= 100f;
+        Log.Warning($" 🔥 ТРИГГЕР +: {faction.Name}");
+        TrySpawnSplitFaction(faction, true); // Просто вызываем, очки спишутся внутри
     }
     else
     {
-        Log.Warning($" 🔥 ТРИГГЕР -: {faction.Name} (стаб: {data.stabilityPoints:F1}, шанс: {stabChance:P0})");
-        if (TrySpawnSplitFaction(faction, false))
-            data.stabilityPoints += 100f;
+        Log.Warning($" 🔥 ТРИГГЕР -: {faction.Name}");
+        TrySpawnSplitFaction(faction, false); // Просто вызываем, очки добавятся 
     }
     eventOccurred = true; // Отмечаем, что событие произошло
 }
@@ -1899,7 +2302,7 @@ if (DynamicFactionsMod.settings.showDebugLogs)
     float totalEntropyLog = DynamicFactionsMod.settings.entropyPerUpdate + data.accumulatedEntropy;
     float baseEntropyLog = DynamicFactionsMod.settings.entropyPerUpdate;
     
-    string focusLabel = militaryFocusAttack ? "⚔️ АТАКА" : "🛡️ БРОНЯ";
+    string focusLabel = militaryFocusAttack ? "DF_Log_Focus_Attack".Translate() : "DF_Log_Focus_Defense".Translate();
     
     // События лидера
     float leaderEventsLog = 0f;
@@ -1945,7 +2348,7 @@ foreach (var data in factionDataList)
     
     // Множитель влияния
     data.influencePoints *= DynamicFactionsMod.settings.influenceMultiplier;
-    data.influencePoints = Mathf.Clamp(data.influencePoints, -200f, 200f);
+    data.influencePoints = Mathf.Clamp(data.influencePoints, -100f, 100f);
     
     // ▼▼▼ ДОБАВЬ ЭТО - МНОЖИТЕЛЬ ОЧКОВ ЛИДЕРА ▼▼▼
     data.leaderLegitimacy *= DynamicFactionsMod.settings.stabilityMultiplier;
@@ -1986,35 +2389,46 @@ public bool TrySpawnSplitFaction(Faction parentFaction, bool isPositiveEvent)
     {
         FactionStabilityData data = GetOrCreateData(parentFaction);
 
-        bool ExecuteStrengthening(string reasonPrefix = "")
-        {
-            data.attackPoints += 15f;
-            data.defensePoints += 15f;
-            data.leaderLegitimacy += 5f;
-            data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
-            data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-            data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-            Log.Warning($"[DF] BOOST {parentFaction.Name}: Атака={data.attackPoints:F1}, Броня={data.defensePoints:F1}, Лидер={data.leaderLegitimacy:F1}");
-            string t = "Укрепление боевой мощи";
-            string b = $"{reasonPrefix}Фракция {parentFaction.Name} направила ресурсы на армию.\n\n• Атака: +15 (Всего: {data.attackPoints:F1})\n• Броня: +15 (Всего: {data.defensePoints:F1})\n• Лидер: +5 (Всего: {data.leaderLegitimacy:F1})";
-            data.accumulatedEntropy += 1f;
-            Find.LetterStack.ReceiveLetter(t, b, LetterDefOf.NeutralEvent, originSettlement);
-            return false;
-        }
+bool ExecuteStrengthening(string reasonPrefix = "")
+{
+    data.attackPoints += 15f;
+    data.defensePoints += 15f;
+    data.leaderLegitimacy += 5f;
+    data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
+    data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+    data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
+    Log.Warning($"[DF] BOOST {parentFaction.Name}: Атака={data.attackPoints:F1}, Броня={data.defensePoints:F1}, Лидер={data.leaderLegitimacy:F1}");
+    string t = "DF_Strengthening_Label".Translate();
+    string b = "DF_Strengthening_Text".Translate(reasonPrefix, parentFaction.Name, data.attackPoints, data.defensePoints, data.leaderLegitimacy);
+    data.accumulatedEntropy += 2f;
+	data.stabilityPoints -= 90f; 
+    DF_EventManager.Fire(
+    "DF_Strengthening",
+    t,
+    b,
+    LetterDefOf.NeutralEvent,
+    originSettlement
+);
+    return false;
+}
         
         // Интриги: 0.5% за базу
-        float intriguesChance = parentSettlements.Count * 0.005f;
-        if (Rand.Value < intriguesChance)
-        {
-            spawnNewSettlement = false;
-            settlementsToSeize = Rand.Range(1, 4);
-            targetTech = parentFaction.def.techLevel;
-            label = $"Интриги: {parentFaction.Name}";
-            text = $"Внутренние интриги привели к разделению власти. {settlementsToSeize} поселений отошли новой группировке.";
-            letterDef = LetterDefOf.NeutralEvent;
-            goodwillChange = -200;
-            data.accumulatedEntropy += 1f;
-        }
+float intriguesChance = parentSettlements.Count * 0.005f;
+if (Rand.Value < intriguesChance)
+{
+    spawnNewSettlement = false;
+    settlementsToSeize = Rand.Range(1, 4);
+    targetTech = parentFaction.def.techLevel;
+    
+    // ✅ ИСПРАВЛЕНО: Передаем ИМЯ + ЧИСЛО (2 аргумента)
+    label = "DF_Intrigues_Label".Translate(parentFaction.Name);
+    text = "DF_Intrigues_Text".Translate(parentFaction.Name, settlementsToSeize);
+    letterDef = LetterDefOf.NeutralEvent;
+    goodwillChange = -200;
+    data.accumulatedEntropy += 2f;
+	data.stabilityPoints -= 90f; 
+}
+
         else
         {
             float roll = Rand.Value;
@@ -2030,28 +2444,39 @@ public bool TrySpawnSplitFaction(Faction parentFaction, bool isPositiveEvent)
                         newTile = t; break;
                     }
                 }
-                if (newTile == -1) return ExecuteStrengthening("Экспедиция не нашла земель для колонизации. ");
-                Settlement newColony = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
-                newColony.SetFaction(parentFaction);
-                newColony.Tile = newTile;
-                newColony.Name = SettlementNameGenerator.GenerateSettlementName(newColony, null);
-                Find.WorldObjects.Add(newColony);
-                data.accumulatedEntropy += 1f;
-                Find.LetterStack.ReceiveLetter($"Колонизация: {parentFaction.Name}", 
-                    $"Основана новая база {newColony.Name}.", LetterDefOf.NeutralEvent, newColony);
-                return true;
+if (newTile == -1) return ExecuteStrengthening("DF_Colonization_NoLand".Translate());
+Settlement newColony = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
+newColony.SetFaction(parentFaction);
+newColony.Tile = newTile;
+newColony.Name = SettlementNameGenerator.GenerateSettlementName(newColony, null);
+Find.WorldObjects.Add(newColony);
+data.accumulatedEntropy += 2f;
+data.stabilityPoints -= 90f; 
+DF_EventManager.Fire(
+    "DF_Colonization",
+    "DF_Colonization_Label".Translate(parentFaction.Name),
+    "DF_Colonization_Text".Translate(newColony.Name),
+    LetterDefOf.NeutralEvent,
+    newColony
+);
+return true;
             }
-            else if (roll < 0.70f) // 20% Крупная сделка
-            {
-                data.influencePoints += 20f;
-                data.leaderLegitimacy += 5f;
-                data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-                data.accumulatedEntropy += 1f;
-                Find.LetterStack.ReceiveLetter($"Крупная сделка: {parentFaction.Name}",
-                    $"Торговая гильдия заключила выгодный контракт.\n\n• Влияние: +20 (Всего: {data.influencePoints:F1})\n• Лидер: +5 (Всего: {data.leaderLegitimacy:F1})", 
-                    LetterDefOf.NeutralEvent, originSettlement);
-                return false;
-            }
+else if (roll < 0.70f) // 20% Крупная сделка
+{
+    data.influencePoints += 20f;
+    data.leaderLegitimacy += 5f;
+    data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
+    data.accumulatedEntropy += 2f;
+	data.stabilityPoints -= 90f; 
+DF_EventManager.Fire(
+    "DF_MajorDeal",
+    "DF_MajorDeal_Label".Translate(parentFaction.Name),
+    "DF_MajorDeal_Text".Translate(data.influencePoints, data.leaderLegitimacy),
+    LetterDefOf.NeutralEvent,
+    originSettlement
+);
+    return false;
+}
             else if (roll < 0.85f) // 15% Укрепление
             {
                 return ExecuteStrengthening();
@@ -2064,7 +2489,7 @@ public bool TrySpawnSplitFaction(Faction parentFaction, bool isPositiveEvent)
 					return ExecuteStrengthening("");
 					}
                 int checkTile = TileFinder.RandomSettlementTileFor(parentFaction);
-                if (checkTile == -1) return ExecuteStrengthening("Ученые не нашли места для академии. ");
+                if (checkTile == -1) return ExecuteStrengthening("DF_ScientificBreakthrough_NoAcademy".Translate());
                 
                 // НАУЧНЫЙ ПРОРЫВ: +1 уровень, но не выше Archotech
                 if (parentTech < TechLevel.Archotech)
@@ -2095,21 +2520,31 @@ public bool TrySpawnSplitFaction(Faction parentFaction, bool isPositiveEvent)
                     targetTech = TechLevel.Archotech;
                 }
                 
-                label = $"Научный прорыв: {parentFaction.Name}";
-                text = $"Технологический скачок привел к созданию новой прогрессивной фракции (Уровень {parentTech} -> {targetTech}).";
-                goodwillChange = 100;
-                spawnNewSettlement = true;
-                data.accumulatedEntropy += 1f;
+label = "DF_ScientificBreakthrough_Label".Translate(parentFaction.Name.Named("FACTION"));
+text = "DF_ScientificBreakthrough_Text".Translate(
+    parentFaction.Name.Named("FACTION"), 
+    parentTech.ToString().Named("OLDTECH"), 
+    targetTech.ToString().Named("NEWTECH")
+);
+goodwillChange = 100;
+spawnNewSettlement = true;
+data.accumulatedEntropy += 2f;
+data.stabilityPoints -= 90f; 
             }
             else // 10% Золотой век
             {
-                data.leaderLegitimacy += 10f;
-                data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
-                data.accumulatedEntropy += 1f;
-                Find.LetterStack.ReceiveLetter($"Золотой век: {parentFaction.Name}",
-                    $"Народ боготворит лидера.\n(Легитимность +10, Всего: {data.leaderLegitimacy:F1})", 
-                    LetterDefOf.NeutralEvent, originSettlement);
-                return false;
+    data.leaderLegitimacy += 10f;
+    data.leaderLegitimacy = Mathf.Clamp(data.leaderLegitimacy, -20f, 20f);
+    data.accumulatedEntropy += 2f;
+	data.stabilityPoints -= 90f; 
+DF_EventManager.Fire(
+    "DF_GoldenAge",
+    "DF_GoldenAge_Label".Translate(parentFaction.Name),
+    "DF_GoldenAge_Text".Translate(data.leaderLegitimacy),
+    LetterDefOf.NeutralEvent,
+    originSettlement
+);
+    return false;
             }
         }
     }
@@ -2136,49 +2571,69 @@ else // НЕГАТИВНЫЕ СОБЫТИЯ СТАБИЛЬНОСТИ
         }
         if (newTile == -1) 
         {
-            Settlement originForLetter = parentSettlements.RandomElement();
-            label = $"Лидер-герой: {parentFaction.Name}";
-            text = $"В момент кризиса {parentFaction.leader.Name.ToStringFull} стабилизировал ситуацию!\n\nЕго авторитет вырос.\n(Легитимность +5, теперь: {data.leaderLegitimacy:F1})";
-            data.accumulatedEntropy -= 1f;
-            Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, originForLetter);
-            return true;
+Settlement originForLetter = parentSettlements.RandomElement();
+label = "DF_LeaderHero_Label".Translate(parentFaction.Name);
+text = "DF_LeaderHero_Text".Translate(parentFaction.Name, parentFaction.leader.Name.ToStringFull, data.leaderLegitimacy);
+data.accumulatedEntropy -= 2f;
+data.stabilityPoints += 90f; 
+DF_EventManager.Fire(
+    "DF_LeaderHero",
+    label,
+    text,
+    LetterDefOf.NeutralEvent,
+    originForLetter
+);
+return true;
+
         }
-        Settlement newColony = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
-        newColony.SetFaction(parentFaction);
-        newColony.Tile = newTile;
-        newColony.Name = SettlementNameGenerator.GenerateSettlementName(newColony, null);
-        Find.WorldObjects.Add(newColony);
-        label = $"Лидер объединяет: {parentFaction.Name}";
-        text = $"{parentFaction.leader.Name.ToStringFull} предотвратил раскол и убедил революционеров!\n\nБунтовщики стали колонистами и основали новую базу {newColony.Name} рядом с {origin.Name}.\nФракция вышла из кризиса сильнее!\n(Легитимность +5, теперь: {data.leaderLegitimacy:F1})";
-        data.accumulatedEntropy -= 1f;
-        Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, newColony);
-        return true;
+Settlement newColony = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
+newColony.SetFaction(parentFaction);
+newColony.Tile = newTile;
+newColony.Name = SettlementNameGenerator.GenerateSettlementName(newColony, null);
+Find.WorldObjects.Add(newColony);
+label = "DF_LeaderUnites_Label".Translate(parentFaction.Name);
+text = "DF_LeaderUnites_Text".Translate(parentFaction.Name, parentFaction.leader.Name.ToStringFull, newColony.Name, origin.Name, data.leaderLegitimacy);
+data.accumulatedEntropy -= 2f;
+data.stabilityPoints += 90f; 
+DF_EventManager.Fire(
+    "DF_LeaderUnites",
+    label,
+    text,
+    LetterDefOf.NeutralEvent,
+    newColony
+);
+return true;
+
     }
     roll = (roll - leaderSaveChance) / (1f - leaderSaveChance);
 if (roll < 0.20f) // Гражданская война 20%
 {
     FactionStabilityData data = GetOrCreateData(parentFaction);
     targetTech = parentTech;
-    spawnNewSettlement = true;  // ДОБАВЛЕНО
-    settlementsToSeize = 0;      // ДОБАВЛЕНО
-    label = $"Гражданская война: {parentFaction.Name}";
-    text = $"Непримиримые политические разногласия раскололи {parentFaction.Name}.\nОппозиция покинула города и основала независимое государство.\nОни сохранили тот же уровень технологий, но теперь являются врагами.";
+    spawnNewSettlement = true;
+    settlementsToSeize = 0;
+    label = "DF_CivilWar_Label".Translate(parentFaction.Name);
+    text = "DF_CivilWar_Text".Translate(parentFaction.Name);
     letterDef = LetterDefOf.NeutralEvent;
     goodwillChange = -100;
-    data.accumulatedEntropy -= 1f;
+	data.stabilityPoints += 90f; 
+    data.accumulatedEntropy -= 2f;
 }
-    else if (roll < 0.40f) // Военный переворот 20%
-    {
-        FactionStabilityData data = GetOrCreateData(parentFaction);
-		targetTech = parentTech;
-        spawnNewSettlement = false;
-        settlementsToSeize = Rand.Range(1, 6);
-        label = $"Военный переворот: {parentFaction.Name}";
-        text = $"Генералы и силовики {parentFaction.Name} подняли мятеж против центральной власти.\nГарнизоны нескольких поселений перешли на сторону хунты, началась война за контроль над регионом.";
-        letterDef = LetterDefOf.NeutralEvent;
-        goodwillChange = -100;
-        data.accumulatedEntropy -= 1f;
-    }
+
+else if (roll < 0.40f) // Военный переворот 20%
+{
+    FactionStabilityData data = GetOrCreateData(parentFaction);
+    targetTech = parentTech;
+    spawnNewSettlement = false;
+    settlementsToSeize = Rand.Range(1, 3);
+    label = "DF_MilitaryCoup_Label".Translate(parentFaction.Name);
+    text = "DF_MilitaryCoup_Text".Translate(parentFaction.Name);
+    letterDef = LetterDefOf.NeutralEvent;
+    goodwillChange = -100;
+	data.stabilityPoints += 90f; 
+    data.accumulatedEntropy -= 2f;
+}
+
     else if (roll < 0.55f) // Крах общества 15%
     {
         FactionStabilityData data = GetOrCreateData(parentFaction);
@@ -2212,41 +2667,56 @@ if (roll < 0.20f) // Гражданская война 20%
             targetTech = TechLevel.Neolithic;
         }
         
-        label = $"Крах общества: {parentFaction.Name}";
-        text = $"Экономический коллапс, эпидемии и внутренние конфликты разрушили институты {parentFaction.Name}.\nОтколовшиеся выжившие утратили значительную часть знаний и деградировали до уровня {targetTech}.\nИх идеология теперь проста: выжить любой ценой.";
-        letterDef = LetterDefOf.NeutralEvent;
-        goodwillChange = -50;
-        data.accumulatedEntropy -= 1f;
+label = "DF_SocietyCollapse_Label".Translate(parentFaction.Name);
+text = "DF_SocietyCollapse_Text".Translate(parentFaction.Name, targetTech.ToString());
+letterDef = LetterDefOf.NeutralEvent;
+goodwillChange = -50;
+data.stabilityPoints += 90f; 
+data.accumulatedEntropy -= 2f;
     }
     else if (roll < 0.65f) // Эпидемия 10%
     {
-        FactionStabilityData data = GetOrCreateData(parentFaction);
-        data.attackPoints += 15f;
-        data.defensePoints -= 15f;
-        data.influencePoints -= 15f;
-        data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
-        data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-        data.influencePoints = Mathf.Clamp(data.influencePoints, -200f, 200f);
-        label = $"Эпидемия в {parentFaction.Name}";
-        text = $"Смертельная болезнь охватила {parentFaction.Name}.\n\n• Армия мобилизована (+15 Атаки)\n• Гражданские потери (-15 Брони)\n• Паника (-15 Влияния)\n\nВсего: Атака {data.attackPoints:F1}, Броня {data.defensePoints:F1}, Влияние {data.influencePoints:F1}";
-        data.accumulatedEntropy -= 1f;
-        Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.ThreatSmall, originSettlement);
-        return false;
+    FactionStabilityData data = GetOrCreateData(parentFaction);
+    data.attackPoints += 15f;
+    data.defensePoints -= 15f;
+    data.influencePoints -= 15f;
+    data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
+    data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+    data.influencePoints = Mathf.Clamp(data.influencePoints, -100f, 100f);
+    label = "DF_Epidemic_Label".Translate(parentFaction.Name);
+    text = "DF_Epidemic_Text".Translate(parentFaction.Name, data.attackPoints, data.defensePoints, data.influencePoints);
+	data.stabilityPoints += 90f; 
+    data.accumulatedEntropy -= 2f;
+DF_EventManager.Fire(
+    "DF_Epidemic",
+    label,
+    text,
+    LetterDefOf.NeutralEvent,
+    originSettlement
+);
+    return false;
     }
     else // Изоляция 15%
     {
-        FactionStabilityData data = GetOrCreateData(parentFaction);
-        data.attackPoints += 20f;
-        data.defensePoints += 20f;
-        data.influencePoints -= 20f;
-        data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
-        data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
-        data.influencePoints = Mathf.Clamp(data.influencePoints, -200f, 200f);
-        label = $"Изоляция: {parentFaction.Name}";
-        text = $"{parentFaction.Name} закрыла границы и объявила всеобщую мобилизацию.\n\n• Армия усилена (+20 Атаки)\n• Крепости построены (+20 Брони)\n• Дипломатия разорвана (-20 Влияния)\n\nВсего: Атака {data.attackPoints:F1}, Броня {data.defensePoints:F1}, Влияние {data.influencePoints:F1}";
-        data.accumulatedEntropy -= 1f;
-        Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.NeutralEvent, originSettlement);
-        return false;
+    FactionStabilityData data = GetOrCreateData(parentFaction);
+    data.attackPoints += 20f;
+    data.defensePoints += 20f;
+    data.influencePoints -= 20f;
+	data.stabilityPoints += 90f; 
+    data.attackPoints = Mathf.Clamp(data.attackPoints, 0f, 200f);
+    data.defensePoints = Mathf.Clamp(data.defensePoints, 0f, 200f);
+    data.influencePoints = Mathf.Clamp(data.influencePoints, -100f, 100f);
+    label = "DF_Isolation_Label".Translate(parentFaction.Name);
+    text = "DF_Isolation_Text".Translate(parentFaction.Name, data.attackPoints, data.defensePoints, data.influencePoints);
+    data.accumulatedEntropy -= 2f;
+DF_EventManager.Fire(
+    "DF_Isolation",
+    label,
+    text,
+    LetterDefOf.NeutralEvent,
+    originSettlement
+);
+    return false;
     }
 }
             
@@ -2412,18 +2882,24 @@ foreach (Faction other in Find.FactionManager.AllFactions.Where(f => !f.IsPlayer
         Settlement newSettlement = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
         newSettlement.SetFaction(newFaction);
         newSettlement.Tile = capturedTile;
-        newSettlement.Name = capturedName + " (мятеж)";
+        newSettlement.Name = capturedName;
         Find.WorldObjects.Add(newSettlement);
         
         firstTile = capturedTile;
     }
     letterTarget = Find.WorldObjects.SettlementBaseAt(firstTile) ?? originSettlement;
-    text += $"\n\nЗахвачено поселений: {targets.Count}. Базы переименованы и перестроены под новую власть.";
+    text += "DF_SettlementCapture_Additional".Translate(targets.Count);
     }
     
     newFaction.TryAffectGoodwillWith(parentFaction, goodwillChange);
     newFaction.TryAffectGoodwillWith(Faction.OfPlayer, 0);
-    Find.LetterStack.ReceiveLetter(label, text, letterDef, letterTarget);
+DF_EventManager.Fire(
+    "DF_SplitFaction",
+    label,
+    text,
+    letterDef,
+    letterTarget
+);
     OnFactionUsed(newFactionDef);
     return true;
 }
@@ -2643,21 +3119,21 @@ private bool TrySpawnRandomSettlement()
 // УНИКАЛЬНОЕ ОПИСАНИЕ И ЗАГОЛОВОК ПО ТЕХУРОВНЮ
 string title = SpawnLetterTitles.TryGetValue(randomDef.techLevel, out string titleText) 
     ? titleText 
-    : "Случайное поселение";
+    : "DF_SpawnLetterTitle_Default".Translate();
 
 string description = SpawnDescriptions.TryGetValue(randomDef.techLevel, out string desc) 
-    ? $"{desc}. Они назвали своё поселение '{newSettlement.Name}'." 
-    : $"Таинственная группа основала базу {newSettlement.Name}.";
+    ? "DF_SpawnDescription_WithName".Translate(desc, newSettlement.Name)
+    : "DF_SpawnDescription_Default".Translate(newSettlement.Name);
 
 // Добавим немного разнообразия в конец описания
 string[] flavorTexts = {
-    "\n\nИх намерения пока неясны.",
-    "\n\nКак это повлияет на региональный баланс сил?",
-    "\n\nРазведка ведёт наблюдение за новой группой.",
-    "\n\nТорговцы уже проявляют интерес.",
-    "\n\nСоседние фракции настороже.",
-    "\n\nИх технологический уровень вызывает вопросы.",
-    "\n\nКакие ресурсы они ищут в этом регионе?"
+    "DF_SpawnFlavor_1".Translate(),
+    "DF_SpawnFlavor_2".Translate(),
+    "DF_SpawnFlavor_3".Translate(),
+    "DF_SpawnFlavor_4".Translate(),
+    "DF_SpawnFlavor_5".Translate(),
+    "DF_SpawnFlavor_6".Translate(),
+    "DF_SpawnFlavor_7".Translate()
 };
 
 description += flavorTexts.RandomElement();
@@ -2673,7 +3149,13 @@ else if (randomDef.techLevel <= TechLevel.Neolithic)
     letterType = LetterDefOf.NeutralEvent;
 }
 
-Find.LetterStack.ReceiveLetter(title, description, letterType, newSettlement);
+DF_EventManager.Fire(
+    "DF_RandomSettlement",
+    title,
+    description,
+    letterType,
+    newSettlement
+);
     
     OnFactionUsed(randomDef);
     
@@ -2715,7 +3197,7 @@ Find.LetterStack.ReceiveLetter(title, description, letterType, newSettlement);
             return data;
         }
         
-private void CaptureBases(Faction winner, List<Settlement> targets, int count, string title, string text)
+private void CaptureBases(Faction winner, List<Settlement> targets, int count, string title, string text, string eventDefName = "DF_BaseCapturedGeneric")
 {
     count = Mathf.Min(count, targets.Count);
     var myBases = Find.WorldObjects.Settlements.Where(s => s.Faction == winner).ToList();
@@ -2731,26 +3213,50 @@ private void CaptureBases(Faction winner, List<Settlement> targets, int count, s
         Settlement newBase = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
         newBase.SetFaction(winner);
         newBase.Tile = tile;
-        newBase.Name = name + " (захвачено)";
+        newBase.Name = name;
         Find.WorldObjects.Add(newBase);
     }
-    Find.LetterStack.ReceiveLetter(title, text, LetterDefOf.ThreatBig, new GlobalTargetInfo(seized[0].Tile));
+        DF_EventManager.Fire(
+        eventDefName, // Используем переданный DefName
+        title, 
+        text, 
+        LetterDefOf.NeutralEvent, 
+        new GlobalTargetInfo(seized[0].Tile) // Цель камеры на захваченное
+    );
 }
 
         
-        private void DestroyBases(List<Settlement> targets, int count, string title, string text)
+private void DestroyBases(List<Settlement> targets, int count, string title, string text, string eventDefName = "DF_DestroyBases")
+{
+    count = Mathf.Min(count, targets.Count);
+    var destroyed = targets.Take(count).ToList();
+    LookTargets lookTarget = null;
+    
+    foreach (var s in destroyed)
+    {
+        int tile = s.Tile;
+        string name = s.Name;
+        Find.WorldObjects.Remove(s);
+        
+        DestroyedSettlement ruins = (DestroyedSettlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.DestroyedSettlement);
+        ruins.Tile = tile;
+        Find.WorldObjects.Add(ruins);
+        
+        if (lookTarget == null)
         {
-            count = Mathf.Min(count, targets.Count);
-            var destroyed = targets.Take(count).ToList();
-            foreach (var s in destroyed)
-            {
-                int tile = s.Tile;
-                string name = s.Name;
-                Find.WorldObjects.Remove(s);
-                SpawnRuins(tile, name);
-            }
-            Find.LetterStack.ReceiveLetter(title, text, LetterDefOf.NegativeEvent, new GlobalTargetInfo(destroyed[0].Tile));
+            lookTarget = ruins;
         }
+    }
+    
+    // Через менеджер
+    DF_EventManager.Fire(
+        eventDefName,
+        title,
+        text,
+        LetterDefOf.NeutralEvent,
+        lookTarget
+    );
+}
         
         private void SpawnRuins(int tile, string oldName)
         {
@@ -2894,10 +3400,14 @@ DF_EventManager.Fire("DF_PlagueOutbreak","DF_PlagueStart_Label".Translate(),
     if (currentTick > plagueEndTick)
     {
         plagueEndTick = -1;
-        Find.LetterStack.ReceiveLetter("Конец пандемии", 
-            "Вспышка Черной Чумы пошла на спад.", 
-            LetterDefOf.PositiveEvent);
-        return;
+DF_EventManager.Fire(
+    "DF_EndOfPandemic",
+    "DF_EndOfPandemic_Label".Translate(),
+    "DF_EndOfPandemic_Text".Translate(),
+    LetterDefOf.PositiveEvent,
+    null
+);
+return;
     }
 	
 // ✅ Урон и эффекты только раз в сутки
@@ -2949,12 +3459,14 @@ foreach (var faction in Find.FactionManager.AllFactions)
             string victimName = victim.Name; // Запоминаем имя
 
             // ✅ ОПОВЕЩЕНИЕ (вставляем сюда)
-            Find.LetterStack.ReceiveLetter(
-                "Город вымер", 
-                $"Пандемия уничтожила всё население города {victimName}, принадлежавшего фракции {faction.Name}. На его месте остались лишь руины.", 
-                LetterDefOf.NeutralEvent, 
-                new GlobalTargetInfo(victim.Tile) // Чтобы камера прыгала к руинам при клике
-            );
+DF_EventManager.Fire(
+    "DF_CityDied",
+    "DF_CityDied_Label".Translate(),
+    "DF_CityDied_Text".Translate(victimName, faction.Name),
+    LetterDefOf.NeutralEvent,
+    new GlobalTargetInfo(victim.Tile)
+);
+
             
             // ✅ СОЗДАЁМ РУИНЫ
             DestroyedSettlement ruin = (DestroyedSettlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.DestroyedSettlement);
@@ -3014,19 +3526,48 @@ public class IncidentWorker_GenericDF : IncidentWorker
         string text = parms.customLetterText ?? def.description;
         LetterDef type = parms.customLetterDef ?? LetterDefOf.NeutralEvent;
 
-        // 2. Пытаемся достать наши цели для камеры
         LookTargets look = null;
-        
-        // Проверяем, является ли parms нашим кастомным классом
         if (parms is IncidentParms_DF dfParms)
         {
             look = dfParms.specificLookTargets;
         }
 
-        // 3. Отправляем письмо с учетом lookTargets (если look == null, игра это поймет)
-        Find.LetterStack.ReceiveLetter(label, text, type, look);
+        // ====================================================
+        // НОВАЯ ЛОГИКА: ФИЛЬТР ПИСЕМ
+        // ====================================================
         
-        return true; // Событие засчитано
+        bool shouldSendLetter = true;
+
+        // Проверяем настройку. Если включено "Требовать консоль":
+        if (DynamicFactionsMod.settings.requireCommsForNews)
+        {
+            // Угрозы (красные письма) показываем ВСЕГДА (ядерный гриб виден и без радио)
+            // Если ты хочешь скрывать и угрозы, убери проверку "type != LetterDefOf.ThreatBig"
+            if (type != LetterDefOf.ThreatBig && type != LetterDefOf.ThreatSmall)
+            {
+                // Если связи НЕТ -> письмо НЕ отправляем
+                if (!DF_CommsUtility.PlayerHasCommunications())
+                {
+                    shouldSendLetter = false;
+                }
+            }
+        }
+
+        // 3. Отправляем письмо ТОЛЬКО если прошли проверку
+        if (shouldSendLetter)
+        {
+            Find.LetterStack.ReceiveLetter(label, text, type, look);
+        }
+        else
+        {
+            // (Опционально) Можно писать в дебаг лог, что событие случилось скрытно
+            if (DynamicFactionsMod.settings.showDebugLogs)
+            {
+                Log.Message($"[DF] Событие '{label}' произошло, но письмо скрыто (нет связи).");
+            }
+        }
+        
+        return true; // Событие всегда считается успешным, механики сработали
     }
 }
 
@@ -3061,6 +3602,70 @@ public static class DF_EventManager
     }
 }
 
+public static class DF_CommsUtility
+{
+    // Кешируем результат, чтобы не проверять каждый миллисекунду (опционально, но полезно)
+    private static bool cachedResult = false;
+    private static int lastCheckTick = -1;
+
+    public static bool PlayerHasCommunications()
+    {
+        // Проверяем раз в 60 тиков (1 сек), чтобы не грузить процессор
+        if (Find.TickManager.TicksGame - lastCheckTick < 60 && lastCheckTick != -1)
+        {
+            return cachedResult;
+        }
+
+        lastCheckTick = Find.TickManager.TicksGame;
+        cachedResult = CheckMapsForComms();
+        return cachedResult;
+    }
+
+    private static bool CheckMapsForComms()
+    {
+        List<Map> maps = Find.Maps;
+        for (int i = 0; i < maps.Count; i++)
+        {
+            if (!maps[i].IsPlayerHome) continue;
+
+            // 1. Ванильная консоль связи (CommsConsole)
+            foreach (Building building in maps[i].listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("CommsConsole")))
+            {
+                var power = building.GetComp<CompPowerTrader>();
+                if (power == null || power.PowerOn) return true;
+            }
+
+            // 2. Поддержка модов (по именам дефов, как в No Quests Without Comms)
+            // Племенной костер (Tribal Signal Fire)
+            if (DefDatabase<ThingDef>.GetNamed("SignalFire", false) != null)
+            {
+                foreach (Building b in maps[i].listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("SignalFire")))
+                {
+                    var glower = b.TryGetComp<CompGlower>(); // Костер работает, если светится
+                    if (glower != null && glower.Glows) return true;
+                }
+            }
+
+            // Стол птичьей почты (Medieval Overhaul / Nopower Comms)
+            string[] medievalTables = { "BirdPostMessageTable", "DankPyon_ScribeTable", "Estate_Radio" };
+            foreach (string defName in medievalTables)
+            {
+                ThingDef def = DefDatabase<ThingDef>.GetNamed(defName, false);
+                if (def != null)
+                {
+                    foreach (Building b in maps[i].listerBuildings.AllBuildingsColonistOfDef(def))
+                    {
+                        var power = b.GetComp<CompPowerTrader>();
+                        if (power == null || power.PowerOn) return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
 
 }
-	

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Mod Settings -->
+  <DF_Setting_ShowDebugLogs>Show Debug Logs</DF_Setting_ShowDebugLogs>
+  <DF_Setting_ShowDebugLogs_Tip>Enables detailed logs</DF_Setting_ShowDebugLogs_Tip>
+  <DF_Setting_EnableDynamicFactions>✅ Enable Dynamic Factions System</DF_Setting_EnableDynamicFactions>
+  <DF_Setting_LimitTechLevel>🛡️ Limit Technologies (max. Medieval)</DF_Setting_LimitTechLevel>
+  <DF_Setting_LimitTechLevel_Tip>If enabled, new factions will never be above Medieval level.</DF_Setting_LimitTechLevel_Tip>
+  <DF_Setting_TriggerIntervalHours>⏰ Recalculation Interval (hours):</DF_Setting_TriggerIntervalHours>
+  <DF_Setting_TriggerIntervalHours_Value>Every {0} h. (6-24)</DF_Setting_TriggerIntervalHours_Value>
+  <DF_Setting_SplitMaxDistanceTiles>⚔️ New Faction Radius (tiles):</DF_Setting_SplitMaxDistanceTiles>
+  <DF_Setting_SplitMaxDistanceTiles_Value>{0} tiles</DF_Setting_SplitMaxDistanceTiles_Value>
+  <DF_Setting_AttackMultiplier>⚔️ Attack Points Multiplier:</DF_Setting_AttackMultiplier>
+  <DF_Setting_AttackMultiplier_Value>x{0} (0 = disable system)</DF_Setting_AttackMultiplier_Value>
+  <DF_Setting_DefenseMultiplier>🛡️ Defense Points Multiplier:</DF_Setting_DefenseMultiplier>
+  <DF_Setting_DefenseMultiplier_Value>x{0} (0 = disable system)</DF_Setting_DefenseMultiplier_Value>
+  <DF_Setting_LeaderPointsMultiplier>👑 Leader Points Multiplier:</DF_Setting_LeaderPointsMultiplier>
+  <DF_Setting_LeaderPointsMultiplier_Value>x{0} (0 = disable)</DF_Setting_LeaderPointsMultiplier_Value>
+  <DF_Setting_StabilityMultiplier>🏛️ Stability Change Multiplier:</DF_Setting_StabilityMultiplier>
+  <DF_Setting_StabilityMultiplier_Value>x{0} (0 = disable)</DF_Setting_StabilityMultiplier_Value>
+  <DF_Setting_InfluenceMultiplier>🌟 Influence Points Multiplier:</DF_Setting_InfluenceMultiplier>
+  <DF_Setting_InfluenceMultiplier_Value>x{0} (0 = disable system)</DF_Setting_InfluenceMultiplier_Value>
+  <DF_Setting_RandomSettlementChance>🎲 Random Base Spawn Chance (%):</DF_Setting_RandomSettlementChance>
+  <DF_Setting_RandomSettlementChance_Value>{0}% (0 = disable spawn)</DF_Setting_RandomSettlementChance_Value>
+  <DF_Setting_GlobalCrisisChance>💥 Global Crisis Chance (% per update):</DF_Setting_GlobalCrisisChance>
+  <DF_Setting_GlobalCrisisChance_Value>{0}% (0 = disable crises)</DF_Setting_GlobalCrisisChance_Value>
+  <DF_Setting_PlagueChance>🦠 Plague Pandemic Chance (% per update):</DF_Setting_PlagueChance>
+  <DF_Setting_PlagueChance_Value>{0}% (0 = disable plague)</DF_Setting_PlagueChance_Value>
+  <DF_Setting_EntropyPerUpdate>💀 Entropy per Update:</DF_Setting_EntropyPerUpdate>
+  <DF_Setting_EntropyPerUpdate_Value>{0} (0 = disable entropy)</DF_Setting_EntropyPerUpdate_Value>
+  <DF_Setting_ResetButton>🔄 Reset</DF_Setting_ResetButton>
+  
+  <!-- Dynamic Factions Settings -->
+  <DF_RequireCommsForNews>Require Comms for News</DF_RequireCommsForNews>
+  <DF_RequireCommsForNews_Tip>If enabled, news about faction politics (peace, war, intrigues) will only arrive when the colony has a working comms console or its mod equivalent (signal fire, bird post table, etc.). Events will still happen, but without player notifications. Threats (ThreatBig) will always be shown.\\n\\nWorks well with the "No Quests Without Comms" mod.</DF_RequireCommsForNews_Tip>
+
+  <DF_Setting_NuclearWarChance> Nuclear War Chance (on attack):</DF_Setting_NuclearWarChance>
+  <DF_Setting_NuclearWarChance_Value>{0}% (0 = disable, chance is checked on every battle only for Industrial and higher level factions)</DF_Setting_NuclearWarChance_Value>
+
+</LanguageData>

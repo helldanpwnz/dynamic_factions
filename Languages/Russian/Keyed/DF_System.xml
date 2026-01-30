@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ошибки и системные сообщения -->
+  <DF_ExecuteDefenseInvestment_Reason>Влияние потрачено на укрепление обороны.</DF_ExecuteDefenseInvestment_Reason>
+  <DF_LandGift_NoTile>не удалось передать земли (нет подходящей территории).</DF_LandGift_NoTile>
+  <DF_ReligiousConversion_NoTarget>не нашла цель для ереси.</DF_ReligiousConversion_NoTarget>
+  <DF_Annexation_NoTarget>не смогла аннексировать цель.</DF_Annexation_NoTarget>
+  <DF_NewFriendship_NoEnemies>не нашла врагов для дружбы.</DF_NewFriendship_NoEnemies>
+  <DF_LandSale_NoBuyer>нечего продавать или нет покупателя.</DF_LandSale_NoBuyer>
+  <DF_Colonization_NoLand>Экспедиция не нашла земель для колонизации.</DF_Colonization_NoLand>
+  <DF_ScientificBreakthrough_NoAcademy>Ученые не нашли места для академии.</DF_ScientificBreakthrough_NoAcademy>
+  <DF_SettlementCapture_Additional>\n\nЗахвачено поселений: {0}. Базы переименованы и перестроены под новую власть.</DF_SettlementCapture_Additional>
+
+  <!-- Причины войн и конфликтов -->
+  <DF_AttackReason_Aggression>агрессия</DF_AttackReason_Aggression>
+  <DF_ConflictReason_Diplomatic>дипломатический инцидент</DF_ConflictReason_Diplomatic>
+  <DF_ConflictReason_Border>пограничный спор</DF_ConflictReason_Border>
+  <DF_ConflictReason_Ideological>идеологический спор</DF_ConflictReason_Ideological>
+  <DF_ConflictReason_Economic>экономическая конкуренция</DF_ConflictReason_Economic>
+  <DF_AttackReason_IdeologyThreat>угроза доминирования идеологии {0}</DF_AttackReason_IdeologyThreat>
+  <DF_AttackReason_IdeologyContainment>сдерживание идеологии {0}</DF_AttackReason_IdeologyContainment>
+  <DF_AttackReason_TechnologicalRivalry>технологическое соперничество</DF_AttackReason_TechnologicalRivalry>
+  <DF_AttackReason_TerritorialDispute>территориальный спор</DF_AttackReason_TerritorialDispute>
+
+  <!-- Мирные переговоры -->
+  <DF_PeaceMade_Label>Мир заключён</DF_PeaceMade_Label>
+  <DF_PeaceMade_Text>{0} и {1} заключили мир после переговоров!\nШанс: {2}</DF_PeaceMade_Text>
+
+  <!-- Логи (для отладки) -->
+  <DF_Log_Focus_Attack>⚔️ АТАКА</DF_Log_Focus_Attack>
+  <DF_Log_Focus_Defense>🛡️ БРОНЯ</DF_Log_Focus_Defense>
+
+</LanguageData>

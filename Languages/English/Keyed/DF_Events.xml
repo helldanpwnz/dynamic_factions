@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Global Crisis -->
+  <DF_GlobalCrisis_Label>Global Crisis</DF_GlobalCrisis_Label>
+  <DF_GlobalCrisis_Text>Diplomacy has collapsed! {0}/{1} factions have gone to war (tension {2}).</DF_GlobalCrisis_Text>
+
+  <!-- Plague -->
+  <DF_PlagueStart_Label>Plague Outbreak</DF_PlagueStart_Label>
+  <DF_PlagueStart_Text>A deadly pandemic has gripped the world.</DF_PlagueStart_Text>
+  <DF_PlagueEnd_Label>End of Pandemic</DF_PlagueEnd_Label>
+  <DF_PlagueEnd_Text>The plague outbreak is subsiding.</DF_PlagueEnd_Text>
+  <DF_CityDestroyed_Label>City Died Out</DF_CityDestroyed_Label>
+  <DF_CityDestroyed_Text>The pandemic has wiped out the entire population of city {0} ({1}). Ruins remain as a reminder of the tragedy.</DF_CityDestroyed_Text>
+  <DF_FactionDestroyed_Label>Faction Destroyed</DF_FactionDestroyed_Label>
+  <DF_FactionDestroyed_Text>The world learns the news: faction {0} has ceased to exist. Cities have fallen, survivors scattered across the wasteland.</DF_FactionDestroyed_Text>
+  
+  <!-- Investment -->
+  <DF_DefenseInvestment_Label>Defense Investment</DF_DefenseInvestment_Label>
+  <DF_DefenseInvestment_Text>{0} spends influence to strengthen its army.\\n\\n• Attack: +20\\n• Defense: +20</DF_DefenseInvestment_Text>
+
+  <!-- Land Issues -->
+  <DF_LandGift_Label>Helping the Needy</DF_LandGift_Label>
+  <DF_LandGift_Text>{0} makes a grand gesture and transfers land to faction {2} to stabilize the region.\\nA new settlement is founded: {3}.</DF_LandGift_Text>
+  <DF_LandSale_Label>Land Sale</DF_LandSale_Label>
+  <DF_LandSale_Text>{0} sells settlement {1} to a faction to pay off debts and buy equipment for the army {2}.\\n\\n• Attack: +30\\n• Defense: +30</DF_LandSale_Text>
+  <DF_Annexation_Label>Annexation</DF_Annexation_Label>
+  <DF_Annexation_Text>{0}, as the most influential faction, peacefully absorbs {1}!</DF_Annexation_Text>
+  
+  <!-- Politics and Revolutions -->
+  <DF_PuppetGovernment_Label>Puppet Government: {0}</DF_PuppetGovernment_Label>
+<DF_PuppetGovernment_Text>Due to political intrigue, power in faction {0} has changed hands. The new leader, {2}, is completely controlled by faction {1}.\\n\\nThe {0} government has officially adopted the ideology of its patrons and severed diplomatic relations with all enemies of {1}. Effectively, the faction has lost its independence.</DF_PuppetGovernment_Text>
+  <DF_Dictatorship_Label>Dictatorship</DF_Dictatorship_Label>
+  <DF_Dictatorship_Text>Military regime established in {0}.\\n\\n• Stability: -30\\n• Leader: -5\\n• Attack/Defense: +30\\n• Allies lost: {1}</DF_Dictatorship_Text>
+  <DF_LeaderDeath_Label>Leader Death at Negotiations</DF_LeaderDeath_Label>
+  <DF_LeaderDeath_Text>Leader of {0} ({1}) was betrayed and killed at negotiations.\\nArmy is furious: \\n• Attack: +50\\n• Defense: -50</DF_LeaderDeath_Text>
+  
+  <!-- Economy -->
+  <DF_EconomicCollapse_Label>Economic Decline</DF_EconomicCollapse_Label>
+  <DF_EconomicCollapse_Text>Economy of {0} is in deep crisis.\\n• Stability loss: -20\\n• Leader loses legitimacy: -5</DF_EconomicCollapse_Text>
+  <DF_EconomicFallback_Label>Economic Decline</DF_EconomicFallback_Label>
+  <DF_EconomicFallback_Text>Economy of {0} is in deep crisis.\\n• Stability loss: -20\\n• Leader loses legitimacy: -5</DF_EconomicFallback_Text>
+  <DF_ProsperityEra_Label>Prosperity Era</DF_ProsperityEra_Label>
+  <DF_ProsperityEra_Text>{0} is experiencing a golden age.\\n• Stability growth: +20\\n• Leader legitimacy: +5</DF_ProsperityEra_Text>
+
+  <!-- Diplomacy -->
+  <DF_AllianceBreak_Label>Alliance Break</DF_AllianceBreak_Label>
+  <DF_AllianceBreak_Text>{0} and {1} could not resolve their numerous conflicts and break the peace treaty! Now they are enemies.</DF_AllianceBreak_Text>
+  <DF_NewFriendship_Label>New Alliance</DF_NewFriendship_Label>
+  <DF_NewFriendship_Text>{0} and {1} decided during negotiations that it's more beneficial to be on the same side and began close cooperation. Hostility is over.</DF_NewFriendship_Text>
+  <DF_AlliesAid_Label>Allies Aid</DF_AlliesAid_Label>
+  <DF_AlliesAid_Text>{0} receives aid from its loyal ally — {1}.\\n• Stability, Attack, and Defense: +10</DF_AlliesAid_Text>
+  <DF_PeaceMade_Label>Peace Agreement</DF_PeaceMade_Label>
+  <DF_PeaceMade_Text>{0} and {1} have made peace.\\nChance of success was: {2}.\\n• {0}: Aggression reduced, stability increased.\\n• {1}: Influence and stability increased.</DF_PeaceMade_Text>
+
+  <!-- Religion and Ideology -->
+  <DF_ReligiousConversion_Label>Heresy</DF_ReligiousConversion_Label>
+  <DF_ReligiousConversion_Text>{0} adopts a new faith under pressure from {1}.\\n• Effect: Fanaticism (Defense +20)</DF_ReligiousConversion_Text>
+  <DF_IdeologicalSchism_Label>Faith Schism</DF_IdeologicalSchism_Label>
+  <DF_IdeologicalSchism_Text>{0} rejects {1}! New faith: {2}.</DF_IdeologicalSchism_Text>
+  <DF_CulturalPropaganda_Label>Cultural Victory</DF_CulturalPropaganda_Label>
+  <DF_CulturalPropaganda_Text>Culture of {0} dominates! {1} adopts the ideology of {2}.</DF_CulturalPropaganda_Text>
+  <DF_IdeologicalCapitulation_Label>Ideological Capitulation</DF_IdeologicalCapitulation_Label>
+  <DF_IdeologicalCapitulation_Text>{0} recognizes the spiritual leadership of {1}.\\n• Influence loss: -50</DF_IdeologicalCapitulation_Text>
+
+  <!-- Revolution -->
+  <DF_ColorRevolution_Label>Color Revolution</DF_ColorRevolution_Label>
+  <DF_ColorRevolution_Text>{0} stages a revolution in {1}!\\n\\n• New faction: {2}\\n• New base: {3}\\n• Damage to {1}: Stability -30\\n• Benefit to {0}: Influence +50</DF_ColorRevolution_Text>
+
+  <!-- Military Actions (Industrial+) -->
+  <DF_PyrrhicVictory_Industrial_Label>Disputed Victory</DF_PyrrhicVictory_Industrial_Label>
+  <DF_PyrrhicVictory_Industrial_Text>Leader of {0} died during the assault, but base was captured.\\n• Influence: -30\\n• Attack: -30%\\n• Target Defense: -60%\\n•</DF_PyrrhicVictory_Industrial_Text>
+  <DF_Blitzkrieg_Label>Sudden Attack</DF_Blitzkrieg_Label>
+  <DF_Blitzkrieg_Text>{0} launches a surprise attack! Number of settlements captured from {2}: {1}.</DF_Blitzkrieg_Text>
+  <DF_InformationalVictory_Label>Propaganda</DF_InformationalVictory_Label>
+  <DF_InformationalVictory_Text>{0} destabilizes society of {1} through propaganda.\\n• Damage to target: Influence -50.</DF_InformationalVictory_Text>
+  <DF_PrecisionStrike_Label>Precision Strike</DF_PrecisionStrike_Label>
+  <DF_PrecisionStrike_Text>{0} destroys a key object {1}. One base is wiped off the map.</DF_PrecisionStrike_Text>
+  <DF_RocketStrike_Label>Rocket Barrage</DF_RocketStrike_Label>
+  <DF_RocketStrike_Text>{0} launches a massive rocket barrage against {2}.\\n• Bases destroyed: {1}\\n• Panic: Stability -30.</DF_RocketStrike_Text>
+  <DF_NuclearWar_Label>NUCLEAR WAR</DF_NuclearWar_Label>
+  <DF_NuclearWar_Text>War. War never changes...</DF_NuclearWar_Text>
+
+  <!-- Regular Military Actions -->
+  <DF_PyrrhicVictory_Label>Disputed Victory</DF_PyrrhicVictory_Label>
+  <DF_PyrrhicVictory_Text>Leader of {0} died during the assault, but base was captured.\\n• Influence: -30\\n• Attack: -30%\\n• Target Defense: -60%\\n•</DF_PyrrhicVictory_Text>
+  <DF_Invasion_Label>Sudden Attack</DF_Invasion_Label>
+  <DF_Invasion_Text>{0} launches a surprise attack! Number of settlements captured from {2}: {1}.</DF_Invasion_Text>
+  <DF_BarbarianSlaughter_Label>Massacre</DF_BarbarianSlaughter_Label>
+  <DF_BarbarianSlaughter_Text>{0} burns settlement {1} to the ground. No survivors. Stability -30.</DF_BarbarianSlaughter_Text>
+  <DF_Raid_Label>Raid</DF_Raid_Label>
+  <DF_Raid_Text>{0} takes advantage of chaos and captures base {1}.</DF_Raid_Text>
+  <DF_WarAtHome_Label>Counterattack</DF_WarAtHome_Label>
+  <DF_WarAtHome_Text>While {0} was capturing {1}, the enemy ({2}) struck in the rear and captured {3}.</DF_WarAtHome_Text>
+
+  <!-- Defense Results (FIXED: removed specific numbers to avoid empty brackets) -->
+  <DF_Defense_Label>Defense Successful</DF_Defense_Label>
+  <DF_Defense_Text>{0} repels the attack from {1}.\\n\\n• Attack from {1} reduced.\\n• Defense of {0} suffered, but held.</DF_Defense_Text>
+
+  <DF_HeavyDefense_Label>Heavy Defense</DF_HeavyDefense_Label>
+  <DF_HeavyDefense_Text>{0} barely repels the attack from {1}.\\n\\n• Attack from {1} stopped.\\n• Defense of {0} suffered heavy losses.</DF_HeavyDefense_Text>
+
+  <DF_Repelled_Label>Attack Repelled</DF_Repelled_Label>
+  <DF_Repelled_Text>{0} easily repels the attack from {1}.\\n\\n• Enemy ({1}) pushed back.\\n• Defense of {0} unharmed.</DF_Repelled_Text>
+
+  <DF_Counteroffensive_Label>Counteroffensive</DF_Counteroffensive_Label>
+  <DF_Counteroffensive_Text>{0} repels the attack and goes on the offensive against {1}!\\n\\n• Base captured: {2}</DF_Counteroffensive_Text>
+  <DF_Counteroffensive_NoBases_Text>{0} repels the attack and goes on the offensive against {1}!\\n\\n</DF_Counteroffensive_NoBases_Text>
+
+  <!-- Events without targets (Fallbacks) -->
+  <DF_Annexation_NoTarget_Text>{0} invests in the army.\\n(Attack +20, Defense +20)</DF_Annexation_NoTarget_Text>
+  <DF_NewFriendship_NoEnemies_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_NewFriendship_NoEnemies_Text>
+  <DF_LandGift_NoTile_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_LandGift_NoTile_Text>
+  <DF_LandSale_NoBuyer_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_LandSale_NoBuyer_Text>
+  <DF_ReligiousConversion_NoTarget_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_ReligiousConversion_NoTarget_Text>
+  <DF_ColorRevolution_NoTarget_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_ColorRevolution_NoTarget_Text>
+  <DF_ColorRevolution_NoSettlements_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_ColorRevolution_NoSettlements_Text>
+  <DF_ColorRevolution_NoDefs_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_ColorRevolution_NoDefs_Text>
+  <DF_ColorRevolution_NoTile_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_ColorRevolution_NoTile_Text>
+  <DF_CulturalPropaganda_NoDLC_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_CulturalPropaganda_NoDLC_Text>
+  <DF_CulturalPropaganda_NoTarget_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_CulturalPropaganda_NoTarget_Text>
+  <DF_ScientificBreakthrough_NoAcademy_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_ScientificBreakthrough_NoAcademy_Text>
+  <DF_Colonization_NoLand_Text>{0} strengthens the army.\\n(Attack +20, Defense +20)</DF_Colonization_NoLand_Text>
+
+<!-- Random faction spawn -->
+<DF_SpawnLetterTitle_Animal>Appearance of Wild Tribes</DF_SpawnLetterTitle_Animal>
+<DF_SpawnLetterTitle_Neolithic>Wild Tribes</DF_SpawnLetterTitle_Neolithic>
+<DF_SpawnLetterTitle_Medieval>Medieval Commune</DF_SpawnLetterTitle_Medieval>
+<DF_SpawnLetterTitle_Industrial>Ancient Survivors</DF_SpawnLetterTitle_Industrial>
+<DF_SpawnLetterTitle_Spacer>Spaceship Crash</DF_SpawnLetterTitle_Spacer>
+<DF_SpawnLetterTitle_Ultra>Quantum Leap</DF_SpawnLetterTitle_Ultra>
+<DF_SpawnLetterTitle_Archotech>Archotech Traces</DF_SpawnLetterTitle_Archotech>
+<DF_SpawnLetterTitle_Default>New Settlement</DF_SpawnLetterTitle_Default>
+
+<DF_SpawnDescription_Neolithic>Wandering exiles, cast out from old tribes or lone wanderers, have united. Their strength lies in cohesion and knowledge of wild lands.</DF_SpawnDescription_Neolithic>
+<DF_SpawnDescription_Medieval>Survivors have formed a new commune with strict laws and walls of debris. They reject wasteland chaos and build order on their terms.</DF_SpawnDescription_Medieval>
+<DF_SpawnDescription_Industrial>Ancient survivors awakened from cryosleep have decided to restore their former might. Their knowledge and technology challenge this savage world.</DF_SpawnDescription_Industrial>
+<DF_SpawnDescription_Spacer>Space refugees whose ship crashed on the planet. They cling to remnants of civilization, using wreckage for survival and rebirth.</DF_SpawnDescription_Spacer>
+<DF_SpawnDescription_Ultra>High-tech syndicate operating from the shadows, appearing out of nowhere. Their drones and mechs surpass all known technology, their goals hidden even from reconnaissance.</DF_SpawnDescription_Ultra>
+<DF_SpawnDescription_Default>unknown group</DF_SpawnDescription_Default>
+  
+  <DF_SpawnDescription_WithName>This is {0}. They named the settlement '{1}'.</DF_SpawnDescription_WithName>
+
+  <!-- Random Phrases -->
+  <DF_SpawnFlavor_1>Their intentions are still unclear.</DF_SpawnFlavor_1>
+  <DF_SpawnFlavor_2>How will this affect the balance of power?</DF_SpawnFlavor_2>
+  <DF_SpawnFlavor_3>Reconnaissance is monitoring.</DF_SpawnFlavor_3>
+  <DF_SpawnFlavor_4>Traders are already interested in them.</DF_SpawnFlavor_4>
+  <DF_SpawnFlavor_5>Where did these strangers come from?</DF_SpawnFlavor_5>
+  <DF_SpawnFlavor_6>Their technology raises questions.</DF_SpawnFlavor_6>
+  <DF_SpawnFlavor_7>What are they looking for here?</DF_SpawnFlavor_7>
+  
+  <!-- Miscellaneous -->
+  <DF_Strengthening_Label>Strengthening</DF_Strengthening_Label>
+  <DF_Strengthening_Text>{0} {1} directs resources to the army.\\n• Attack: +15\\n• Defense: +15\\n• Leader: +5</DF_Strengthening_Text>
+  
+  <DF_Intrigues_Label>Intrigues in {0}</DF_Intrigues_Label>
+  <DF_Intrigues_Text>Internal intrigues led to a split in {0}: {1} settlements passed to a new group.</DF_Intrigues_Text>
+  
+  <DF_Colonization_Label>Colonization at {0}</DF_Colonization_Label>
+  <DF_Colonization_Text>A new settlement is founded: {0}.</DF_Colonization_Text>
+  
+  <DF_MajorDeal_Label>Major Deal at {0}</DF_MajorDeal_Label>
+  <DF_MajorDeal_Text>The faction signed a profitable contract on their terms. \\n• Influence: +20\\n• Leader: +5</DF_MajorDeal_Text>
+  
+  <DF_ScientificBreakthrough_Label>Scientific Breakthrough at {0}</DF_ScientificBreakthrough_Label>
+  <DF_ScientificBreakthrough_Text>Technological leap! The faction advances to a new era.</DF_ScientificBreakthrough_Text>
+  
+  <DF_GoldenAge_Label>Great Ruler at {0}</DF_GoldenAge_Label>
+  <DF_GoldenAge_Text>The people praise the leader.\\n• Legitimacy: +10</DF_GoldenAge_Text>
+  
+  <DF_LeaderHero_Label>Hero Leader at {0}</DF_LeaderHero_Label>
+  <DF_LeaderHero_Text>Leader {1} saved the situation and prevented a military coup.\\n• Legitimacy: +5</DF_LeaderHero_Text>
+
+  <DF_LeaderUnites_Label>Leader Negotiates at {0}</DF_LeaderUnites_Label>
+  <DF_LeaderUnites_Text>{1} prevented the capture of the faction. Rebels founded a base {2} near {3}.\\n• Legitimacy: +5</DF_LeaderUnites_Text>
+
+  <DF_CivilWar_Label>Civil War at {0}</DF_CivilWar_Label>
+  <DF_CivilWar_Text>{0} is split! Separatists founded their own state and declared war on the motherland.</DF_CivilWar_Text>
+
+  <DF_MilitaryCoup_Label>Military Coup at {0}</DF_MilitaryCoup_Label>
+  <DF_MilitaryCoup_Text>The military of {0} seized power. Part of the cities passed under the control of the junta.</DF_MilitaryCoup_Text>
+  
+  <DF_SocietyCollapse_Label>Society Collapse at {0}</DF_SocietyCollapse_Label>
+  <DF_SocietyCollapse_Text>{0} has collapsed. Survivors regressed to the level of {1}.</DF_SocietyCollapse_Text>
+
+  <DF_Epidemic_Label>Epidemic at {0}</DF_Epidemic_Label>
+  <DF_Epidemic_Text>Disease in {0}.\\n• Attack +15 (mobilization)\\n• Defense -15 (losses)\\n• Influence -15</DF_Epidemic_Text>
+  
+  <DF_Isolation_Label>Isolation at {0}</DF_Isolation_Label>
+  <DF_Isolation_Text>{0} closes its borders to stabilize the faction. \\n• Attack +20\\n• Defense +20\\n• Influence -20</DF_Isolation_Text>
+  <DF_CityDied_Label>City Died Out</DF_CityDied_Label>
+
+</LanguageData>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <DF_GlobalCrisis.label>Global Crisis</DF_GlobalCrisis.label>
+  <DF_PlagueOutbreak.label>Plague Outbreak</DF_PlagueOutbreak.label>
+  <DF_FactionDestroyed.label>Faction Destroyed</DF_FactionDestroyed.label>
+  <DF_DefenseInvestment.label>Defense Investment</DF_DefenseInvestment.label>
+  <DF_LandGift.label>Land Gift</DF_LandGift.label>
+<DF_PuppetGovernment_Label>Puppet Government: {0}</DF_PuppetGovernment_Label>
+  <DF_ReligiousConversion.label>Heresy</DF_ReligiousConversion.label>
+  <DF_EconomicCollapse.label>Economic Collapse</DF_EconomicCollapse.label>
+  <DF_EconomicFallback.label>Economic Collapse</DF_EconomicFallback.label>
+  <DF_AllianceBreak.label>Alliance Break</DF_AllianceBreak.label>
+  <DF_LandSale.label>Land Sale</DF_LandSale.label>
+  <DF_Dictatorship.label>Dictatorship</DF_Dictatorship.label>
+  <DF_AlliesAid.label>Allies Aid</DF_AlliesAid.label>
+  <DF_Annexation.label>Annexation</DF_Annexation.label>
+  <DF_NewFriendship.label>New Friendship</DF_NewFriendship.label>
+  <DF_LeaderDeath.label>Leader Death</DF_LeaderDeath.label>
+  <DF_ProsperityEra.label>Prosperity Era</DF_ProsperityEra.label>
+  <DF_ColorRevolution.label>Color Revolution</DF_ColorRevolution.label>
+  <DF_CulturalPropaganda.label>Cultural Propaganda</DF_CulturalPropaganda.label>
+  <DF_IdeologicalSchism.label>Ideological Schism</DF_IdeologicalSchism.label>
+  <DF_PyrrhicVictory.label>Pyrrhic Victory</DF_PyrrhicVictory.label>
+  <DF_Invasion.label>Invasion</DF_Invasion.label>
+  <DF_IdeologicalCapitulation.label>Ideological Capitulation</DF_IdeologicalCapitulation.label>
+  <DF_BarbarianSlaughter.label>Barbarian Slaughter</DF_BarbarianSlaughter.label>
+  <DF_Raid.label>Raid</DF_Raid.label>
+  <DF_WarAtHome.label>War at Home</DF_WarAtHome.label>
+  <DF_PyrrhicVictory_Industrial.label>Pyrrhic Victory</DF_PyrrhicVictory_Industrial.label>
+  <DF_Blitzkrieg.label>Blitzkrieg</DF_Blitzkrieg.label>
+  <DF_InformationalVictory.label>Informational Victory</DF_InformationalVictory.label>
+  <DF_PrecisionStrike.label>Precision Strike</DF_PrecisionStrike.label>
+  <DF_RocketStrike.label>Rocket Strike</DF_RocketStrike.label>
+  <DF_NuclearWar.label>NUCLEAR WAR</DF_NuclearWar.label>
+  <DF_Defense.label>Defense</DF_Defense.label>
+  <DF_Repelled.label>Repelled</DF_Repelled.label>
+  <DF_Counteroffensive.label>Counteroffensive</DF_Counteroffensive.label>
+  <DF_Strengthening.label>Strengthening of Combat Power</DF_Strengthening.label>
+  <DF_Intrigues.label>Intrigues</DF_Intrigues.label>
+  <DF_Colonization.label>Colonization</DF_Colonization.label>
+  <DF_MajorDeal.label>Major Deal</DF_MajorDeal.label>
+  <DF_ScientificBreakthrough.label>Scientific Breakthrough</DF_ScientificBreakthrough.label>
+  <DF_GoldenAge.label>Golden Age</DF_GoldenAge.label>
+  <DF_LeaderHero.label>Hero Leader</DF_LeaderHero.label>
+  <DF_LeaderUnites.label>Leader Unites</DF_LeaderUnites.label>
+  <DF_CivilWar.label>Civil War</DF_CivilWar.label>
+  <DF_MilitaryCoup.label>Military Coup</DF_MilitaryCoup.label>
+  <DF_SocietyCollapse.label>Society Collapse</DF_SocietyCollapse.label>
+  <DF_Epidemic.label>Epidemic</DF_Epidemic.label>
+  <DF_Isolation.label>Isolation</DF_Isolation.label>
+  <DF_EndOfPandemic.label>End of Pandemic</DF_EndOfPandemic.label>
+  <DF_CityDied.label>City Died Out</DF_CityDied.label>
+  <DF_RandomSettlement.label>Random Settlement</DF_RandomSettlement.label>
+  <DF_PeaceMade.label>Peace Made</DF_PeaceMade.label>
+  <DF_CaptureBases.label>Bases Captured</DF_CaptureBases.label>
+  <DF_DestroyBases.label>Bases Destroyed</DF_DestroyBases.label>
+  <DF_SplitFaction.label>Faction Split</DF_SplitFaction.label>
+  <DF_HeavyDefense.label>Heavy Defense</DF_HeavyDefense.label>
+</LanguageData>
